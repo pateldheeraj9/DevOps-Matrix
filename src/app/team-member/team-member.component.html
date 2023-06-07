@@ -1,0 +1,277 @@
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+
+
+<div class="outdiv">
+
+  <div class="outercard">
+      <div class="card-header">
+          <h3>Add Member</h3>
+          <!-- <button class="addbutton">  <i class='fas fa-arrow-circle-left'><span> Back</span></i></button> -->
+      </div>
+    
+  
+  
+      <div class="container">
+
+  <form [formGroup]="Memberform" (ngSubmit)="AddMember()">
+
+    <div class="row">
+      <div class="col-25">
+        <label for="fname">Name</label>
+      </div>
+      <div class="col-25">
+        <input type="text" class="input-control" formControlName="firstname" placeholder="Enter Member Name.." autocomplete="off"/>
+        <div *ngIf="Memberform.controls['firstname'].invalid && (Memberform.controls['firstname'].touched|| Memberform.controls['firstname'].touched)" class="alert alert-danger">
+          <div  style="color: red;" *ngIf="Memberform.controls['firstname'].errors?.['required']">
+            Name is required.
+          </div>
+        </div>
+      </div>  
+      <div class="col-25">
+        <label for="lname">Email id</label>
+      </div>
+      <div class="col-25">
+        <input type="text" class="input-control" formControlName="emailid" placeholder="Enter Email.." autocomplete="off" />
+        <div *ngIf="Memberform.controls['emailid'].invalid && (Memberform.controls['emailid'].touched|| Memberform.controls['emailid'].touched)" class="alert alert-danger">
+          <div style="color: red;" *ngIf="Memberform.controls['emailid'].errors?.['required']">
+            Email is required.
+          </div>
+          <div *ngIf="Memberform.controls['emailid'].errors?.['pattern']" class="alert alert-danger">Please provide a valid email address</div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="row">
+      <div class="col-25">
+        <label for="fname">Phone No</label>
+      </div>
+      <div class="col-25">
+        <input type="text" class="input-control" formControlName="phoneNo" placeholder="Enter PhoneNo.." pInputText autocomplete="off" />
+        <div *ngIf="Memberform.controls['phoneNo'].invalid && (Memberform.controls['phoneNo'].touched|| Memberform.controls['phoneNo'].touched)" class="alert alert-danger">
+        <div style="color: red;" *ngIf="Memberform.controls['phoneNo'].errors?.['required']">
+          Phone is required.
+      </div>
+        <div style="color: red;" *ngIf="Memberform.controls['phoneNo'].errors?.['pattern']" class="alert alert-danger">Please provide a valid Phone Number</div>
+      </div>
+      </div>
+      <div class="col-25">
+        <label for="lname">Team Name</label>
+      </div>
+      <div class="col-25">
+        <select formControlName="teamModuleId" #TeamName (change)="onChangeTeamName(TeamName.value)">
+          <option [ngValue]="null" disabled>Select</option>
+          <option *ngFor="let member of data" [value]="member.id">{{member.name}}</option>
+        </select>
+        <div *ngIf="Memberform.controls['teamModuleId'].invalid && (Memberform.controls['teamModuleId'].touched|| Memberform.controls['teamModuleId'].touched)" class="alert alert-danger">
+          <div style="color: red;" *ngIf="Memberform.controls['teamModuleId'].errors?.['required']">
+            Team Name is required.
+        </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+    <div class="row">
+      <div class="col-25">
+        <label for="fname">Emp Id</label>
+      </div>
+      <div class="col-25">
+        <input type="text" class="input-control" formControlName="empId" placeholder="Enter Employee Id.." pInputText autocomplete="off"/>
+        <div *ngIf="Memberform.controls['empId'].invalid && (Memberform.controls['empId'].touched|| Memberform.controls['empId'].touched)" class="alert alert-danger">
+          <div style="color: red;" *ngIf="Memberform.controls['empId'].errors?.['required']">
+            Employee Id is required.
+        </div>
+        <div  style="color: red;" *ngIf="Memberform.controls['empId'].errors?.minlength">Emp-Id must be at least 5 characters long.</div> 
+        </div>
+      </div>
+      <div class="col-25">
+        <label for="lname">Status</label>
+      </div>
+      <div class="col-25">
+        <select formControlName="status">
+          <option [ngValue]="null" disabled>Select</option>
+          <option value="1">InActive</option>
+          <option value="2">New</option>
+          <option value="3">OnBoard</option>
+          <option value="4">OffBoard</option>
+        </select>
+
+        <div *ngIf="Memberform.controls['status'].invalid && (Memberform.controls['status'].touched|| Memberform.controls['status'].touched)" class="alert alert-danger">
+          <div style="color: red;" *ngIf="Memberform.controls['status'].errors?.['required']">
+            Status is required.
+        </div>
+         
+        </div>
+
+      </div>
+
+    </div>
+
+
+
+
+    <div class="row">
+      <div class="col-25">
+        <label for="fname">Joining Date</label>
+      </div>
+      <div class="col-25">
+        <p-calendar class="calenderCss"
+        formControlName="joiningDate"
+         
+        class="custom-cal" 
+        [showIcon]="true" inputId="icon"
+        [(ngModel)]="selectedJoiningDate">
+    </p-calendar>
+
+    <div *ngIf="Memberform.controls['joiningDate'].invalid && (Memberform.controls['joiningDate'].touched|| Memberform.controls['joiningDate'].touched)" class="alert alert-danger">
+          <div style="color: red;" *ngIf="Memberform.controls['joiningDate'].errors?.['required']">
+            Joining Date is required.
+        </div>
+        </div>
+      </div> 
+
+      <div class="col-25">
+        <label for="fname">Billing Date</label>
+      </div>
+      <div class="col-25">
+        <p-calendar class="calenderCss"
+        formControlName="billingDate"
+         
+        class="custom-cal" 
+        [showIcon]="true" inputId="icon"
+        [(ngModel)]="selectedBillingDate"
+        [minDate]="Memberform.controls['joiningDate']?.value"
+        [maxDate]="Memberform.controls['relievingDate']?.value">
+    </p-calendar>
+    <!-- <div *ngIf="Memberform.controls['billingDate'].invalid && (Memberform.controls['billingDate'].touched|| Memberform.controls['billingDate'].touched)" class="alert alert-danger">
+          <div style="color: red;" *ngIf="Memberform.controls['billingDate'].errors?.['required']">
+            Billing Date is required.
+         </div>
+    </div> -->
+    </div> 
+    </div>
+
+    <div class="row">
+      <div class="col-25">
+        <label for="lname">Relieving Date</label>
+      </div>
+      <div class="col-25">
+
+        <p-calendar
+        class="custom-cal" 
+        formControlName="relievingDate"
+        [showIcon]="true" inputId="icon"
+        [(ngModel)]="selectedRelievingDate"
+        [minDate]="Memberform.controls['joiningDate']?.value">
+    </p-calendar>
+    <!-- <div *ngIf="Memberform.controls['relivingDate'].invalid && (Memberform.controls['relivingDate'].touched|| Memberform.controls['relivingDate'].touched)" class="alert alert-danger">
+          <div style="color: red;" *ngIf="Memberform.controls['relivingDate'].errors?.['required']">
+            Relieving Date is required.
+        </div>
+        </div> -->
+      </div>
+
+      <div class="col-25">
+
+        <label for="fname">Tech Stack</label>
+
+      </div>
+
+      <div class="col-25">
+        <select formControlName="techStack">
+          <option [ngValue]="null" disabled>Select</option>
+          <option value="Front-end Web Development">Front-end Web Development</option>
+          <option value="Back-end Web Development">Back-end Web Development</option>
+          <option value="Data Science">Data Science</option>
+          <option value="Machine Learning">Machine Learning</option>
+          <option value="Mobile App Development">Mobile App Development</option>
+          <option value="DevOps">DevOps</option>
+          <option value=".NET Web API">.NET Web API</option>
+          <option value="AngularJS">AngularJS</option>
+          <option value="ReactJS">ReactJS</option>
+          <option value=".NET ASP">.NET ASP</option>
+          <option value=".NET ADO">.NET ADO</option>
+          <option value="SQL">SQL</option>
+          <option value="SqlKata">SqlKata</option>
+          <option value="Python">Python</option>
+          <option value="R">R</option>
+          <option value="C++">C++</option>
+          <option value="C">C</option>
+          <option value="Java">Java</option>
+          <option value=".Net Core">.NET Core</option>
+        </select>
+        <div *ngIf="Memberform.controls['techStack'].invalid && (Memberform.controls['techStack'].touched|| Memberform.controls['techStack'].touched)" class="alert alert-danger">
+          <div style="color: red;" *ngIf="Memberform.controls['techStack'].errors?.['required']">
+            Tech Stack is required.
+        </div>
+      </div>
+      </div>
+    </div>
+
+   <div class="row">
+    <div class="col-25">
+
+      <label for="lname">Reporting To</label>
+
+    </div>
+
+    <div class="col-25">
+
+      <!-- <select formControlName="reportingTo">
+        <option [ngValue]="" disabled>Select</option>
+        <option *ngFor="let member of data" [value]="member.cli_Lead">{{member.cli_Lead}}</option>
+      </select>  
+    
+      <div *ngIf="Memberform.controls['reportingTo'].invalid && (Memberform.controls['reportingTo'].touched|| Memberform.controls['reportingTo'].touched)" class="alert alert-danger">
+        <div *ngIf="Memberform.controls['reportingTo'].errors?.['required']">
+          Reporting To is required.
+      </div>
+       
+      </div> -->
+     
+        <input type="text" class="input-control" formControlName="reportingTo" placeholder="Enter Reporting-To Name.." />
+        <div *ngIf="Memberform.controls['reportingTo'].invalid && (Memberform.controls['reportingTo'].touched|| Memberform.controls['reportingTo'].touched)" class="alert alert-danger">
+          <div style="color: red;" *ngIf="Memberform.controls['reportingTo'].errors?.['required']">
+            Reporting To is required.
+          </div>
+        </div>
+    </div>
+  </div>
+<!-- 
+    <div class="row">
+      <div class="col-25">
+        <div class="card">
+          <p-toast></p-toast>
+          <button type="submit" [disabled]="!Memberform.valid" pButton pRipple (click)="show()" label="Submit" class="p-button-success"></button>
+        </div>
+        <button  class="btnclass" type="submit" style="position: relative; left: 400px;background-color: rgb(72, 72, 238);" routerLink="/TeamMemberDetails">Back</button>
+      </div>
+    </div> -->
+
+    <!--  -->
+    <div >
+      <div class="flex justify-content-end flex-wrap card-container blue-container">
+          <div class="flex align-items-center justify-content-end w-4rem h-4rem font-bold text-white border-round m-2">
+              <!-- <p-button label="Submit"  icon="pi pi-check" type="submit" [disabled]="!TeamDetailsForm.valid" style="margin-right: 20px;" ></p-button> -->
+              <div class="card">
+                  <p-toast></p-toast>
+                  <button type="submit" pButton pRipple [disabled]="!Memberform.valid" (click)="show()" label="Submit" class="p-button-success" style="margin-right: 20px;"></button>
+              </div>
+              <p-button label="Cancel" icon="pi pi-times" routerLink="/TeamMemberDetails" ></p-button>
+          </div> 
+      </div>
+  </div>
+
+
+  </form>
+
+</div>
+</div>
+</div>
+
+
+

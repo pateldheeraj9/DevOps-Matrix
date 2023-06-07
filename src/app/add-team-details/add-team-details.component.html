@@ -1,0 +1,133 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+<div class="outdiv">
+
+    <div class="outercard">
+        <div class="card-header">
+            <h3>Add Team</h3>
+            <!-- <button class="addbutton">  <i class='fas fa-arrow-circle-left'><span> Back</span></i></button> -->
+        </div> 
+      
+    
+    
+        <div class="container">
+            <form [formGroup]="TeamDetailsForm" (ngSubmit)="AddTeamDetails()">
+                <div class="row">
+                    <div class="col-25">
+                        <label for="fname">Name</label>
+                    </div>
+                    <div class="col-25">
+                        
+                        <input type="text" class="input-control" formControlName="name" placeholder="Enter Team Name.." autocomplete="off"/>
+
+                        <div *ngIf="TeamDetailsForm.controls['name'].invalid && (TeamDetailsForm.controls['name'].touched|| TeamDetailsForm.controls['name'].touched)" class="alert alert-danger">
+                        <div style="color: red;" *ngIf="TeamDetailsForm.controls['name'].errors?.['required']">
+                            Name is required.
+                        </div>
+                        </div>
+                    </div>
+                
+                    <div class="col-25">
+                        <label for="fname">Client Lead</label>
+                    </div>
+                    <div class="col-25">
+                        <input type="text" class="input-control" formControlName="cli_Lead" placeholder="Enter Cli_Lead Name.." autocomplete="off" />
+                        <div *ngIf="TeamDetailsForm.controls['cli_Lead'].invalid && (TeamDetailsForm.controls['cli_Lead'].touched|| TeamDetailsForm.controls['cli_Lead'].touched)" class="alert alert-danger">
+                        <div style="color: red;"  *ngIf="TeamDetailsForm.controls['cli_Lead'].errors?.['required']">
+                            Client Lead name is required.
+                        </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-25">
+                        <label for="fname">Persistent Lead</label>
+                    </div>
+                    <div class="col-25">
+                        <input type="text" class="input-control" formControlName="per_Lead" placeholder="Enter Persistent_Lead Name.." autocomplete="off"/>
+                        <div *ngIf="TeamDetailsForm.controls['per_Lead'].invalid && (TeamDetailsForm.controls['per_Lead'].touched|| TeamDetailsForm.controls['per_Lead'].touched)" class="alert alert-danger">
+                        <div style="color: red;"  *ngIf="TeamDetailsForm.controls['per_Lead'].errors?.['required']">
+                            Persistent Lead name is required.
+                        </div>
+                        </div>
+                    </div>
+                
+                    <div class="col-25">
+                        <label for="fname">Scrum Master</label>
+                    </div>
+                    <div class="col-25">
+                        <input type="text" class="input-control" formControlName="scrumMaster" placeholder="Enter Scrum_Master Name" autocomplete="off"/>
+                        <div *ngIf="TeamDetailsForm.controls['scrumMaster'].invalid && (TeamDetailsForm.controls['scrumMaster'].touched|| TeamDetailsForm.controls['scrumMaster'].touched)" class="alert alert-danger">
+                        <div style="color: red;" *ngIf="TeamDetailsForm.controls['scrumMaster'].errors?.['required']">
+                            Scrum Master is required.
+                        </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-25">
+                        <label for="lname">Status</label>
+                    </div>
+                    <div class="col-25">
+                        <select formControlName="status">
+                          <option [ngValue]="null" disabled>Select</option>
+                          <option value="1">InActive</option>
+                          <option value="2">Active</option>
+                        </select>
+                        <div *ngIf="TeamDetailsForm.controls['status'].invalid && (TeamDetailsForm.controls['status'].touched)" class="alert alert-danger">
+                          <div style="color: red;" *ngIf="TeamDetailsForm.controls['status'].errors?.['required']">
+                            Status is required.
+                        </div>
+                        </div>
+                      </div>
+                
+                    <div class="col-25">
+                        <label for="fname">Project Name</label>
+                    </div>
+                    <div class="col-25">
+                        <input type="text" class="input-control" formControlName="projectName" placeholder="Enter Project Name.." autocomplete="off" />
+                        <div *ngIf="TeamDetailsForm.controls['projectName'].invalid && (TeamDetailsForm.controls['projectName'].touched|| TeamDetailsForm.controls['projectName'].touched)" class="alert alert-danger">
+                        <div style="color: red;" *ngIf="TeamDetailsForm.controls['projectName'].errors?.['required']">
+                            Project name is required.
+                        </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-25">
+                        <label for="fname">Total Size</label>
+                    </div>
+                    <div class="col-25">
+                        <input type="number" class="input-control" formControlName="totalSize" autocomplete="off" />
+                        <div *ngIf="TeamDetailsForm.controls['totalSize'].invalid && (TeamDetailsForm.controls['totalSize'].touched|| TeamDetailsForm.controls['totalSize'].touched)" class="alert alert-danger">
+                        <div style="color: red;" *ngIf="TeamDetailsForm.controls['totalSize'].errors?.['totalSize']">
+                            Total Size is required.
+                        </div>
+                        </div>
+                    </div>
+                </div> 
+
+                <div >
+                    <div class="flex justify-content-end flex-wrap card-container blue-container">
+                        <div class="flex align-items-center justify-content-end w-4rem h-4rem font-bold text-white border-round m-2">
+                            <!-- <p-button label="Submit"  icon="pi pi-check" type="submit" [disabled]="!TeamDetailsForm.valid" style="margin-right: 20px;" ></p-button> -->
+                            <div class="card">
+                                <p-toast></p-toast>
+                                <button type="submit" pButton pRipple [disabled]="!TeamDetailsForm.valid" (click)="show()" label="Submit" class="p-button-success" style="margin-right: 20px;"></button>
+                            </div>
+                            <p-button label="Cancel" icon="pi pi-times" routerLink="/TeamDetails" ></p-button>
+                        </div>   
+                    </div>
+                </div>
+        
+                <!-- <div class="row" style="margin-top: 20px;">
+                    <div class="col-25">
+                      <button  type="submit" [disabled]="!TeamDetailsForm.valid"  class="btnclass">Submit</button>
+                      <button  class="btnclass" type="submit" style="position: relative; left: 400px;background-color: rgb(72, 72, 238);" routerLink="/TeamDetails">Back</button>
+                    </div>
+                </div> -->
+                
+            </form>
+</div>
+</div>
+</div>
+

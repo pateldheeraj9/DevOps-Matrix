@@ -1,0 +1,89 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~primeflex/primeflex.css";
+body {
+  font-family: var(--font-family);
+}
+.p-datatable-gridlines{
+    border: 1px solid #ddd;
+    text-align: left;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-bottom: 5px;
+}
+td{
+    border: 1px solid #ddd;
+}
+
+.p-dialog {
+  display: flex;
+  flex-direction: column;
+  pointer-events: auto;
+  max-height: 90%;
+  background-color: white;
+  transform: scale(1);
+  position: relative;
+  box-shadow: 0 10px 80px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  width: 100%;
+  height:500px;
+}
+.teamdetails-center{
+    text-align: center;
+    margin-top: 50px;
+    padding-top: 10px;
+}
+
+.p-button{
+  width: 20px;
+  height: 25px;
+}
+.p-button-icon-only{
+
+  background: url('https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Calendar_font_awesome.svg/768px-Calendar_font_awesome.svg.png?20130126203150') no-repeat;
+  background-size:15px 20px
+
+
+}
+
+.p-inputtext-lg{
+    width: 30%;
+    height: 20px;
+    padding: 12px 30px;
+    margin: 5px 1px;
+    box-sizing: border-box;
+   
+}
+.p-button-lg{
+    width:200px;
+    float: right;
+    height: 25px;
+    margin-top: 10px;
+    margin-right: 2px;
+
+}
+.p-paginator-first{
+  background-color: red;
+}
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.5s;
+    border-style: solid;
+    width: 90%;
+    height: 200%;
+    margin-left: 100px;
+    margin-top: 50px;
+  }
+  
+  .card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  }
+  .astric{
+    color: red;
+  }
+  .alert-danger{
+    color: red;
+    display: inline-block;
+
+  }
+ 
+ 

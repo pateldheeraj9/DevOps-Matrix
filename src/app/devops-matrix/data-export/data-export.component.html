@@ -1,0 +1,12 @@
+<div class="row mb-10 rowHeight35">
+  <div [ngClass]="DivClass1 == '' ? 'col-lg-11' : DivClass1">
+    <p><b>{{TableCaption}}</b></p>
+  </div>
+  <div [ngClass]="DivClass2 == '' ? 'col-lg-1' : DivClass2">
+    <div class="flex">
+      <button id="btnCSVExport" type="button" pButton pRipple icon="pi pi-file" tooltipPosition="bottom" pTooltip="CSV"
+              (click)="exportToCSV.emit()" class="size28">
+      </button>
+    </div>
+  </div>
+</div>

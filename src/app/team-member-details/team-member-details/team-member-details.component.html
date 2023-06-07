@@ -1,0 +1,170 @@
+<div class="card-header">
+  <div class="flex justify-content-between flex-wrap card-container purple-container">
+    <div class="flex align-items-center justify-content-center m-2">
+      <h3>Team Member Details</h3>
+    </div>
+    <div class="flex align-items-center justify-content-center m-2">
+      <p-button styleClass="p-button-raised  p-button-warning p-button" routerLink="/TeamMember">ADD TEAM
+        MEMBER</p-button>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class=" mt-2">
+    <div class="flex flex-nowrap overflow-hidden card-container green-container">
+      <div class="flex-1 border-round">
+        <div class="flex  align-items-center m-2">
+
+          <p-radioButton value='9999' [(ngModel)]="selected" (click)="radioFilterData()"
+            style="display:inline-block;padding:5px">
+
+          </p-radioButton>
+
+          <label for="selected1">All</label>
+
+
+
+          <p-radioButton value='2' [(ngModel)]="selected" (click)="radioFilterData()"
+            style="display:inline-block;padding:5px">
+
+          </p-radioButton>
+
+          <label for="selected1">New</label>
+
+          <p-radioButton value='3' [(ngModel)]="selected" (click)="radioFilterData()"
+            style="display:inline-block;padding:5px">
+
+          </p-radioButton>
+          <label for="selected2">OnBoard</label>
+
+          <p-radioButton value='4' [(ngModel)]="selected" (click)="radioFilterData()"
+            style="display:inline-block;padding:5px">
+
+          </p-radioButton>
+          <label for="selected2">OffBoard</label>
+
+          <!-- <p-radioButton value='1' [(ngModel)]="selected" (click)="radioFilterData()"
+            style="display:inline-block;padding:5px">
+
+          </p-radioButton>
+          <label for="selected2">InActive</label> -->
+        </div>
+
+
+      </div>
+      <div class="flex align-items-center justify-content-end m-2 border-round ">
+        <label style="padding: 14px;">Team</label>
+        <select [(ngModel)]="SelectedValue" (change)="onDropdownSelected(SelectedValue.value)" [value]="tableData1"
+          style="float: right; margin-right: 5px;">
+
+          <option value=0 disabled>Select</option>
+          <option value=0>All</option>
+          <option *ngFor="let data of tableData1" value={{data.id}}>{{data.name}}</option>
+
+        </select>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+
+    <div class="flex flex-column">
+      <div class="m-2"> <input type="text" class="p-inputtext" (keyup)="filterData(searchKey.value)" #searchKey
+          placeholder="Search By Name, Email Id or PhoneNo" pInputText /></div>
+      <div class="m-2"> <p-table #myTab [columns]="cols" [value]="tableData" styleClass="p-datatable-gridlines"
+          [paginator]="true" [rows]="10" [showCurrentPageReport]="true" [globalFilterFields]="['Name']">
+
+          <ng-template pTemplate="header">
+
+            <tr style="background-color:#D5DBDB;height: 40px;">
+              <!-- <th>Id</th> -->
+              <th>Name</th>
+              <th>Email id</th>
+              <th>Phone No</th>
+              <th>Team Name</th>
+              <th>Emp Id</th>
+              <th>Status</th>
+              <th>Joining Date</th>
+              <th>Billing Date</th>
+              <th>Relieving Date</th>
+              <th>Tech Stack</th>
+              <th>Reporting to</th>
+              <th>Action</th>
+            </tr>
+
+          </ng-template>
+
+          <ng-template pTemplate="body" let-data>
+            <tr>
+              <!-- <td>
+                {{ data.id }}
+              </td> -->
+              <td disabled>
+                {{ data.name }}
+              </td>
+              <td>
+                {{ data.email }}
+              </td>
+              <td>
+                {{ data.phoneNo }}
+              </td>
+              <td>
+                {{ data.teamName}}
+              </td>
+              <td>
+                {{ data.empId }}
+              </td>
+
+              <td>
+                {{ data.status }}
+              </td>
+
+              <td>
+                {{ data.joiningDate| date: 'dd/MM/yyyy' }}
+              </td>
+
+              <td>
+                {{ data.billingDate| date: 'dd/MM/yyyy' }}
+              </td>
+
+              <td>
+                {{ data.relievingDate| date: 'dd/MM/yyyy' }}
+              </td>
+
+              <td>
+                {{ data.techStack }}
+              </td>
+
+              <td>
+                {{data.cli_Lead}}
+              </td>
+
+              <td width="13%">
+                
+             <p-button icon="pi pi-search" (click)="showViewTeamMember(data.id)" styleClass="p-button-sm p-button-rounded p-button-danger p-button-outlined"></p-button>
+             <p-button icon="pi pi-pencil" (click)="showEditTeamMember(data.id)" styleClass="p-button-sm p-button-rounded p-button-danger p-button-outlined"></p-button>
+             <p-button icon="pi pi-trash" (click)="deleteProduct(data.id,data.name)"
+              styleClass="p-button-sm p-button-rounded p-button-danger p-button-outlined"></p-button>
+              </td>
+
+            </tr>
+          </ng-template> 
+        </p-table>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<p-dialog [(visible)]="deleteProductDialog" header="Confirm" [modal]="true" [style]="{width:'450px'}">
+  <div class="flex align-items-center justify-content-center">
+      <i class="pi pi-exclamation-triangle mr-3" style="font-size: 2rem"></i>
+      <span>Are you sure you want to delete  Member - <b>{{deletedname}}</b>?</span>
+  </div>
+  <ng-template pTemplate="footer">
+      <button pButton pRipple icon="pi pi-times" class="p-button-text" label="No" (click)="deleteProductDialog = false"></button>
+      <button pButton pRipple icon="pi pi-check" class="p-button-text" label="Yes" (click)="deleteMemberById(deletedid)"></button>
+  </ng-template>
+</p-dialog>

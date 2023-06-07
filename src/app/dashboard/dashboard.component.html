@@ -1,0 +1,75 @@
+<div class="card-header">
+    <div class="flex justify-content-between flex-wrap card-container purple-container">
+      <div class="flex align-items-center justify-content-center m-2">
+        <h3>Dashboard</h3>
+      </div>
+    </div>
+  </div>
+
+<!-- Prime flex.......... -->
+<br>
+<div class="card bg-purple-50">
+  <div class="card-container purple-container overflow-hidden">
+      <div class="flex box-height">
+          <div class="flex-1 flex align-items-center justify-content-center bg-purple-800 font-bold text-white text-xl m-2 px-5 py-3 border-round-lg transition-colors transition-duration-500 hover:bg-blue-900 hover:text-white-900
+          cursor-pointer" *ngFor="let data of tableData">{{data.name}}: {{data.count}}</div>
+          <!-- <div class="flex-1 flex align-items-center justify-content-center bg-purple-700 font-bold text-white m-2 px-5 py-3 border-round">Lorem ipsum dolor sit amet</div>
+          <div class="flex-1 flex align-items-center justify-content-center bg-purple-700 font-bold text-white m-2 px-5 py-3 border-round">Lorem ipsum dolor sit amet</div>
+          <div class="flex-1 flex align-items-center justify-content-center bg-purple-700 font-bold text-white m-2 px-5 py-3 border-round">Lorem ipsum dolor sit amet</div> -->
+      </div>
+  </div>
+</div>
+
+
+<!-- Sakai dashboard -->
+<!-- <div class="grid bg-purple-100">
+  <div class="flex-1 col-12 lg:col-6 xl:col-3" *ngFor="let data of tableData">
+      <div class="card mb-0 bg-purple-50 ">
+          <div class="flex justify-content-between mb-3 ">
+              <div>
+                  <span class="block text-500 font-medium mb-3">{{data.name}}</span>
+                  <div class="text-900 font-medium text-xl">{{data.count}}</div>
+              </div>
+              <div class="flex align-items-center justify-content-center bg-cyan-100 border-round" [ngStyle]="{width: '2.5rem', height: '2.5rem'}">
+                  <i class="pi pi-inbox text-cyan-500 text-xl"></i>
+              </div>
+          </div>
+      </div>
+  </div>
+</div> -->
+
+  <!-- Percentage  -->
+<div class="flex">
+  <div class="col-12 xl:col-6">
+    <div class="card">
+        <div class="flex justify-content-between align-items-center mb-5">
+            <h5 class="text-purple-900">Overview</h5>
+        </div>
+        <ul class="list-none p-0 m-0">
+            <li class="flex flex-column md:flex-row md:align-items-center md:justify-content-between mb-4" *ngFor="let data of teamData">
+                <div class="mb-3">
+                    <span class="text-900 font-semibold mr-2 mb-1 md:mb-0 text-lg"><span class="text-purple-800 text-xl">Project:</span> {{data.projectName}}</span>
+                    <div class="mt-2 text-700 text-lg font-semibold"><span class="text-purple-800 text-xl">Team:</span> {{data.name}}</div>
+                </div>
+                <div class="mt-2 md:mt-0 flex align-items-center">
+                    <!-- {{(data.tdTeamMemberCount/tableData[1].count)*100}}% -->
+                    <span class="text-purple-700 ml-3 font-bold mr-3">{{((data.tdTeamMemberCount/tableData[1].count)*100)| number: '1.2-2'}}%</span>
+                    <div class="surface-300 border-round overflow-hidden w-10rem lg:w-6rem" [ngStyle]="{height: '12px'}">
+                        <div class="h-full" [ngStyle]="{'width': ((data.tdTeamMemberCount/tableData[1].count)*100)+'%','background-color':getRandomColor()}"></div>
+                    </div>
+                    <span class="text-purple-700 ml-3 font-bold">{{data.tdTeamMemberCount}}</span>
+                </div>      
+            </li>
+        </ul>
+    </div>
+</div>
+
+<!-- Bar Graph -->
+<div class="col-12 lg:col-6">
+    <div class="card" style="height: 85.5vh;" >
+        <h5>Bar Chart</h5>
+        <p-chart type="bar" [data]="barData" [options]="barOptions"></p-chart>
+    </div>
+</div>
+</div>
+

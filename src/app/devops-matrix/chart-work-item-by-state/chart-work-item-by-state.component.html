@@ -1,0 +1,140 @@
+<page-header PageTitle="Work Items by State"></page-header>
+<div class="container mt-10">
+  <div class="row mt-20">
+    <div class="col-lg-3 mt-20">
+      <span class="p-float-label">
+        <p-dropdown class="width200" [options]="sprints" optionLabel="sprintName" [(ngModel)]="selectedSprint"
+                    placeholder="Select Sprint" (onChange)="OnUserInputChanged()"></p-dropdown>
+        <label for="float-label">Select Sprint</label>
+      </span>
+    </div>
+    <div class="col-lg-9 mt-20">
+      <p-radioButton *ngIf="selectedSprint" name="group1" value="User Story" label="User Story"
+                     [(ngModel)]="selectedWorkItemTypeValue" inputId="opt1"
+                     (onClick)="OnUserInputChanged()"></p-radioButton>&nbsp;&nbsp;
+      <p-radioButton *ngIf="selectedSprint" name="group1" value="Bug" label="Bug"
+                     [(ngModel)]="selectedWorkItemTypeValue" inputId="opt2" (onClick)="OnUserInputChanged()"></p-radioButton>
+    </div>
+  </div>
+  <div class="row mt-30">
+    <div class="col-lg-4 mt-20">
+      <div>
+        <div *ngIf="totalWorkItems != 0">
+          <p class="text-center"><b>{{workItemTypeDisplayText}} by State</b></p>
+          <p class="text-center">Total {{workItemTypeDisplayText}} : {{totalWorkItems}}</p>
+          <p-chart type="pie" [data]="pieChartData" [options]="pieChartOptions"></p-chart>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-8">
+      <p *ngIf="totalWorkItems == 0"><b>No data found.</b></p>
+      <div *ngIf="employeeData.length > 0">
+        <data-export [TableCaption]="tableCaption" (exportToCSV)="tableWorkItemStatus.exportCSV()"></data-export>
+        <p-table #tableWorkItemStatus [paginator]="true" [rows]="5" class="taskTable" [columns]="columns"
+                 [value]="employeeData" aria-disabled="true" [exportFilename]="tableCaption"
+                 styleClass="p-datatable-gridlines p-datatable-sm" [tableStyle]="{ 'width': '100%' }" dataKey="empEmail">
+          <ng-template pTemplate="header">
+            <tr>
+              <th *ngFor="let col of columns" class="table-header">
+                {{ col.header }}
+              </th>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-employeeData let-expanded="employeeData.expanded">
+            <tr>
+              <td>
+                <button type="button" pButton pRipple [pRowToggler]="employeeData"
+                        class="iconSize12 p-button-text p-button-rounded p-button-plain"
+                        [icon]="employeeData.expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'"
+                        (click)="getWorkItemValues(employeeData, employeeData.expanded)"></button>
+              </td>
+              <td class="td-highlight text-left">
+                {{ employeeData.empName }}
+              </td>
+              <td class="text-right">
+                {{ employeeData.new }}
+              </td>
+              <td class="text-right">
+                {{ employeeData.active + employeeData.prReview + employeeData.deliveredToQA }}
+              </td>
+              <td class="text-right">
+                {{ employeeData.resolved }}
+              </td>
+              <td class="text-right">
+                {{ employeeData.closed }}
+              </td>
+              <td class="text-right">
+                {{ employeeData.removed }}
+              </td>
+              <td class="text-right">
+                {{ employeeData.total }}
+              </td>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="rowexpansion" let-employeeData>
+            <tr>
+              <td colspan="8">
+                <div>
+                  <div>
+                    <button type="button" pButton pRipple icon="pi pi-file" tooltipPosition="bottom" pTooltip="CSV"
+                            (click)="tableWorkItemDetails.exportCSV()" class="size20">
+                    </button>
+                  </div>
+                  <div class="workItemDetailsTable">
+                    <p-table #tableWorkItemDetails [value]="employeeData.workItemDetails" dataKey="empEmail"
+                             [columns]="workItemDetailsColumns" [exportFilename]="tableWorkItemDetailsCaption">
+                      <ng-template pTemplate="header">
+                        <tr class="sub-table-header">
+                          <th>
+                            {{workItemTypeDisplayTextAfterExpand}}
+                          </th>
+                          <th>
+                            {{statusDisplayTextAfterExpand}}
+                          </th>
+                          <th *ngIf="selectedWorkItemTypeValue == 'User Story'">
+                            {{storyPointsDisplayTextAfterExpand}}
+                          </th>
+                        </tr>
+                      </ng-template>
+                      <ng-template pTemplate="body" let-data>
+                        <tr>
+                          <td width="60%">{{ data.Title }}</td>
+                          <td>{{ data.Status }}</td>
+                          <td *ngIf="selectedWorkItemTypeValue == 'User Story'" class="text-right" width="20%">{{ data.Points }}</td>
+                        </tr>
+                      </ng-template>
+                      <ng-template pTemplate="footer">
+                        <tr>
+                          <td>Count = {{employeeData.workItemDetails.length}}</td>
+                          <td></td>
+                          <td *ngIf="selectedWorkItemTypeValue == 'User Story'" class="text-right"> Total = {{ employeeData.totalPoints }}</td>
+                        </tr>
+                      </ng-template>
+                    </p-table>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </ng-template>
+
+          <ng-template pTemplate="footer">
+            <tr>
+              <td></td>
+              <td class="td-highlight text-left">
+                {{tableFooter.empName}}
+              </td>
+              <td class="text-right">{{ tableFooter.new }}</td>
+              <td class="text-right">{{ tableFooter.active + tableFooter.prReview + tableFooter.deliveredToQA }}</td>
+              <td class="text-right">{{ tableFooter.resolved }}</td>
+              <td class="text-right">{{ tableFooter.closed }}</td>
+              <td class="text-right">{{ tableFooter.removed }}</td>
+              <td class="text-right">{{ tableFooter.total }}</td>
+            </tr>
+
+          </ng-template>
+        </p-table>
+      </div>
+    </div>
+  </div>
+</div>

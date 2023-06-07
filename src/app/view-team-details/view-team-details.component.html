@@ -1,0 +1,118 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+<div class="outdiv">
+
+    <div class="outercard">
+        <div class="card-header">
+            <h3>View Team Details</h3>
+            <!-- <button class="addbutton">  <i class='fas fa-arrow-circle-left'><span> Back</span></i></button> -->
+        </div>
+      
+    
+    
+        <div class="container">
+            <form [formGroup]="TeamDetailsForm" (ngSubmit)="EditTeamDetails()">
+                <div class="row">
+                    <div class="col-25">
+                        <label for="fname">Name</label>
+                    </div>
+                    <div class="col-25">
+                        <input type="text" class="input-control" formControlName="name" readonly />
+                        <div *ngIf="TeamDetailsForm.controls['name'].invalid && (TeamDetailsForm.controls['name'].touched|| TeamDetailsForm.controls['name'].touched)" class="alert alert-danger">
+                        <div *ngIf="TeamDetailsForm.controls['name'].errors?.['required']">
+                            Name is required.
+                        </div>
+                        </div>
+                    </div>
+                
+                    <div class="col-25">
+                        <label for="fname">Client Lead</label>
+                    </div>
+                    <div class="col-25">
+                        <input type="text" class="input-control" formControlName="cli_Lead" readonly/>
+                        <div *ngIf="TeamDetailsForm.controls['cli_Lead'].invalid && (TeamDetailsForm.controls['cli_Lead'].touched|| TeamDetailsForm.controls['cli_Lead'].touched)" class="alert alert-danger">
+                        <div *ngIf="TeamDetailsForm.controls['cli_Lead'].errors?.['required']">
+                            Client Lead name is required.
+                        </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-25">
+                        <label for="fname">Persistent Lead</label>
+                    </div>
+                    <div class="col-25">
+                        <input type="text" class="input-control" formControlName="per_Lead" readonly />
+                        <div *ngIf="TeamDetailsForm.controls['per_Lead'].invalid && (TeamDetailsForm.controls['per_Lead'].touched|| TeamDetailsForm.controls['per_Lead'].touched)" class="alert alert-danger">
+                        <div *ngIf="TeamDetailsForm.controls['per_Lead'].errors?.['required']">
+                            Persistent Lead name is required.
+                        </div>
+                        </div>
+                    </div>
+                
+                    <div class="col-25">
+                        <label for="fname">Scrum Master</label>
+                    </div>
+                    <div class="col-25">
+                        <input type="text" class="input-control" formControlName="scrumMaster" readonly/>
+                        <div *ngIf="TeamDetailsForm.controls['scrumMaster'].invalid && (TeamDetailsForm.controls['scrumMaster'].touched|| TeamDetailsForm.controls['scrumMaster'].touched)" class="alert alert-danger">
+                        <div *ngIf="TeamDetailsForm.controls['scrumMaster'].errors?.['required']">
+                            Scrum Master is required.
+                        </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-25">
+                        <label for="lname">Status</label>
+                    </div>
+                    <div class="col-25">
+                        <select formControlName="status">
+                          <option [ngValue]="null" disabled>Select</option>
+                          <option value="1" disabled>InActive</option>
+                          <option value="2" disabled>Active</option>
+                        </select>
+                        <div *ngIf="TeamDetailsForm.controls['status'].invalid && (TeamDetailsForm.controls['status'].touched)" class="alert alert-danger">
+                          <div *ngIf="TeamDetailsForm.controls['status'].errors?.['required']">
+                            Status is required.
+                        </div>
+                        </div>
+                      </div>
+                
+                    <div class="col-25">
+                        <label for="fname">Project Name</label>
+                    </div>
+                    <div class="col-25">
+                        <input type="text" class="input-control" formControlName="projectName" readonly/>
+                        <div *ngIf="TeamDetailsForm.controls['projectName'].invalid && (TeamDetailsForm.controls['projectName'].touched|| TeamDetailsForm.controls['projectName'].touched)" class="alert alert-danger">
+                        <div *ngIf="TeamDetailsForm.controls['projectName'].errors?.['required']">
+                            Project name is required.
+                        </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-25">
+                        <label for="fname">Total Size</label>
+                    </div>
+                    <div class="col-25">
+                        <input type="number" class="input-control" formControlName="totalSize" readonly />
+                        <div *ngIf="TeamDetailsForm.controls['totalSize'].invalid && (TeamDetailsForm.controls['totalSize'].touched|| TeamDetailsForm.controls['totalSize'].touched)" class="alert alert-danger">
+                        <div *ngIf="TeamDetailsForm.controls['totalSize'].errors?.['totalSize']">
+                            Total Size is required.
+                        </div>
+                        </div>
+                    </div>
+                </div>
+        
+                <!-- <div class="row">
+                    <div class="col-25">
+                      <button  type="submit" [disabled]="!TeamDetailsForm.valid"  class="btnclass">Submit</button>
+                      <button  class="btnclass" type="submit" style="position: relative; left: 400px;background-color: red;" [disabled]="!TeamDetailsForm.valid">Cancel</button>
+                    </div>
+                </div> -->
+                
+            </form>
+</div>
+</div>
+</div>
+
