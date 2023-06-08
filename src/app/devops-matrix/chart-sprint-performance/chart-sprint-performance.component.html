@@ -1,0 +1,45 @@
+<div class="container">
+  <page-header PageTitle="Sprint Performance (BurnDown Chart)" *ngIf="!isHome"></page-header>
+  <p-multiSelect class="width300" [options]="sprints" [(ngModel)]="selectedSprints" placeholder="Select Sprints"
+                 optionLabel="sprintName" (onChange)="onSprintSelected()" display="chip" *ngIf="!isHome"></p-multiSelect>
+  <div class="col-md-12 mt-20">
+    <p-chart type="line" [data]="data" [options]="options"></p-chart>
+  </div>  
+  <div>
+    <data-export TableCaption="Sprint - Work Items Deviation" (exportToCSV)="tableDeviation.exportCSV()"></data-export>
+    <p-table #tableDeviation [columns]="columns" [value]="sprintDeviated" [tableStyle]="{ 'min-width': '50rem' }" [paginator]="true" [rows]="10"
+             styleClass="p-datatable-gridlines p-datatable-sm font13" exportFilename="Sprint - Work Items Deviation">
+      <ng-template pTemplate="header">
+        <tr>
+          <th class="table-header">Employee Name</th>
+          <th class="table-header">Work Item</th>
+          <th class="table-header">Sprint Name</th>
+          <th class="table-header">Expected Hour</th>
+          <th class="table-header">Actual Hour</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-product>
+        <tr *ngIf="calculateInterpretation(product.ExpectedHour,product.ActualHour)
+                !=='On Track'">
+          <td class="td-highlight">{{ product.EmpName}}</td>
+          <td class="text-left w-40">{{ product.Title }}</td>
+          <td>{{ product.SprintName }}</td>
+          <td class="text-right">{{ product.ExpectedHour }}</td>
+          <td class="text-right">{{ product.ActualHour }}</td>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="footer">
+        <tr>
+          <td class="text-left">
+            Total
+          </td>
+          <td></td>
+          <td></td>
+          <td class="text-right">{{totalExpected.toFixed(2)}}</td>
+          <td class="text-right">{{totalActual.toFixed(2)}}</td>
+        </tr>
+
+      </ng-template>
+    </p-table>
+  </div>
+</div>

@@ -1,0 +1,10 @@
+<div class="container">
+    <page-header PageTitle="Individual Performance (BurnDown Chart)"></page-header>
+    <p-calendar [(ngModel)]="rangeDates" placeholder="Select date range" selectionMode="range" [readonlyInput]="true" (onSelect)="onDateSelect()"
+        dateFormat="dd.mm.yy" class="me-2" [showIcon]="true" [maxDate]="todayDate" [disabledDays]="[0,6]"></p-calendar>
+    <p-dropdown class="width250" [options]="users" [(ngModel)]="selectedUser" name="selectedUser" optionLabel="EmpName" placeholder="Select User"
+        [filter]="true" filterBy="name" (onChange)="onChangeUser()" *ngIf="selectedUser['EmpId']!=0"></p-dropdown>
+    <div class="col-md-12 mt-20">
+        <p-chart type="line" [data]="data" [options]="options"></p-chart>
+    </div>
+</div>

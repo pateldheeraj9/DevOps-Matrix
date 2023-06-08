@@ -1,0 +1,152 @@
+
+<page-header PageTitle="Team Performance"></page-header>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-3">
+      <span class="p-float-label">
+        <p-dropdown class="width200" [options]="sprintList" optionLabel="sprintNumber"
+                    (onChange)="OnSprintSelectionChanged()" [(ngModel)]="selectedSprint"
+                    placeholder="Select Sprints"></p-dropdown><br>
+        <label for="float-label">Select Sprints</label>
+      </span>
+    </div>
+    <div class="col-lg-9">
+      <p-radioButton name="group1" value="User Story Summary" label="User Story Summary" (onClick)="OnUserSummarySelected(selectedSprint)"
+                     [(ngModel)]="selectedValue" inputId="opt1"></p-radioButton>&nbsp;&nbsp;
+      <p-radioButton name="group1" value="Bug Summary" label="Bug Summary" (onClick)="OnBugSummarySelected(selectedSprint)"
+                     [(ngModel)]="selectedValue" inputId="opt2"></p-radioButton>
+    </div>
+  </div>
+</div>
+<div class="m-10"></div>
+<div>
+  <div class="container">
+    <div class="row" *ngIf="(tableUSShow==true && employeeData.length == 0) || (tableBugShow==true && severityCount.length == 0)">
+      <div class="col-lg-12">
+        <b>No data found.</b>
+      </div>
+    </div>
+    <div class="row" *ngIf="tableUSShow==true && employeeData.length > 0">
+      <div class="col-lg-8">
+        <data-export TableCaption="User Story Summary by Points" (exportToCSV)="tableEmployee.exportCSV()"></data-export>
+        <p-table #tableEmployee [columns]="columns" [value]="employeeData" [paginator]="true" [rows]="7"
+                 aria-disabled="true" styleClass="p-datatable-gridlines p-datatable-sm font13" exportFilename="User Story Summary by Points">
+          <ng-template pTemplate="header">
+            <tr>
+              <th *ngFor="let col of columns" class="table-header">
+                {{ col.header }}
+              </th>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-employeeData>
+            <tr>
+              <td class="td-highlight text-left pointer" (click)="RedirectToIndividualPerformance(employeeData.EmpEmail)">
+                {{ employeeData.EmpName }}
+              </td>
+              <td class="text-right">
+                {{ employeeData.New }}
+              </td>
+              <td class="text-right">
+                {{ employeeData.Active + employeeData.PRReview + employeeData.DeliveredToQA }}
+              </td>
+              <td class="text-right">
+                {{ employeeData.Resolved }}
+              </td>
+              <td class="text-right">
+                {{ employeeData.Closed }}
+              </td>
+              <td class="text-right">
+                {{ employeeData.Removed }}
+              </td>
+              <td class="text-right">
+                {{ employeeData.Other }}
+              </td>
+              <td class="text-right">
+                {{employeeData.New + employeeData.Active + employeeData.PRReview + employeeData.DeliveredToQA + employeeData.Resolved + employeeData.Closed + employeeData.Removed + employeeData.Other }}
+              </td>
+</ng-template>
+          <ng-template pTemplate="footer">
+            <tr>
+              <td class="td-highlight text-left">
+                {{tableFooter.EmpName}}
+              </td>
+              <td class="text-right">{{tableFooter.New}}</td>
+              <td class="text-right">{{tableFooter.Active + tableFooter.PRReview + tableFooter.DeliveredToQA}}</td>
+              <td class="text-right">{{tableFooter.Resolved}}</td>
+              <td class="text-right">{{tableFooter.Closed}}</td>
+              <td class="text-right">{{tableFooter.Removed}}</td>
+              <td class="text-right">{{tableFooter.Other}}</td>
+              <td class="text-right">{{tableFooter.New + tableFooter.Active + tableFooter.PRReview + tableFooter.DeliveredToQA + tableFooter.Resolved + tableFooter.Closed +tableFooter.Removed+tableFooter.Other}}</td>
+            </tr>
+
+          </ng-template>
+
+        </p-table>
+      </div>
+      <div class="col-lg-4">
+        <p class="text-center">Total Story Points: {{totalStoryPoints}}</p>
+        <p-chart type="doughnut" [data]="pointsData" [options]="options" [style]="{ 'width': '90%' }"></p-chart>
+      </div>
+    </div>
+    <div class="row" *ngIf="tableBugShow==true && severityCount.length > 0">
+      <div class="col-lg-7">
+        <data-export TableCaption="Bugs Summary by Severity" (exportToCSV)="tableBugEmployee.exportCSV()"></data-export>
+        <p-table #tableBugEmployee [columns]="columnSeverity" [value]="severityCount" [paginator]="true" [rows]="7"
+                 aria-disabled="true" styleClass="p-datatable-gridlines p-datatable-sm font13" exportFilename="Bugs Summary by Severity">
+          <ng-template pTemplate="header">
+            <tr>
+              <th *ngFor="let col of columnSeverity" class="table-header">
+                {{ col.header }}
+              </th>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-severityCount>
+            <tr>
+              <td class="td-highlight text-left pointer" (click)="RedirectToIndividualPerformance(severityCount.empEmail)">
+                {{ severityCount.empName }}
+              </td>
+              <td class="text-right">
+                {{ severityCount.critical }}
+              </td>
+              <td class="text-right">
+                {{ severityCount.high }}
+              </td>
+              <td class="text-right">
+                {{ severityCount.medium}}
+              </td>
+
+              <td class="text-right">
+
+                {{ severityCount.low }}
+              </td>
+
+              <td class="text-right">
+                {{severityCount.total}}
+              </td>
+          </ng-template>
+          <ng-template pTemplate="footer">
+            <tr>
+              <td class="td-highlight text-left">
+                {{tableFooterSeverity.empName}}
+              </td>
+              <td class="text-right">{{tableFooterSeverity.critical}}</td>
+              <td class="text-right">{{tableFooterSeverity.high}}</td>
+              <td class="text-right">{{tableFooterSeverity.medium}}</td>
+              <td class="text-right">{{tableFooterSeverity.low}}</td>
+              <td class="text-right">{{tableFooterSeverity.total}}</td>
+            </tr>
+
+          </ng-template>
+
+        </p-table>
+      </div>
+      <div class="col-lg-5">
+        <p class="text-center">Total Bug Count: {{totalBugsCount}}</p>
+        <p-chart type="doughnut" [data]="bugsData" [options]="bugOptions" [style]="{ 'width': '90%' }"></p-chart>
+      </div>
+    </div>
+  </div>
+</div>
+<div>
+</div>
+
