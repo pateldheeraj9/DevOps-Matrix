@@ -28,6 +28,7 @@ import { PageHeaderComponent } from './page-header/page-header.component';
 import { DevOpsMatrixRoutingModule } from './devops-matrix-routing.module';
 import { NavMenuSideBarComponent } from './navmenu-sidebar/navmenu-sidebar.component';
 import { PerformanceServiceService } from './performance-service.service';
+import { getBaseUrl } from 'src/main';
 
 const routes: Routes = [
   // { path: '', component: HomeComponent, pathMatch: 'full' },
@@ -59,6 +60,6 @@ const routes: Routes = [
     FormsModule,
     DevOpsMatrixRoutingModule
   ],
-  providers: [PerformanceServiceService]
+  providers: [PerformanceServiceService,{ provide: 'BASE_URL', useFactory: getBaseUrl }]
 })
 export class DevopsMatrixModule { }

@@ -4,13 +4,14 @@ import { Observable, of, map, catchError } from 'rxjs';
 import { ISprint } from '../models/common.model';
 import { IUser } from '../models/IUser';
 import { ISprintTotalPoints } from '../models/ISprintTotalPoints';
+import { environment } from '../environments/environment.prod';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CommonService {
   sprints: any[] = [];
-  baseUrl: string = "";
+  baseUrl: string = environment.baseUrl;
   constructor(private http: HttpClient, @Inject('BASE_URL') baseUrl: string) {
     this.http = http;
   }
