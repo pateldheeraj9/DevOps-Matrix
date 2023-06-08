@@ -1,0 +1,21 @@
+td1.color {
+  background-color: blueviolet;
+}
+
+.p-datatable-table {
+  border-spacing: 0px;
+  width: 20% !important;
+}
+
+tr.after-color {
+  background-color: blueviolet;
+  color: white;
+}
+
+th {
+  background-color: yellowgreen;
+}
+
+:host ::ng-deep .custom-dd .p-dropdown {
+  background-color: aquamarine;
+}

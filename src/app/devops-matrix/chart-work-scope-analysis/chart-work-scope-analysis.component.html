@@ -1,0 +1,60 @@
+<page-header PageTitle="Work Analysis"></page-header>
+<table width="100%">
+  <tr>
+    <td width="35%">
+      <span class="p-float-label mt-10">
+        <p-multiSelect class="width300" [options]="employees" [(ngModel)]="selectedTeam1" optionLabel="EmpName"
+                       placeholder="Team1 Members" [filter]="true" filterBy="name" display="chip"
+                       selectedItems="selectedTeam1"></p-multiSelect>
+        <label for="ms-cities">Team1 Members ({{selectedTeam1.length}} selected)</label>
+      </span>
+      <span class="p-float-label mt-10"></span>
+    </td>
+    <td width="35%">
+      <span class="p-float-label mt-10">
+        <p-multiSelect class="width300" [options]="employees" [(ngModel)]="selectedTeam2" optionLabel="EmpName"
+                       placeholder="Team2 Members" [filter]="true" filterBy="name" display="chip"
+                       selectedItems="selectedTeam2"></p-multiSelect>
+        <label for="ms-cities">Team2 Members ({{selectedTeam2.length}} selected)</label>
+      </span>
+    </td>
+    <td></td>
+  </tr>
+  <tr height="10px"></tr>
+  <tr>
+    <td>
+      <span class="p-float-label mt-10">
+        <p-multiSelect class="width300" [options]="sprints" [(ngModel)]="selectedSprints" optionLabel="sprintNumber"
+                       placeholder="Select Sprints" [filter]="true" filterBy="name" display="chip"
+                       selectedItems="selectedSprints"></p-multiSelect>
+        <label for="ms-cities">Select Sprints</label>
+      </span>
+    </td>
+    <td>
+      <p-button label="Analyze" (click)="AnalyzeWorkScope()"></p-button>
+    </td>
+    <td></td>
+  </tr>
+</table>
+<div *ngIf="showAnalysis" width="100%">
+  <table width="100%" class="mt-30">
+    <tr>
+      <td width="50%">
+        <app-data-analysis Title="User Story Points Delivered" [TableData]="userStoryAnalysisResult"></app-data-analysis>
+      </td>
+      <td width="50%">
+        <app-data-analysis Title="Bugs Delivered" [TableData]="bugsAnalysisResult"></app-data-analysis>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <app-chart-analysis Title="User Story Points Delivered" XAxisText="Sprints" YAxisText="User Story Points"
+                            [ChartData]="chartUserStoryAnalysisData" [ChartOptions]="chartUserStoryOptions"></app-chart-analysis>
+      </td>
+      <td>
+        <app-chart-analysis Title="Bugs Delivered" XAxisText="Sprints" YAxisText="Bug Count"
+                            [ChartData]="chartBugsAnalysisData" [ChartOptions]="chartBugsAnalysisOptions"></app-chart-analysis>
+      </td>
+    </tr>
+  </table>
+</div>

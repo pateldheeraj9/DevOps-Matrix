@@ -1,0 +1,19 @@
+<page-header PageTitle="Sprint Velocity"></page-header>
+<table width="100%">
+  <tr>
+    <td>
+      <span class="p-float-label mt-10">
+        <p-multiSelect class="width300" [options]="sprints" [(ngModel)]="selectedSprints" optionLabel="sprintNumber" placeholder="Select Sprints"
+                       [filter]="true" filterBy="name" (onChange)="OnSprintsSelectionChanged()" display="chip"
+                       selectedItems="selectedSprints"></p-multiSelect>
+        <label for="ms-cities">Select Sprints</label>
+      </span>
+    </td>
+  </tr>
+</table>
+<div class="mt-20"></div>
+<div class="container">
+  <div class="row">
+    <p-chart type="bar" [data]="barChartByStoryPoints" [options]="chartOptionsByStoryPoints"></p-chart>
+  </div>
+</div>
