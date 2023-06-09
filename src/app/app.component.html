@@ -27,6 +27,7 @@
     .wrapper .sidebar {
         background: rgb(5, 68, 104);
         position: fixed;
+        overflow:scroll;
         top: 0;
         left: 0;
         width: 225px;
@@ -231,6 +232,19 @@
                         8. Work Analysis
                       </a>
                     </li>
+                    <li>
+                      <a class="nav-link text-white" [routerLink]="['/weeklyreport/Steps']" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
+                        <i class="fa fa-th"></i>
+                        Weekly Summary
+                      </a>
+                    </li>
+                    <li>
+                      <a class="nav-link text-white" [routerLink]="['/weeklyreport/Report']" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
+                        <i class="fa fa-file"></i>
+                        Report
+                      </a>
+                    </li>
+
                   </ul>
                 </div>
               </li>

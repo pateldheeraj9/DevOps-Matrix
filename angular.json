@@ -105,6 +105,103 @@
           }
         }
       }
+    },
+    "WeaklyReports": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "less"
+        }
+      },
+      "root": "projects/weakly-reports",
+      "sourceRoot": "projects/weakly-reports/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/weakly-reports",
+            "index": "projects/weakly-reports/src/index.html",
+            "main": "projects/weakly-reports/src/main.ts",
+            "polyfills": [
+              "zone.js"
+            ],
+            "tsConfig": "projects/weakly-reports/tsconfig.app.json",
+            "inlineStyleLanguage": "less",
+            "assets": [
+              "projects/weakly-reports/src/favicon.ico",
+              "projects/weakly-reports/src/assets"
+            ],
+            "styles": [
+              "projects/weakly-reports/src/styles.less"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "browserTarget": "WeaklyReports:build:production"
+            },
+            "development": {
+              "browserTarget": "WeaklyReports:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "WeaklyReports:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ],
+            "tsConfig": "projects/weakly-reports/tsconfig.spec.json",
+            "inlineStyleLanguage": "less",
+            "assets": [
+              "projects/weakly-reports/src/favicon.ico",
+              "projects/weakly-reports/src/assets"
+            ],
+            "styles": [
+              "projects/weakly-reports/src/styles.less"
+            ],
+            "scripts": []
+          }
+        }
+      }
     }
   },
   "cli": {
