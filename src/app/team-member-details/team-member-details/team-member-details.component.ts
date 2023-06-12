@@ -13,6 +13,9 @@ import { ViewTeamMemberComponent } from '../../view-team-member/view-team-member
 import { TeamMemberDetailsService } from "../../Service/team-member-details/team-member-details.service";
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ExchangeService } from 'src/app/Service/Data/Exchange.service';
+import * as FileSaver from 'file-saver';
+
+
 
 @Component({
   selector: 'app-team-member-details',
@@ -23,12 +26,62 @@ import { ExchangeService } from 'src/app/Service/Data/Exchange.service';
 export class TeamMemberDetailsComponent implements OnInit {
   visible: boolean | undefined;
   data: any = [];
+  loading: boolean | undefined;
+
   membersdata: any = [];
   ngOnInit() {
     this.getdetailsMember();
     this.getdetails();
     this.getAllDropdownTeamDetails();
   }
+  exportExcel() {
+
+    let obj:any=[{}];
+
+  for(let i=0;i<this.data.length;i++)
+  {
+    obj.push({ 
+      'NAME': this.tableData[i].name, 
+      'EMAIL ID': this.tableData[i].email, 
+      'PHONE NO': this.tableData[i].phoneNo,
+      'TEAM NAME': this.tableData[i].teamName,
+      'EMP ID':this.tableData[i].empId,
+      'JOINING DATE':this.tableData[i].joiningDate,
+      'BILLING DATE':this.tableData[i].billingDate,
+      'RELEVING DATE':this.tableData[i].relievingDate,
+      'REPORTING TO':this.tableData[i].cli_Lead
+  })
+  }
+  obj.shift();    
+  //this.messageService.add({ severity: 'success', summary: 'Download Successfully', detail: '' });
+    import('xlsx').then((xlsx) => {
+        const worksheet = xlsx.utils.json_to_sheet(obj);
+        const workbook = { Sheets: { data: worksheet }, SheetNames: ['data'],skipHeader: true
+      };
+        const excelBuffer: any = xlsx.write(workbook, {
+            bookType: 'xlsx',
+            type: 'array',
+        });
+        this.saveAsExcelFile(excelBuffer, 'TeamDetails');
+    });
+    
+}
+
+saveAsExcelFile(buffer: any, fileName: string): void {
+  
+    let EXCEL_TYPE =
+'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8';
+    let EXCEL_EXTENSION = '.xlsx';
+    const data: Blob = new Blob([buffer], {
+        type: EXCEL_TYPE,
+    });
+    FileSaver.saveAs(
+        data,
+        fileName + '_export_' + new Date().getTime() + EXCEL_EXTENSION
+    );
+}
+
+
 
   Memberform = new FormGroup({
     firstname: new FormControl('', Validators.required),
@@ -135,6 +188,8 @@ export class TeamMemberDetailsComponent implements OnInit {
 
 
   async getdetailsMember() {
+    this.loading = true;
+
     this.httpProvider.getAllDetails().subscribe((data: any) => {
 
       if (data != null && data.body != null) {
@@ -144,6 +199,8 @@ export class TeamMemberDetailsComponent implements OnInit {
         if (resultData) {
           this.data = resultData;
           this.membersdata = resultData;
+          this.loading=false
+
         }
       }
     },

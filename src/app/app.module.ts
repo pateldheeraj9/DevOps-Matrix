@@ -39,6 +39,8 @@ import { WorkStatusService } from './devops-matrix/services/work-status.service'
 import { MessageService } from 'primeng/api';
 // import { weeklyReportsComponent } from './weekly-reports/weekly-reports.component';
 import { WeeklyReportModule } from './weekly-report/weekly-report.module';
+import { LoaderComponent } from './common/loader/loader.component';
+// import { HomePageComponent } from './home-page/home-page.component';
 
 
 
@@ -64,6 +66,8 @@ import { WeeklyReportModule } from './weekly-report/weekly-report.module';
     ViewTeamDetailsComponent,
     NgPrimeComponent,
     DashboardComponent,
+    LoaderComponent,
+    // HomePageComponent
     // weeklyReportsComponent,
     // NavMenuSideBarComponent
   ],
