@@ -16,6 +16,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { ChartTaskByStateComponent } from './devops-matrix/chart-task-by-state/chart-task-by-state.component';
 import { ChartWorkItemByStateComponent } from './devops-matrix/chart-work-item-by-state/chart-work-item-by-state.component';
 import { DevopsMatrixComponent } from './devops-matrix/devops-matrix.component';
+// import { HomePageComponent } from './home-page/home-page.component';
 
 
 
@@ -35,6 +36,8 @@ const routes: Routes = [
   { path: 'ViewTeamDetails/:Id', component: ViewTeamDetailsComponent },
   { path: 'ngprime', component: NgPrimeComponent },
   { path: 'Dashboard', component: DashboardComponent },
+  // { path: 'HomePage', component: HomePageComponent },
+
   // {
   //   path: 'devops-matrix', component: DevopsMatrixComponent, children: [
   //     { path: 'chart-work-items-by-state', component: ChartWorkItemByStateComponent },
