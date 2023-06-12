@@ -1,3 +1,5 @@
+<app-loader [loading]="loading"></app-loader>
+
 <div class="card-header">
   <div class="flex justify-content-between flex-wrap card-container purple-container">
     <div class="flex align-items-center justify-content-center m-2">
@@ -56,6 +58,15 @@
       <div class="m-2"> <input type="text" class="p-inputtext" (keyup)="filterData(searchKey.value)" #searchKey
           placeholder="Search By Team Details" pInputText /></div>
       <div class="m-2">
+        <button type="button" 
+        pButton pRipple 
+        icon="pi pi-file-excel" 
+        (click)="exportExcel()"
+        class="p-button-success ml-2 rightalign" 
+        pTooltip="XLS" 
+        tooltipPosition="bottom">
+</button>
+
 
         <p-table #myTab [columns]="cols" [value]="tableData" styleClass="p-datatable-gridlines" [paginator]="true"
           [rows]="10" [showCurrentPageReport]="true" [globalFilterFields]="['Name']">
