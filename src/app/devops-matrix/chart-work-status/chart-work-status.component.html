@@ -1,0 +1,87 @@
+<page-header PageTitle="Work Status"></page-header>
+<table width="100%">
+  <tr>
+    <td>
+      <span class="p-float-label">
+        <p-multiSelect class="width300" [options]="sprintList" [(ngModel)]="selectedSprints" optionLabel="sprintNumber" placeholder="Select Sprints"
+                       [filter]="true" filterBy="name" (onChange)="OnSprintsSelectionChanged()" display="chip" inputId="float-label"
+                       selectedItems="selectedSprints"></p-multiSelect>
+        <label for="float-label">Select Sprints</label>
+      </span>
+    </td>
+  </tr>
+</table>
+
+<div *ngIf="tableShow == true">
+  <div class="row">
+    <div class="col-lg-12">
+      <data-export TableCaption="Count of Work Items" (exportToCSV)="tableWorkItemsCountByStatus.exportCSV()"></data-export>
+      <p-table #tableWorkItemsCountByStatus [columns]="columns" [value]="workItemsCountByStatus" exportFilename="Count of Work Items"
+               styleClass="p-datatable-gridlines p-datatable-sm" [tableStyle]="{ 'width': '95%' }">
+        <ng-template pTemplate="header">
+          <tr>
+            <th *ngFor="let col of columns" class="table-header">
+              {{ col.header }}
+            </th>
+          </tr>
+        </ng-template>
+        <ng-template *ngIf="workItemsCountByStatus" pTemplate="body" let-workItemsCountByStatus>
+          <tr>
+            <td class="td-highlight text-left">
+              {{ workItemsCountByStatus.itemType  }}
+            </td>
+            <td class="text-right">
+              {{ workItemsCountByStatus.new }}
+            </td>
+            <td class="text-right">
+              {{ workItemsCountByStatus.active }}
+            </td>
+            <td class="text-right">
+              {{ workItemsCountByStatus.prReview }}
+            </td>
+            <td class="text-right">
+              {{ workItemsCountByStatus.resolved }}
+            </td>
+            <td class="text-right">
+              {{ workItemsCountByStatus.deliveredToQA }}
+            </td>
+            <td class="text-right">
+              {{ workItemsCountByStatus.closed }}
+            </td>
+            <td class="text-right">
+              {{ workItemsCountByStatus.removed }}
+            </td>
+            <td class="text-right">
+              {{  workItemsCountByStatus.total }}
+            </td>
+        </ng-template>
+        <ng-template pTemplate="footer">
+          <tr>
+            <td class="td-highlight text-left">
+              Total
+            </td>
+            <td class="text-right">{{totalCountsByWorkItems.new}}</td>
+            <td class="text-right">{{totalCountsByWorkItems.active}}</td>
+            <td class="text-right">{{totalCountsByWorkItems.prReview}}</td>
+            <td class="text-right">{{totalCountsByWorkItems.resolved}}</td>
+            <td class="text-right">{{totalCountsByWorkItems.deliveredToQA}}</td>
+            <td class="text-right">{{totalCountsByWorkItems.closed}}</td>
+            <td class="text-right">{{totalCountsByWorkItems.removed}}</td>
+            <td class="text-right">{{totalCountsByWorkItems.total}}</td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row mt-20">
+    <div class="col-lg-6">
+      <p-chart type="bar" [data]="barChartSeverity" [options]="barChartOptions"></p-chart>
+    </div>
+    <div class="col-lg-6">
+      <p-chart type="bar" [data]="barChartPoints" [options]="barChartPointsOptions"></p-chart>
+    </div>
+  </div>
+</div>

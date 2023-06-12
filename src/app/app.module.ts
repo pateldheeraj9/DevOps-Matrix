@@ -37,6 +37,8 @@ import { DevopsMatrixModule } from './devops-matrix/devops-matrix.module';
 import { NavMenuSideBarComponent } from './devops-matrix/navmenu-sidebar/navmenu-sidebar.component';
 import { WorkStatusService } from './devops-matrix/services/work-status.service';
 import { MessageService } from 'primeng/api';
+// import { weeklyReportsComponent } from './weekly-reports/weekly-reports.component';
+import { WeeklyReportModule } from './weekly-report/weekly-report.module';
 
 
 
@@ -62,6 +64,7 @@ import { MessageService } from 'primeng/api';
     ViewTeamDetailsComponent,
     NgPrimeComponent,
     DashboardComponent,
+    // weeklyReportsComponent,
     // NavMenuSideBarComponent
   ],
   imports: [
@@ -83,7 +86,8 @@ import { MessageService } from 'primeng/api';
     BrowserAnimationsModule,
     ToastModule,
     ChartModule
-    , DevopsMatrixModule
+    , DevopsMatrixModule,
+    WeeklyReportModule 
 
 
 

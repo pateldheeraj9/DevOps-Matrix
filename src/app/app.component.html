@@ -27,6 +27,7 @@
     .wrapper .sidebar {
         background: rgb(5, 68, 104);
         position: fixed;
+        overflow:scroll;
         top: 0;
         left: 0;
         width: 225px;
@@ -173,13 +174,13 @@
                 </a>
               </li>
               <li>
-                <a class="nav-link text-white" [routerLink]="['/upload-sprint-data']" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
+                <a class="nav-link text-white" [routerLink]="['/devops-matrix/upload-sprint-data']" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
                   <i class="pi pi-upload"></i>
                   Upload Sprint Data
                 </a>
               </li>
               <li>
-                <a class="nav-link text-white" [routerLink]="['/sprint-details']" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
+                <a class="nav-link text-white" [routerLink]="['/devops-matrix/sprint-details']" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
                   <i class="pi pi-table"></i>
                   Sprint Details
                 </a>
@@ -192,12 +193,12 @@
                 <div class="ml-25">
                   <ul class="nav nav-pills flex-column mb-auto">
                     <li>
-                      <a class="nav-link text-white" [routerLink]="['/chart-work-status']" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
+                      <a class="nav-link text-white" [routerLink]="['/devops-matrix/chart-work-status']" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
                         1. Work Status
                       </a>
                     </li>
                     <li>
-                      <a class="nav-link text-white" [routerLink]="['/chart-team-performance']" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
+                      <a class="nav-link text-white" [routerLink]="['/devops-matrix/chart-team-performance']" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
                         2. Team Performance
                       </a>
                     </li>
@@ -212,25 +213,38 @@
                       </a>
                     </li>
                     <li>
-                      <a class="nav-link text-white" [routerLink]="['/chart-individual-performance']" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
+                      <a class="nav-link text-white" [routerLink]="['/devops-matrix/chart-individual-performance']" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
                         5. Individual Performance
                       </a>
                     </li>
                     <li>
-                      <a class="nav-link text-white" [routerLink]="['/chart-sprint-performance']" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
+                      <a class="nav-link text-white" [routerLink]="['/devops-matrix/chart-sprint-performance']" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
                         6. Sprint Performance
                       </a>
                     </li>
                     <li>
-                      <a class="nav-link text-white" [routerLink]="['/chart-velocity']" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
+                      <a class="nav-link text-white" [routerLink]="['/devops-matrix/chart-velocity']" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
                         7. Sprint Velocity
                       </a>
                     </li>
                     <li>
-                      <a class="nav-link text-white" [routerLink]="['/chart-work-analysis']" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
+                      <a class="nav-link text-white" [routerLink]="['/devops-matrix/chart-work-analysis']" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
                         8. Work Analysis
                       </a>
                     </li>
+                    <li>
+                      <a class="nav-link text-white" [routerLink]="['/weeklyreport/Steps']" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
+                        <i class="fa fa-th"></i>
+                        Weekly Summary
+                      </a>
+                    </li>
+                    <li>
+                      <a class="nav-link text-white" [routerLink]="['/weeklyreport/Report']" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
+                        <i class="fa fa-file"></i>
+                        Report
+                      </a>
+                    </li>
+
                   </ul>
                 </div>
               </li>

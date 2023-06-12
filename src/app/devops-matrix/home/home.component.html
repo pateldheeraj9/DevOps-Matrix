@@ -1,0 +1,54 @@
+<div class="container-fluid mt-10 home">
+  <div class="row adjustCardWidths">
+    <div class="col-md-2">
+      <p-card header="Current Sprint" class="p-card-yellow">
+        <p class="m-0 font20">
+          {{currentSprint.sprintName}}
+        </p>
+      </p-card>
+    </div>
+    <div class="col-md-2">
+      <p-card header="Start Date" class="p-card-purple">
+        <p class="m-0 font20">
+          {{currentSprint.startDate | date}}
+        </p>
+      </p-card>
+    </div>
+    <div class="col-md-2">
+      <p-card header="End Date" class="p-card-purple">
+        <p class="m-0 font20">
+          {{currentSprint.endDate | date}}
+        </p>
+      </p-card>
+    </div>
+    <div class="col-md-2">
+      <p-card header="Days Left" class="p-card-purple">
+        <p class="m-0 font20">
+          {{currentSprint.daysLeft}}
+        </p>
+      </p-card>
+    </div>
+    <div class="col-md-2">
+      <p-card header="User Stories" class="p-card-blue">
+        <p class="m-0 font20">
+          {{userStoryCount.WorkItemCount}}
+        </p>
+      </p-card>
+    </div>
+    <div class="col-md-2">
+      <p-card header="Bugs Till Date" class="p-card-blue">
+        <p class="m-0 font20">
+          {{bugsCount.WorkItemCount}}
+        </p>
+      </p-card>
+    </div>
+  </div>  
+  <div class="row">
+    <div class="col-md-6">
+      <app-home-sprint-items-by-status [SprintUID]="currentSprint.sprintUID"></app-home-sprint-items-by-status>
+    </div>
+    <div class="col-md-6">
+      <app-chart-sprint-performance [isHome]="true"></app-chart-sprint-performance>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,76 @@
+<form [formGroup]="team_form" style="width: 100%;">
+    <fieldset class="border p-2">
+        <!-- <legend class="float-none w-auto p-2">{{team_form.value.TeamName.TeamName}} </legend> -->
+
+        <div class="form-group">
+            <div class="form-group">
+                <table>
+                    <tr>
+                        <td class="w-20 fw-bold"> <label for="sFormInput1">Program Lead : </label></td>
+                        <td class="w-30">
+                            <input id="sFormInput1" class="form-control float-left" type="text" value=""
+                                formControlName="LeadName" placeholder="Full name" readonly>
+                        </td>
+
+                        <td class="w-25 fw-bold"> <label class="float-end" for="sFormInput1">Team : </label></td>
+                        <td class="w-25">
+                            <p-dropdown formControlName="TeamName" [options]="teamData" optionLabel="name"
+                                (onChange)="CallParent()"></p-dropdown>
+                        </td>
+
+                        <!-- <td class="w-25 fw-bold"> <label class="float-end" for="sFormInput1">Team : </label></td>
+                        <td class="w-25">
+                            <select name="TeamName" class="form-control" id="TeamName" (change)="OnTeamSelection()">
+                                <option value="NTP Team 1">NTP Team 1</option>
+                                <option value="NTP Team 2">NTP Team 2</option>
+                                <option value="NTP Team 3">NTP Team 3</option>
+                                <option value="NTP Team 4">NTP Team 4</option>
+                            </select>
+
+                        </td> -->
+
+
+                    </tr>
+                </table>
+
+
+            </div>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">Task
+                        </th>
+                        <th scope="col">Status Details</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Task Completed
+
+                        </td>
+                        <td><textarea id="sFormInput4" class="form-control" formControlName="TaskCompleted"></textarea>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Task In-Progress
+                        </td>
+
+                        <td><textarea id="sFormInput4" class="form-control" formControlName="TaskInProgress"></textarea>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Current Week Plan
+
+                        </td>
+
+                        <td><textarea id="sFormInput4" class="form-control"
+                                formControlName="CurrentWeekPlan"></textarea></td>
+                    </tr>
+
+                </tbody>
+            </table>
+
+
+        </div>
+    </fieldset>
+</form>

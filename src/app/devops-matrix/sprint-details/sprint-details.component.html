@@ -1,0 +1,48 @@
+<page-header [PageTitle]="Title"></page-header>
+<table width="100%">
+  <tr>
+    <td>
+      <div>
+        <data-export TableCaption="Sprints" (exportToCSV)="tableSprintDetails.exportCSV()"></data-export>
+      </div>
+      <div class="text-center">
+        <p-table #tableSprintDetails [columns]="columns" [value]="sprints" [exportFilename]="Title"
+                 styleClass="p-datatable-gridlines p-datatable-sm" [paginator]="true" [rows]="10">
+          <ng-template pTemplate="header">
+            <tr>
+              <th *ngFor="let col of columns" class="table-header">
+                {{ col.header }}
+              </th>
+            </tr>
+          </ng-template>
+          <ng-template *ngIf="sprints" pTemplate="body" let-rowData>
+            <tr>
+              <td class="text-left">
+                {{ rowData.sprintName  }}
+              </td>
+              <td class="text-left">
+                {{ rowData.sprintNumber }}
+              </td>
+              <td class="text-left">
+                {{ rowData.startDate| date: 'dd MMM yyyy' }}
+              </td>
+              <td class="text-left">
+                {{ rowData.endDate| date: 'dd MMM yyyy' }}
+              </td>
+          </ng-template>
+          <ng-template pTemplate="footer">
+            <tr>
+              <td class="text-left">
+                Count = {{sprints.length}}
+              </td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+
+          </ng-template>
+        </p-table>
+      </div>
+    </td>
+  </tr>
+</table>
