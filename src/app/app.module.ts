@@ -33,13 +33,13 @@ import { NgPrimeComponent } from './ngPrime/ngPrime.component';
 import { ToastModule } from 'primeng/toast';
 import { ChartModule } from 'primeng/chart'
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { DevopsMatrixModule } from './devops-matrix/devops-matrix.module';
 import { NavMenuSideBarComponent } from './devops-matrix/navmenu-sidebar/navmenu-sidebar.component';
 import { WorkStatusService } from './devops-matrix/services/work-status.service';
 import { MessageService } from 'primeng/api';
 // import { weeklyReportsComponent } from './weekly-reports/weekly-reports.component';
 import { WeeklyReportModule } from './weekly-report/weekly-report.module';
 import { LoaderComponent } from './common/loader/loader.component';
+import { DevopsMatrixModule } from './devops-matrix/devops-matrix.module';
 // import { HomePageComponent } from './home-page/home-page.component';
 
 

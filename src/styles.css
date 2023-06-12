@@ -88,4 +88,221 @@ td{
 
   }
  
- 
+ /* You can add global styles to this file, and also import other style files */
+
+/* Provide sufficient contrast against white background */
+a {
+  color: #0366d6;
+}
+
+code {
+  color: #e01a76;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+}
+
+.ml-25 {
+  margin-left: 25px !important;
+}
+
+.m-10 {
+  margin: 10px !important;
+}
+
+.ml-5 {
+  margin-left: 5px !important;
+}
+
+.mt-10 {
+  margin-top: 10px !important;
+}
+
+.mt-20 {
+  margin-top: 10px !important;
+}
+
+.mt-30 {
+  margin-top: 30px !important;
+}
+
+.mb-10 {
+  margin-bottom: 10px !important;
+}
+
+.mb-20 {
+  margin-bottom: 10px !important;
+}
+
+.mb-30 {
+  margin-bottom: 30px !important;
+}
+
+.border-1 {
+  border: 1px solid #ced4da;
+  border-radius: 6px;
+}
+
+.p-20 {
+  padding: 20px;
+}
+
+.font13 {
+  font-size: 13px;
+}
+
+.font15 {
+  font-size: 15px;
+}
+
+.font20 {
+  font-size: 18px !important;
+}
+
+.p-card-content p.font20 {
+  font-size: 18px !important;
+}
+
+p-chart.p-element div {
+  position: relative;
+  height: 73vh;
+}
+
+.width300 > .p-placeholder,
+.width300 > .p-multiselect,
+.width300 > p-dropdown p-component {
+  width: 300px !important;
+}
+
+.width250 > .p-dropdown.p-component {
+  width: 250px !important;
+}
+
+.width200 > .p-dropdown.p-component {
+  width: 200px !important;
+}
+
+.font-weight500 {
+  font-weight: 500 !important;
+}
+
+.nav-pills .nav-link > i {
+  margin-right: 10px;
+}
+
+.p-tabview .p-tabview-nav li .p-tabview-nav-link {
+  font-weight: 500 !important;
+}
+
+.p-card-body {
+  background-color: rgb(113 198 244);
+}
+
+.p-card-title {
+  font-size: 1rem !important;
+}
+
+.p-card-content p {
+  font-size: 1.5rem !important;
+}
+
+.p-tabview .p-tabview-nav li .p-tabview-nav-link span {
+  margin-left: 5px;
+}
+
+.p-datatable-sm .p-datatable-tbody > tr {
+  font-size: 14px !important;
+}
+
+.p-datatable.p-datatable-sm .p-datatable-thead > tr > th {
+  font-size: 14px !important;
+  text-align: center !important;
+}
+
+.table-header {
+  background-color: rgb(216, 240, 111) !important;
+}
+
+.p-datatable-thead > .sub-table-header > th {
+  background-color: rgb(255, 221, 204) !important;
+  border: 1px solid rgb(211, 210, 210);
+  text-align: center !important;
+  font-size: 14px !important;
+}
+
+.sub-table-header-th {
+  border-left: 1px solid rgb(211, 210, 210);
+}
+
+.td-highlight {
+  background-color: rgb(97, 162, 227) !important;
+  color: white !important;
+}
+
+.text-right {
+  text-align: right !important;
+}
+
+.text-left {
+  text-align: left !important;
+}
+
+.p-card .p-card-body {
+  padding: 1rem !important;
+  border-radius: 0.5rem;
+}
+
+.text-maroon {
+  color: maroon;
+}
+
+.size35 {
+  width: 35px !important;
+  height: 35px !important;
+}
+
+.size28 {
+  width: 28px !important;
+  height: 28px !important;
+}
+
+.size20 {
+  width: 30px !important;
+  height: 30px !important;
+}
+
+.home > .adjustCardWidths > .col-md-2 {
+  padding-left: 0px;
+  margin-right: 8px;
+  margin-left: -9px;
+}
+
+.home > .adjustCardWidths {
+  padding-right: 0px !important;
+}
+
+  .home > .adjustCardWidths > .col-md-2 > p {
+    font-size: 18px !important;
+  }
+
+.iconSize12 > span.p-button-icon {
+  font-size: 12px !important;
+}
+
+.iconSize12.p-button.p-button-icon-only.p-button-rounded {
+  height: 1rem !important;
+  width: 1.5rem !important;
+}
+
+.workItemDetailsTable {
+  margin-left: 38px !important;
+  margin-top: -30px !important;
+  border-bottom: 1px solid rgb(211, 210, 210);
+}
+
+.workItemDetailsTdData{
+  font-size: 13px !important;
+}

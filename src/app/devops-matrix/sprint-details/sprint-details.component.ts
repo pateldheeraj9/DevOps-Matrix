@@ -5,7 +5,7 @@ import { CommonService } from '../services/common.service';
 @Component({
   selector: 'app-sprint-details',
   templateUrl: './sprint-details.component.html',
-  styleUrls: []
+  styleUrls: ['./sprint-details.component.css']
 })
 export class SprintDetailsComponent {
   Title: string = "Sprint Details";

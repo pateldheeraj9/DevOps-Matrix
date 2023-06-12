@@ -19,7 +19,7 @@
         <div class="flex  align-items-center m-2">
 
           <p-radioButton value='All' [(ngModel)]="selected" (click)="radioFilterData()"
-          style="display:inline-block;padding:5px">
+            style="display:inline-block;padding:5px">
           </p-radioButton>
           <label for="selected1">All</label>
 
@@ -32,7 +32,7 @@
             style="display:inline-block;padding:5px">
           </p-radioButton>
           <label for="selected2">InActive</label>
-          
+
         </div>
 
 
@@ -58,14 +58,9 @@
       <div class="m-2"> <input type="text" class="p-inputtext" (keyup)="filterData(searchKey.value)" #searchKey
           placeholder="Search By Team Details" pInputText /></div>
       <div class="m-2">
-        <button type="button" 
-        pButton pRipple 
-        icon="pi pi-file-excel" 
-        (click)="exportExcel()"
-        class="p-button-success ml-2 rightalign" 
-        pTooltip="XLS" 
-        tooltipPosition="bottom">
-</button>
+        <button type="button" pButton pRipple icon="pi pi-file-excel" (click)="exportExcel()"
+          class="p-button-success ml-2 rightalign" pTooltip="XLS" tooltipPosition="bottom">
+        </button>
 
 
         <p-table #myTab [columns]="cols" [value]="tableData" styleClass="p-datatable-gridlines" [paginator]="true"
@@ -146,7 +141,7 @@
                   styleClass="p-button-sm p-button-rounded p-button-danger p-button-outlined"></p-button> -->
 
 
-                  <p-button icon="pi pi-trash" (click)="deleteProduct(data.id,data.name)"
+                <p-button icon="pi pi-trash" (click)="deleteProduct(data.id,data.name)"
                   styleClass="p-button-sm p-button-rounded p-button-danger p-button-outlined"></p-button>
               </td>
 
@@ -163,11 +158,13 @@
 
 <p-dialog [(visible)]="deleteProductDialog" header="Confirm" [modal]="true" [style]="{width:'450px'}">
   <div class="flex align-items-center justify-content-center">
-      <i class="pi pi-exclamation-triangle mr-3" style="font-size: 2rem"></i>
-      <span>Are you sure you want to delete Team - <b>{{deletedname}}</b>?</span>
+    <i class="pi pi-exclamation-triangle mr-3" style="font-size: 2rem"></i>
+    <span>Are you sure you want to delete Team - <b>{{deletedname}}</b>?</span>
   </div>
   <ng-template pTemplate="footer">
-      <button pButton pRipple icon="pi pi-times" class="p-button-text" label="No" (click)="deleteProductDialog = false"></button>
-      <button pButton pRipple icon="pi pi-check" class="p-button-text" label="Yes" (click)="deleteTeamDetailsById(deletedid)"></button>
+    <button pButton pRipple icon="pi pi-times" class="p-button-text" label="No"
+      (click)="deleteProductDialog = false"></button>
+    <button pButton pRipple icon="pi pi-check" class="p-button-text" label="Yes"
+      (click)="deleteTeamDetailsById(deletedid)"></button>
   </ng-template>
 </p-dialog>
