@@ -7,6 +7,7 @@ import { ButtonModule } from "primeng/button";
 import { DropdownModule } from "primeng/dropdown";
 
 import { Observable } from "rxjs";
+import * as FileSaver from 'file-saver';
 
 import { TeamDetailService } from "../Service/teamdetails/team-detail.service";
 import { DialogService, DynamicDialogRef } from "primeng/dynamicdialog";
@@ -40,6 +41,8 @@ export class TeamDetailsComponent {
 
   tableData: any = [];
   tableData1: any = [];
+  loading: boolean | undefined;
+
 
   cols: any[] = [];
 
@@ -101,8 +104,55 @@ export class TeamDetailsComponent {
       this.getdetails();
     });
   }
+  
+  exportExcel() {
+
+    let obj:any=[{}];
+
+  for(let i=0;i<this.tableData.length;i++)
+  {
+    obj.push({ 
+      'NAME': this.tableData[i].name, 
+      'PROJECT NAME': this.tableData[i].projectName, 
+      'TEAM SIZE': this.tableData[i].totalSize,
+      'CLI LEAD': this.tableData[i].cli_Lead,
+      'PER LEAD':this.tableData[i].per_Lead,
+      'SCRUM MASTER':this.tableData[i].scrumMaster,
+  })
+  }
+  obj.shift();    
+    import('xlsx').then((xlsx) => {
+        const worksheet = xlsx.utils.json_to_sheet(obj);
+        const workbook = { Sheets: { data: worksheet }, SheetNames: ['data'],skipHeader: true
+      };
+        const excelBuffer: any = xlsx.write(workbook, {
+            bookType: 'xlsx',
+            type: 'array',
+        });
+        this.saveAsExcelFile(excelBuffer, 'TeamDetails');
+    });
+    
+}
+
+saveAsExcelFile(buffer: any, fileName: string): void {
+  
+    let EXCEL_TYPE =
+'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8';
+    let EXCEL_EXTENSION = '.xlsx';
+    const data: Blob = new Blob([buffer], {
+        type: EXCEL_TYPE,
+    });
+    FileSaver.saveAs(
+        data,
+        fileName + '_export_' + new Date().getTime() + EXCEL_EXTENSION
+    );
+}
+
+
 
   async getdetails() {
+    this.loading = true;
+
     this.httpProvider.getAllDetails().subscribe(
       (data: any) => {
         if (data != null && data.body != null) {
@@ -111,6 +161,8 @@ export class TeamDetailsComponent {
           console.log(resultData);
 
           if (resultData) {
+            this.loading=false;
+
             this.tableData = resultData;
             this.tableData1 = this.tableData;
 
