@@ -1,9 +1,17 @@
-<page-header PageTitle="Work Analysis"></page-header>
+<!-- <page-header PageTitle="Work Analysis"></page-header> -->
+<div class="card-header">
+  <div class="flex justify-content-between flex-wrap card-container purple-container">
+    <div class="flex align-items-center justify-content-center m-2">
+      <h3>Work Analysis</h3>
+    </div>
+  </div>
+</div>
+<br>
 <table width="100%">
   <tr>
     <td width="35%">
       <span class="p-float-label mt-10">
-        <p-multiSelect class="width300" [options]="employees" [(ngModel)]="selectedTeam1" optionLabel="EmpName"
+        <p-multiSelect [style]="{'width':'75%'}" class="width300" class="width300" [options]="employees" [(ngModel)]="selectedTeam1" optionLabel="EmpName"
                        placeholder="Team1 Members" [filter]="true" filterBy="name" display="chip"
                        selectedItems="selectedTeam1"></p-multiSelect>
         <label for="ms-cities">Team1 Members ({{selectedTeam1.length}} selected)</label>
@@ -12,7 +20,7 @@
     </td>
     <td width="35%">
       <span class="p-float-label mt-10">
-        <p-multiSelect class="width300" [options]="employees" [(ngModel)]="selectedTeam2" optionLabel="EmpName"
+        <p-multiSelect [style]="{'width':'75%'}" class="width300" [options]="employees" [(ngModel)]="selectedTeam2" optionLabel="EmpName"
                        placeholder="Team2 Members" [filter]="true" filterBy="name" display="chip"
                        selectedItems="selectedTeam2"></p-multiSelect>
         <label for="ms-cities">Team2 Members ({{selectedTeam2.length}} selected)</label>

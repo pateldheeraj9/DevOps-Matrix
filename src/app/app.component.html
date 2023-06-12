@@ -4,252 +4,264 @@
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
 
 <script>
-    var hamburger = document.querySelector(".hamburger");
-    hamburger.addEventListener("click", function () {
-        document.querySelector("body").classList.toggle("active");
-    })
+  var hamburger = document.querySelector(".hamburger");
+  hamburger.addEventListener("click", function () {
+    document.querySelector("body").classList.toggle("active");
+  })
 
 </script>
 <style>
-    * {
-        list-style: none;
-        text-decoration: none;
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        font-family: 'Open Sans', sans-serif;
-    }
+  * {
+    list-style: none;
+    text-decoration: none;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Open Sans', sans-serif;
+  }
 
-    body {
-        background: #f5f6fa;
-    }
+  body {
+    background: #f5f6fa;
+  }
 
-    .wrapper .sidebar {
-        background: rgb(5, 68, 104);
-        position: fixed;
-        overflow:scroll;
-        top: 0;
-        left: 0;
-        width: 225px;
-        height: 100%;
-        padding: 20px 0;
-        transition: all 0.5s ease;
-    }
+  .wrapper .sidebar {
+    background: rgb(5, 68, 104);
+    position: fixed;
+    overflow: scroll;
+    top: 0;
+    left: 0;
+    width: 225px;
+    height: 100%;
+    padding: 20px 0;
+    transition: all 0.5s ease;
+  }
 
-    .wrapper .sidebar .profile {
-        margin-bottom: 30px;
-        text-align: center;
-    }
+  .wrapper .sidebar .profile {
+    margin-bottom: 30px;
+    text-align: center;
+  }
 
-    .wrapper .sidebar .profile img {
-        display: block;
-        width: 100px;
-        height: 100px;
-        border-radius: 50%;
-        margin: 0 auto;
-    }
+  .wrapper .sidebar .profile img {
+    display: block;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin: 0 auto;
+  }
 
-    .wrapper .sidebar .profile h3 {
-        color: #ffffff;
-        margin: 10px 0 5px;
-    }
+  .wrapper .sidebar .profile h3 {
+    color: #ffffff;
+    margin: 10px 0 5px;
+  }
 
-    .wrapper .sidebar .profile p {
-        color: rgb(206, 240, 253);
-        font-size: 14px;
-    }
+  .wrapper .sidebar .profile p {
+    color: rgb(206, 240, 253);
+    font-size: 14px;
+  }
 
-    .wrapper .sidebar ul li a {
-        display: block;
-        padding: 13px 30px;
-        border-bottom: 1px solid #10558d;
-        color: rgb(241, 237, 237);
-        font-size: 15px;
-        position: relative;
-    }
+  .wrapper .sidebar ul li a {
+    display: block;
+    padding: 13px 30px;
+    border-bottom: 1px solid #10558d;
+    color: rgb(241, 237, 237);
+    font-size: 15px;
+    position: relative;
+  }
 
-    .wrapper .sidebar ul li a .icon {
-        color: #dee4ec;
-        width: 30px;
-        display: inline-block;
-    }
+  .wrapper .sidebar ul li a .icon {
+    color: #dee4ec;
+    width: 30px;
+    display: inline-block;
+  }
 
 
 
-    .wrapper .sidebar ul li a:hover,
-    .wrapper .sidebar ul li a.active {
-        color: #0c7db1;
+  .wrapper .sidebar ul li a:hover,
+  .wrapper .sidebar ul li a.active {
+    color: #0c7db1;
 
-        background: white;
-        /* border-right: 2px solid rgb(5, 68, 104); */
-    }
+    background: white;
+    /* border-right: 2px solid rgb(5, 68, 104); */
+  }
 
-    .wrapper .sidebar ul li a:hover .icon,
-    .wrapper .sidebar ul li a.active .icon {
-        color: #0c7db1;
-    }
+  .wrapper .sidebar ul li a:hover .icon,
+  .wrapper .sidebar ul li a.active .icon {
+    color: #0c7db1;
+  }
 
-    .wrapper .sidebar ul li a:hover:before,
-    .wrapper .sidebar ul li a.active:before {
-        display: block;
-    }
+  .wrapper .sidebar ul li a:hover:before,
+  .wrapper .sidebar ul li a.active:before {
+    display: block;
+  }
 
-    .wrapper .section {
-        width: calc(100% - 225px);
-        margin-left: 225px;
-        transition: all 0.5s ease;
-    }
+  .wrapper .section {
+    width: calc(100% - 225px);
+    margin-left: 225px;
+    transition: all 0.5s ease;
+  }
 
-    .wrapper .section .top_navbar {
-        background: rgb(7, 105, 185);
-        height: 50px;
-        display: flex;
-        align-items: center;
-        padding: 0 30px;
+  .wrapper .section .top_navbar {
+    background: rgb(7, 105, 185);
+    height: 50px;
+    display: flex;
+    align-items: center;
+    padding: 0 30px;
 
-    }
+  }
 
-    .wrapper .section .top_navbar .hamburger a {
-        font-size: 28px;
-        color: #f4fbff;
-    }
+  .wrapper .section .top_navbar .hamburger a {
+    font-size: 28px;
+    color: #f4fbff;
+  }
 
-    .wrapper .section .top_navbar .hamburger a:hover {
-        color: #a2ecff;
-    }
+  .wrapper .section .top_navbar .hamburger a:hover {
+    color: #a2ecff;
+  }
 
-    .wrapper .section .container {}
+  .wrapper .section .container {}
 
-    body.active .wrapper .sidebar {
-        left: -225px;
-    }
+  body.active .wrapper .sidebar {
+    left: -225px;
+  }
 
-    body.active .wrapper .section {
-        margin-left: 0;
-        width: 100%;
-    }
+  body.active .wrapper .section {
+    margin-left: 0;
+    width: 100%;
+  }
 </style>
 
 
 <div class="wrapper">
-    <div class="section">
+  <div class="section">
 
-        <div class="container">
-            <router-outlet></router-outlet>
+    <div class="container">
+      <router-outlet></router-outlet>
 
 
-        </div>
     </div>
-    <div class="sidebar">
-        <div class="profile">
-            <!-- <img src="https://1.bp.blogspot.com/-vhmWFWO2r8U/YLjr2A57toI/AAAAAAAACO4/0GBonlEZPmAiQW4uvkCTm5LvlJVd_-l_wCNcBGAsYHQ/s16000/team-1-2.jpg" alt="profile_picture"> -->
-            <h3>Teams Data</h3>
+  </div>
+  <div class="sidebar">
+    <div class="profile">
+      <!-- <img src="https://1.bp.blogspot.com/-vhmWFWO2r8U/YLjr2A57toI/AAAAAAAACO4/0GBonlEZPmAiQW4uvkCTm5LvlJVd_-l_wCNcBGAsYHQ/s16000/team-1-2.jpg" alt="profile_picture"> -->
+      <h3>Teams Data</h3>
 
-        </div>
-        <ul>
-            <li>
-                <a href="#" routerLink="/Dashboard">
-                    <span class="icon"><i class="fas fa-database"></i></span>
-                    <span class="item">Dashboard</span>
-                </a>
-            </li>
-            <li>
-                <a href="#" routerLink="/TeamDetails">
-                    <span class="icon"><i class="fas fa-database"></i></span>
-                    <span class="item">Teams Data</span>
-                </a>
-            </li>
-
-            <li>
-                <a href="#" routerLink="/TeamMemberDetails">
-                    <span class="icon"><i class="fas fa-tachometer-alt"></i></span>
-                    <span class="item">Team Members</span>
-                </a>
-            </li>
-
-            <li class="nav-item">
-                <a class="nav-link text-white" [routerLink]="['']" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
-                  <i class="fas fa-home"></i>
-                  Home
-                </a>
-              </li>
-              <li>
-                <a class="nav-link text-white" [routerLink]="['/devops-matrix/upload-sprint-data']" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
-                  <i class="fas fa-upload"></i>
-                  Upload Sprint Data
-                </a>
-              </li>
-              <li>
-                <a class="nav-link text-white" [routerLink]="['/devops-matrix/sprint-details']" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
-                  <i class="fas fa-table"></i>
-                  Sprint Details
-                </a>
-              </li>
-              <li>
-                <a href="#" class="nav-link text-white">
-                  <i class="fas fa-chart-bar"></i>
-                  Charts
-                </a>
-                <div class="ml-25">
-                  <ul class="nav nav-pills flex-column mb-auto">
-                    <li>
-                      <a class="nav-link text-white" [routerLink]="['/devops-matrix/chart-work-status']" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
-                        1. Work Status
-                      </a>
-                    </li>
-                    <li>
-                      <a class="nav-link text-white" [routerLink]="['/devops-matrix/chart-team-performance']" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
-                        2. Team Performance
-                      </a>
-                    </li>
-                    <li>
-                      <a class="nav-link text-white" [routerLink]="['/devops-matrix/chart-work-items-by-state']" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
-                        3. Work Items By State
-                      </a>
-                    </li>
-                    <li>
-                      <a class="nav-link text-white" [routerLink]="['/devops-matrix/chart-task-status']" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
-                        4. Task Status
-                      </a>
-                    </li>
-                    <li>
-                      <a class="nav-link text-white" [routerLink]="['/devops-matrix/chart-individual-performance']" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
-                        5. Individual Performance
-                      </a>
-                    </li>
-                    <li>
-                      <a class="nav-link text-white" [routerLink]="['/devops-matrix/chart-sprint-performance']" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
-                        6. Sprint Performance
-                      </a>
-                    </li>
-                    <li>
-                      <a class="nav-link text-white" [routerLink]="['/devops-matrix/chart-velocity']" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
-                        7. Sprint Velocity
-                      </a>
-                    </li>
-                    <li>
-                      <a class="nav-link text-white" [routerLink]="['/devops-matrix/chart-work-analysis']" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
-                        8. Work Analysis
-                      </a>
-                    </li>
-                    <li>
-                      <a class="nav-link text-white" [routerLink]="['/weeklyreport/Steps']" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
-                        <i class="fa fa-th"></i>
-                        Weekly Summary
-                      </a>
-                    </li>
-                    <li>
-                      <a class="nav-link text-white" [routerLink]="['/weeklyreport/Report']" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
-                        <i class="fa fa-file"></i>
-                        Report
-                      </a>
-                    </li>
-
-                  </ul>
-                </div>
-              </li>
-
-        </ul>
     </div>
+    <ul>
+      <li>
+        <a href="#" routerLink="/Dashboard">
+          <span class="icon"><i class="fas fa-database"></i></span>
+          <span class="item">Dashboard</span>
+        </a>
+      </li>
+      <li>
+        <a href="#" routerLink="/TeamDetails">
+          <span class="icon"><i class="fas fa-database"></i></span>
+          <span class="item">Teams Data</span>
+        </a>
+      </li>
+
+      <li>
+        <a href="#" routerLink="/TeamMemberDetails">
+          <span class="icon"><i class="fas fa-tachometer-alt"></i></span>
+          <span class="item">Team Members</span>
+        </a>
+      </li>
+
+      <li>
+        <a [routerLink]="['']" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
+          <i class="fas fa-home"></i>
+          Home
+        </a>
+      </li>
+      <li>
+        <a [routerLink]="['/devops-matrix/upload-sprint-data']" routerLinkActive="active"
+          [routerLinkActiveOptions]="{exact:true}">
+          <i class="fas fa-upload"></i>
+          Upload Sprint Data
+        </a>
+      </li>
+      <li>
+        <a [routerLink]="['/devops-matrix/sprint-details']" routerLinkActive="active"
+          [routerLinkActiveOptions]="{exact:true}">
+          <i class="fas fa-table"></i>
+          Sprint Details
+        </a>
+      </li>
+      <li>
+        <a>
+          <i class="fas fa-chart-bar"></i>
+          Charts
+        </a>
+        <div class="ml-25">
+          <ul class="nav nav-pills flex-column mb-auto">
+            <li>
+              <a [routerLink]="['/devops-matrix/chart-work-status']" routerLinkActive="active"
+                [routerLinkActiveOptions]="{exact:true}">
+                1. Work Status
+              </a>
+            </li>
+            <li>
+              <a [routerLink]="['/devops-matrix/chart-team-performance']" routerLinkActive="active"
+                [routerLinkActiveOptions]="{exact:true}">
+                2. Team Performance
+              </a>
+            </li>
+            <li>
+              <a [routerLink]="['/devops-matrix/chart-work-items-by-state']" routerLinkActive="active"
+                [routerLinkActiveOptions]="{exact:true}">
+                3. Work Items By State
+              </a>
+            </li>
+            <li>
+              <a [routerLink]="['/devops-matrix/chart-task-status']" routerLinkActive="active"
+                [routerLinkActiveOptions]="{exact:true}">
+                4. Task Status
+              </a>
+            </li>
+            <li>
+              <a [routerLink]="['/devops-matrix/chart-individual-performance']" routerLinkActive="active"
+                [routerLinkActiveOptions]="{exact:true}">
+                5. Individual Performance
+              </a>
+            </li>
+            <li>
+              <a [routerLink]="['/devops-matrix/chart-sprint-performance']" routerLinkActive="active"
+                [routerLinkActiveOptions]="{exact:true}">
+                6. Sprint Performance
+              </a>
+            </li>
+            <li>
+              <a [routerLink]="['/devops-matrix/chart-velocity']" routerLinkActive="active"
+                [routerLinkActiveOptions]="{exact:true}">
+                7. Sprint Velocity
+              </a>
+            </li>
+            <li>
+              <a [routerLink]="['/devops-matrix/chart-work-analysis']" routerLinkActive="active"
+                [routerLinkActiveOptions]="{exact:true}">
+                8. Work Analysis
+              </a>
+            </li>
+            <li>
+              <a [routerLink]="['/weeklyreport/Steps']" routerLinkActive="active"
+                [routerLinkActiveOptions]="{exact:true}">
+                <i class="fa fa-th"></i>
+                Weekly Summary
+              </a>
+            </li>
+            <li>
+              <a [routerLink]="['/weeklyreport/Report']" routerLinkActive="active"
+                [routerLinkActiveOptions]="{exact:true}">
+                <i class="fa fa-file"></i>
+                Report
+              </a>
+            </li>
+
+          </ul>
+        </div>
+      </li>
+
+    </ul>
+  </div>
 
 </div>
