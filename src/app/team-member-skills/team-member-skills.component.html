@@ -1,0 +1,123 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+<div class="outdiv">
+
+    <div class="outercard">
+        <div class="card-header">
+            <h3>Add Skills</h3>
+            <!-- <button class="addbutton">  <i class='fas fa-arrow-circle-left'><span> Back</span></i></button> -->
+        </div> 
+        <div [formGroup]="skillArray">
+        <div class="container">
+            <ng-container formArrayName="skills">
+                <ng-container *ngFor="let skillForm of skills.controls; let i = index">
+                <form [formGroup]="skillForm">
+                    <div class="card"> 
+                        <div class="formgroup-inline">
+                            <div class="field">
+                                <p-dropdown id="skillType" formControlName="skillType" [options]="skilltypes" optionLabel="type" placeholder="Select a Skill type"></p-dropdown>
+                                <div style="color: red;" *ngIf="skillForm?.controls?.skillType?.errors?.forbiddenType.value">
+                                    {{skillForm?.controls?.skillType?.errors?.forbiddenType.value}}
+                                </div>
+                            </div>
+                           
+                            <div class="field">
+                                <input type="text" pInputText formControlName="skillName" placeholder="Enter Skill"/>
+                            </div>
+                            <div class="field">
+                                <p-button icon="pi pi-times" styleClass="p-button-rounded p-button-danger p-button-outlined" (click)="deleteSkill1(i)"></p-button>
+
+                            </div>
+                        </div>
+                    </div>
+                    
+                </form>
+                </ng-container>
+            </ng-container>
+            <p-toast></p-toast>
+            <button type="submit" icon="pi pi-plus" (click)="addSkill1()" pButton pRipple label="Add" style="margin-right: 20px;"></button>
+            <button type="submit" icon="pi pi-check" class="p-button-success" pButton pRipple label="Save" (click)="submitSkills()" class="p-button-success" style="margin-right: 20px;"></button>
+            <p-button label="Cancel" icon="pi pi-times" styleClass="p-button-danger" routerLink="/TeamMemberDetails" (click)="hideDialog()"></p-button>
+           
+        </div>
+        </div>
+               
+        <p-tabView>
+            <p-tabPanel header="Primary">
+                <b *ngIf="!primarySkill?.length"><p>No Primary skills added</p></b>
+                <div *ngFor="let item of primarySkill;" class="card">
+                    <div  class="formgroup-inline">
+                        <div class="field">
+                            <p><li>{{item?.skillName }} </li></p>
+                        </div>
+                        <div class="field">
+                            <p-button icon="pi pi-trash" styleClass="p-button-rounded p-button-danger p-button-text" (click)="deleteSkillConfirmation(item?.id)">
+                            </p-button>
+                            
+                            <p-dialog [(visible)]="deleteSkillDialog" header="Confirm" [modal]="true" [style]="{width:'450px'}">
+                                <div class="flex align-items-center justify-content-center">
+                                    <i class="pi pi-exclamation-triangle mr-3" style="font-size: 2rem"></i>
+                                    <span>Are you sure you want to delete ?</span>
+                                </div>
+                                <ng-template pTemplate="footer">
+                                    <button pButton pRipple icon="pi pi-times" class="p-button-text" label="No" (click)="deleteSkillDialog = false"></button>
+                                    <button pButton pRipple icon="pi pi-check" class="p-button-text" label="Yes" (click)="deleteSkill()"></button>
+                                </ng-template>
+                            </p-dialog>  
+                        </div>
+                    </div>
+                </div>          
+            </p-tabPanel>
+            <p-tabPanel header="Secondary">
+                <b *ngIf="!secondarySkill?.length"><p>No Secondary skills added</p></b>
+                <div *ngFor="let item of secondarySkill;" class="card">
+                    <div  class="formgroup-inline">
+                        <div class="field">
+                            <p><li>{{item?.skillName }} </li></p>
+                        </div>
+                        <div class="field">
+                            <p-button icon="pi pi-trash" styleClass="p-button-rounded p-button-danger p-button-text" (click)="deleteSkillConfirmation(item?.id)">
+                            </p-button>
+                            
+                            <p-dialog [(visible)]="deleteSkillDialog" header="Confirm" [modal]="true" [style]="{width:'450px'}">
+                                <div class="flex align-items-center justify-content-center">
+                                    <i class="pi pi-exclamation-triangle mr-3" style="font-size: 2rem"></i>
+                                    <span>Are you sure you want to delete ?</span>
+                                </div>
+                                <ng-template pTemplate="footer">
+                                    <button pButton pRipple icon="pi pi-times" class="p-button-text" label="No" (click)="deleteSkillDialog = false"></button>
+                                    <button pButton pRipple icon="pi pi-check" class="p-button-text" label="Yes" (click)="deleteSkill()"></button>
+                                </ng-template>
+                            </p-dialog>  
+                        </div>
+                    </div>
+                </div>
+            </p-tabPanel>
+            <p-tabPanel header="Tertiary">
+                <b *ngIf="!tertiarySkill?.length"><p>No Tertiary skills added</p></b>
+                <div *ngFor="let item of tertiarySkill;" class="card">
+                <div  class="formgroup-inline">
+                    <div class="field">
+                        <p><li>{{item?.skillName }} </li></p>
+                    </div>
+                    <div class="field">
+                        <p-button icon="pi pi-trash" styleClass="p-button-rounded p-button-danger p-button-text" (click)="deleteSkillConfirmation(item?.id)">
+                        </p-button>
+                        <p-dialog [(visible)]="deleteSkillDialog" header="Confirm" [modal]="true" [style]="{width:'450px'}">
+                            <div class="flex align-items-center justify-content-center">
+                                <i class="pi pi-exclamation-triangle mr-3" style="font-size: 2rem"></i>
+                                <span>Are you sure you want to delete ?</span>
+                            </div>
+                            <ng-template pTemplate="footer">
+                                <button pButton pRipple icon="pi pi-times" class="p-button-text" label="No" (click)="deleteSkillDialog = false"></button>
+                                <button pButton pRipple icon="pi pi-check" class="p-button-text" label="Yes" (click)="deleteSkill()"></button>
+                            </ng-template>
+                        </p-dialog>  
+                    </div>
+                </div>
+            </div>
+                
+            </p-tabPanel>
+            
+        </p-tabView> 
+    </div>
+</div>

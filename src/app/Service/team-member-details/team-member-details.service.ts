@@ -23,6 +23,9 @@ var httpLink = {
 
   getAllTeamMember:apiUrl+"/TeamMember",
   dropdownTeamDetails:apiUrl+"/TeamDetail",
+  teamMemberRemarks:apiUrl+"/TeamMemberRemarks",
+
+  teamMemberSkill:apiUrl+'/TeamMemberSkills'
 }
 
 
@@ -77,12 +80,36 @@ export class TeamMemberDetailsService {
   
 
   public deleteMemberById(id: any): Observable<any> {
-    return this.webApiService.Delete(httpLink.deleteMemberbyid + '/' + id);
+    return this.webApiService.Delete(httpLink.deleteMemberbyid + '/' + id );
   }
  public getAllDropdownTeamDetails(): Observable<any> {
 
       return this.webApiService.get(httpLink.dropdownTeamDetails);
     
+     }
+
+     public getTeamMemberRemarks(id : any) : Observable<any>{
+      return this.webApiService.get(httpLink.teamMemberRemarks + '/' + id );
+     }
+
+     public postTeamMemberRemarks(data:any) : Observable<any>{
+      return this.webApiService.post(httpLink.teamMemberRemarks, data);
+     }
+
+     public deleteTeamMemberRemarks(id:any) : Observable<any>{
+      return this.webApiService.Delete(httpLink.teamMemberRemarks+ '/byId/' + id);
+     }
+
+     public getTeamMemberSkills(id : any) : Observable<any>{
+      return this.webApiService.get(httpLink.teamMemberSkill + '/' + id );
+     }
+
+     public postTeamMemberSkill(data:any) : Observable<any>{
+      return this.webApiService.post(httpLink.teamMemberSkill, data);
+     }
+
+     public deleteTeamMemberSkill(id:any) : Observable<any>{
+      return this.webApiService.Delete(httpLink.teamMemberSkill+ '/byId/' + id);
      }
 
 }
