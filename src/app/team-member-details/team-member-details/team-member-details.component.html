@@ -1,8 +1,3 @@
-
-<app-loader [loading]="loading"></app-loader>
-
-
-
 <div class="card-header">
   <div class="flex justify-content-between flex-wrap card-container purple-container">
     <div class="flex align-items-center justify-content-center m-2">
@@ -78,14 +73,6 @@
     <div class="flex flex-column">
       <div class="m-2"> <input type="text" class="p-inputtext" (keyup)="filterData(searchKey.value)" #searchKey
           placeholder="Search By Name, Email Id or PhoneNo" pInputText /></div>
-          <button type="button" 
-          pButton pRipple 
-          icon="pi pi-file-excel" 
-          (click)="exportExcel()"
-          class="p-button-success ml-2 rightalign" 
-          pTooltip="XLS" 
-          tooltipPosition="bottom">
-    </button>
       <div class="m-2"> <p-table #myTab [columns]="cols" [value]="tableData" styleClass="p-datatable-gridlines"
           [paginator]="true" [rows]="10" [showCurrentPageReport]="true" [globalFilterFields]="['Name']">
 
@@ -160,6 +147,9 @@
              <p-button icon="pi pi-pencil" (click)="showEditTeamMember(data.id)" styleClass="p-button-sm p-button-rounded p-button-danger p-button-outlined"></p-button>
              <p-button icon="pi pi-trash" (click)="deleteProduct(data.id,data.name)"
               styleClass="p-button-sm p-button-rounded p-button-danger p-button-outlined"></p-button>
+              <p-button icon="pi pi-comment" (click)="addRemarkTeamMember(data.id)" styleClass="p-button-sm p-button-rounded p-button-danger p-button-outlined"></p-button>
+              <p-button icon="pi pi-plus" (click)="showAddSkills(data.id)" styleClass="p-button-sm p-button-rounded p-button-danger p-button-outlined"></p-button>
+
               </td>
 
             </tr>

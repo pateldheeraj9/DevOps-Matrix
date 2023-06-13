@@ -40,7 +40,11 @@ import { MessageService } from 'primeng/api';
 import { WeeklyReportModule } from './weekly-report/weekly-report.module';
 import { LoaderComponent } from './common/loader/loader.component';
 import { DevopsMatrixModule } from './devops-matrix/devops-matrix.module';
+import { TeamMemberRemarksComponent } from './team-member-remarks/team-member-remarks.component';
+import { TeamMemberSkillsComponent } from './team-member-skills/team-member-skills.component';
 // import { HomePageComponent } from './home-page/home-page.component';
+import { TabViewModule } from 'primeng/tabview';
+import { FieldsetModule } from 'primeng/fieldset';
 
 
 
@@ -67,6 +71,8 @@ import { DevopsMatrixModule } from './devops-matrix/devops-matrix.module';
     NgPrimeComponent,
     DashboardComponent,
     LoaderComponent,
+    TeamMemberRemarksComponent,
+    TeamMemberSkillsComponent,
     // HomePageComponent
     // weeklyReportsComponent,
     // NavMenuSideBarComponent
@@ -91,7 +97,9 @@ import { DevopsMatrixModule } from './devops-matrix/devops-matrix.module';
     ToastModule,
     ChartModule
     , DevopsMatrixModule,
-    WeeklyReportModule 
+    WeeklyReportModule,
+    FieldsetModule,
+    TabViewModule
 
 
 
