@@ -11,13 +11,16 @@ import { environment } from '../environments/environment.prod';
 })
 export class CommonService {
   sprints: any[] = [];
-  baseUrl: string = environment.baseUrl;
-  constructor(private http: HttpClient, @Inject('BASE_URL') baseUrl: string) {
+  // baseUrl: string = environment.baseUrl;
+  baseUrl: string = "https://localhost:7042/api/";
+  constructor(private http: HttpClient,
+    // @Inject('BASE_URL') baseUrl: string
+  ) {
     this.http = http;
   }
 
   getSprints(): Observable<any> {
-    return this.http.get<Observable<ISprint[]>>(this.baseUrl + 'common/GetSprints')
+    return this.http.get<Observable<ISprint[]>>(this.baseUrl + 'common')
       .pipe(map((resp: any) => resp),
         catchError(error => error))
   }

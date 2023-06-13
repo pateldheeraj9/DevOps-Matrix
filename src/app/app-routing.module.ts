@@ -36,7 +36,7 @@ const routes: Routes = [
   { path: 'ViewTeamDetails/:Id', component: ViewTeamDetailsComponent },
   { path: 'ngprime', component: NgPrimeComponent },
   { path: 'Dashboard', component: DashboardComponent },
-  // { path: 'HomePage', component: HomePageComponent },
+  { path: '', component: DashboardComponent },
 
   // {
   //   path: 'devops-matrix', component: DevopsMatrixComponent, children: [

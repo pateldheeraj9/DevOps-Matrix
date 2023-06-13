@@ -10,18 +10,21 @@ import { ISeverityCount, ISprintStatus, IUserStoryCount } from '../models/common
 })
 
 export class WorkStatusService {
-  baseUrl: any;
+  // baseUrl: any;
+  baseUrl: string = "https://localhost:7042/";
   formdata: any;
 
-  constructor(private _http: HttpClient, @Inject('BASE_URL') baseUrl: string) {
-    this.baseUrl = baseUrl;
+  constructor(private _http: HttpClient
+    // , @Inject('BASE_URL') baseUrl: string
+    ) {
+    // this.baseUrl = baseUrl;
   }
 
   getStatusCountData(sprintUIDs: string[]): Observable<any> {
     var res;
     let param = new HttpParams();
     // param = param.append("sprintUID", sprintUID);
-    res = this._http.post<Observable<ISprintStatus[]>>(this.baseUrl + 'WorkStatus/GetStatusCountData', sprintUIDs);
+    res = this._http.post<Observable<ISprintStatus[]>>(this.baseUrl + 'api/WorkStatus/GetStatusCountData', sprintUIDs);
     console.log(res);
     return res;
 
@@ -45,12 +48,12 @@ export class WorkStatusService {
     return res;
   }
   getSprintsSeverityCount(sprintUIDs: string[]): Observable<any> {
-    return this._http.post<Observable<ISeverityCount[]>>(this.baseUrl + 'WorkStatus/GetBugSeverityCount', sprintUIDs)
+    return this._http.post<Observable<ISeverityCount[]>>(this.baseUrl + 'api/WorkStatus/GetBugSeverityCount', sprintUIDs)
       .pipe(map((resp: any) => resp),
         catchError(error => error))
   }
   getSprintsPointsCount(sprintUIDs: string[]): Observable<any> {
-    return this._http.post<Observable<IUserStoryCount[]>>(this.baseUrl + 'WorkStatus/GetUserStoryPointsCount', sprintUIDs)
+    return this._http.post<Observable<IUserStoryCount[]>>(this.baseUrl + 'api/WorkStatus/GetUserStoryPointsCount', sprintUIDs)
       .pipe(map((resp: any) => resp),
         catchError(error => error))
   }

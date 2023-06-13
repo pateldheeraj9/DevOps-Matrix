@@ -13,14 +13,17 @@ export class UploadSprintDataComponent {
   loading: boolean = false;
   isSubmitDisabled: boolean = true;
   sprintData: ISprintData[] = [];
-  baseUrl: string;
+  // baseUrl: string;
+  baseUrl: string = "https://localhost:7042/api/";
   _httpClient: HttpClient;
   messageToDisplay: string = "";
   success: boolean = false;
   failure: boolean = false;
 
-  constructor(http: HttpClient, @Inject('BASE_URL') baseUrl: string) {
-    this.baseUrl = baseUrl;
+  constructor(http: HttpClient
+    // , @Inject('BASE_URL') baseUrl: string
+    ) {
+    // this.baseUrl = baseUrl;
     this._httpClient = http;
   }
 
@@ -58,7 +61,7 @@ export class UploadSprintDataComponent {
 
     const httpOptions = { headers: headers };
 
-    return this._httpClient.post(this.baseUrl + 'sprintdata/uploadexcel', formData, httpOptions).subscribe(
+    return this._httpClient.post(this.baseUrl + 'sprintdata', formData, httpOptions).subscribe(
       data => {
         this.success = true;
         this.loading = false;
