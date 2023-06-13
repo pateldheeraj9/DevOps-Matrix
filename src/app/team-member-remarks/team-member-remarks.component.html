@@ -1,0 +1,48 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+<div class="outdiv">
+
+    <div class="outercard">
+        <div class="card-header">
+            <h3>Team Member Remarks</h3>
+            <!-- <button class="addbutton">  <i class='fas fa-arrow-circle-left'><span> Back</span></i></button> -->
+        </div> 
+        <div class="container">
+            <form [formGroup]="remarkForm" (ngSubmit)="addRemark()">    
+                  
+                <span id="dd1">Status: </span>
+                <p-dropdown formControlName="selectedStatus" [options]="statuses" optionLabel="name" [showClear]="true" placeholder="Select Status"></p-dropdown> <br><br>
+                <span id="dd1">Remark: </span><br>
+                <textarea rows="5" cols="30" pInputTextarea formControlName="remark" placeholder="Add Remark"></textarea><br>
+                <p-toast></p-toast>
+                <button type="submit" pButton pRipple label="Add" class="p-button-success" style="margin-right: 20px;"></button>
+                <p-button label="Cancel" icon="pi pi-times" routerLink="/TeamMemberDetails" (click)="hideDialog()"></p-button>
+            </form>
+            
+        </div>
+        <p-fieldset legend="Remark History" [toggleable]="true" [collapsed]="true">
+            <b *ngIf="!allRemarks?.length"><p>No remarks found</p></b>
+            <ng-template ngFor pTemplate="body" let-remark [ngForOf]="allRemarks">
+                <p-card header="{{remark.remark}}" subheader="{{remark.remarkDate | date:'medium'}}">
+                    <b *ngIf="remark.status == 1"><p>Status: Inactive</p></b>
+                    <b *ngIf="remark.status == 2"><p>Status: New</p></b>
+                    <b *ngIf="remark.status == 3"><p>Status: OnBoard</p></b>
+                    <b *ngIf="remark.status == 4"><p>Status: OffBoard</p></b>
+
+                    <p-button label="Delete" styleClass="p-button-danger" (click)="deleteRemarkConfirmation(remark.id)">
+                    </p-button>
+                    <p-dialog [(visible)]="deleteRemarkDialog" header="Confirm" [modal]="true" [style]="{width:'450px'}">
+                        <div class="flex align-items-center justify-content-center">
+                            <i class="pi pi-exclamation-triangle mr-3" style="font-size: 2rem"></i>
+                            <span>Are you sure you want to delete ?</span>
+                        </div>
+                        <ng-template pTemplate="footer">
+                            <p-toast></p-toast>
+                            <button pButton pRipple icon="pi pi-times" class="p-button-text" label="No" (click)="deleteRemarkDialog = false"></button>
+                            <button pButton pRipple icon="pi pi-check" class="p-button-text" label="Yes" (click)="deleteRemark()"></button>
+                        </ng-template>
+                    </p-dialog>
+                </p-card><br>
+            </ng-template>
+        </p-fieldset>
+    </div>
+</div>
