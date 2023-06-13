@@ -10,10 +10,11 @@ import { WeeklySummaryReport } from '../model/weekly-summary-report.model';
 
 export class WeeklyReportService {
 
+  baseUrl: string = "https://localhost:7042/";
   constructor(private _http: HttpClient) { }
 
   getWeeklySummaryReport(WeekEndingDate ?: Date): Observable<any> {
-    let url="https://localhost:7267/GetWeeklySummaryReport";
+    let url= this.baseUrl + "GetWeeklySummaryReport";
     if(WeekEndingDate!=null)
     {
       url=url+"?WeekEndingDate=" + WeekEndingDate;
@@ -22,12 +23,12 @@ export class WeeklyReportService {
   }
 
   addWeeklySummaryReport(data: WeeklySummaryReport): Observable<any> {
-    return this._http.post("https://localhost:7267/AddWeeklySummaryReport", data);
+    return this._http.post(this.baseUrl + "AddWeeklySummaryReport", data);
   }
   updateWeeklySummaryReport(data: WeeklySummaryReport): Observable<any> {
     const params = new HttpParams()
       .set('SummaryID', data.Summary.SummaryID)
-    return this._http.put("https://localhost:7267/UpdateWeeklySummaryReport", data, { params });
+    return this._http.put(this.baseUrl + "UpdateWeeklySummaryReport", data, { params });
   }
   getTeamDetails() {
     return [
@@ -104,7 +105,7 @@ export class WeeklyReportService {
 
   getDateWeeklySummaryReport(StartDate: Date,WeekEndingDate: Date): Observable<any> {
 
-    return this._http.get('https://localhost:7267/GetDateSummaryReport?StartDate=' +StartDate +'&WeekEndingDate=' +WeekEndingDate);
+    return this._http.get(this.baseUrl + 'GetDateSummaryReport?StartDate=' +StartDate +'&WeekEndingDate=' +WeekEndingDate);
 
   }
 
