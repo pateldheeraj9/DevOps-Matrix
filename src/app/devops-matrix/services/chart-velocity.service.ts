@@ -8,19 +8,22 @@ import { ISprintVelocity } from '../models/ISprintVelocity';
 })
 export class ChartVelocityService {
   sprints: any[] = [];
-  baseUrl: string = "";
-  constructor(private http: HttpClient, @Inject('BASE_URL') baseUrl: string) {
+  // baseUrl: string = "";
+  baseUrl: string = "https://localhost:7042/";
+  constructor(private http: HttpClient
+    // , @Inject('BASE_URL') baseUrl: string
+  ) {
     this.http = http;
   }
 
-  getSprintVelocityDetails(sprintUIDs: string[]): Observable<any> {   
-    return this.http.post<Observable<ISprintVelocity[]>>(this.baseUrl + 'Velocity/GetSprintVelocityDetails', sprintUIDs)
+  getSprintVelocityDetails(sprintUIDs: string[]): Observable<any> {
+    return this.http.post<Observable<ISprintVelocity[]>>(this.baseUrl + 'Velocity/GetSprintVelocityDetails/', sprintUIDs)
       .pipe(map((resp: any) => resp),
         catchError(error => error))
   }
 
   getSprintWorkItemsCountByStatus(sprintUIDs: string[]): Observable<any> {
-    return this.http.post<Observable<ISprintVelocity[]>>(this.baseUrl + 'Velocity/GetSprintWorkItemsCountByStatus', sprintUIDs)
+    return this.http.post<Observable<ISprintVelocity[]>>(this.baseUrl + 'Velocity/GetSprintWorkItemsCountByStatus/', sprintUIDs)
       .pipe(map((resp: any) => resp),
         catchError(error => error))
   }

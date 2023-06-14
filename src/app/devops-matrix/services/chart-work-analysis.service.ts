@@ -7,11 +7,14 @@ import { Observable, map, catchError } from 'rxjs';
 })
 
 export class ChartWorkAnalysisService {
-  baseUrl: any;
+  // baseUrl: any;
+  baseUrl: string = "https://localhost:7042/";
   formdata: any;
 
-  constructor(private http: HttpClient, @Inject('BASE_URL') baseUrl: string) {
-    this.baseUrl = baseUrl;
+  constructor(private http: HttpClient
+    // , @Inject('BASE_URL') baseUrl: string
+    ) {
+    // this.baseUrl = baseUrl;
   }
 
   getUserStoryAnalysis(sprintUIDs: string[], team1EmployeeIds: number[], team2EmployeeIds: number[]): Observable<any> {

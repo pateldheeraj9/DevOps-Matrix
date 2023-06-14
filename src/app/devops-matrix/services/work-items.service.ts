@@ -8,8 +8,11 @@ import { IWorkItem, IWorkItemTask } from '../models/workItem.model';
 })
 export class WorkItemsService {
   sprints: any[] = [];
-  baseUrl: string = "";
-  constructor(private http: HttpClient, @Inject('BASE_URL') baseUrl: string) {
+  // baseUrl: string = "";
+  baseUrl: string = "https://localhost:7042/";
+  constructor(private http: HttpClient
+    // , @Inject('BASE_URL') baseUrl: string
+    ) {
     this.http = http;
   }  
 

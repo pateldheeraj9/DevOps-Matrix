@@ -13,8 +13,9 @@ import { ViewTeamMemberComponent } from '../../view-team-member/view-team-member
 import { TeamMemberDetailsService } from "../../Service/team-member-details/team-member-details.service";
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ExchangeService } from 'src/app/Service/Data/Exchange.service';
+import { TeamMemberRemarksComponent } from 'src/app/team-member-remarks/team-member-remarks.component';
+import { TeamMemberSkillsComponent } from 'src/app/team-member-skills/team-member-skills.component';
 import * as FileSaver from 'file-saver';
-
 
 
 @Component({
@@ -25,9 +26,9 @@ import * as FileSaver from 'file-saver';
 })
 export class TeamMemberDetailsComponent implements OnInit {
   visible: boolean | undefined;
-  data: any = [];
   loading: boolean | undefined;
 
+  data: any = [];
   membersdata: any = [];
   ngOnInit() {
     this.getdetailsMember();
@@ -64,11 +65,11 @@ export class TeamMemberDetailsComponent implements OnInit {
         });
         this.saveAsExcelFile(excelBuffer, 'TeamDetails');
     });
-    
+
 }
 
 saveAsExcelFile(buffer: any, fileName: string): void {
-  
+
     let EXCEL_TYPE =
 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8';
     let EXCEL_EXTENSION = '.xlsx';
@@ -80,7 +81,6 @@ saveAsExcelFile(buffer: any, fileName: string): void {
         fileName + '_export_' + new Date().getTime() + EXCEL_EXTENSION
     );
 }
-
 
 
   Memberform = new FormGroup({
@@ -98,21 +98,7 @@ saveAsExcelFile(buffer: any, fileName: string): void {
 
   ref!: DynamicDialogRef;
 
-  showEditTeamMembers(id: any) {
-    this.ref = this.dialogService.open(EditTeamMemberComponent, {
-      header: 'Edit Team Details',
-      width: '100%',
-      height: '70%',
-      contentStyle: { overflow: 'auto', background: 'white' },
-      baseZIndex: 10000,
-      data: { id: id },
-      dismissableMask: true
-    }
-    );
-    this.ref.onClose.subscribe(() => {
-      this.getdetails();
-    });
-  }
+  
   //For drop down
   lang = [
     { name: "HTML" },
@@ -188,8 +174,6 @@ saveAsExcelFile(buffer: any, fileName: string): void {
 
 
   async getdetailsMember() {
-    this.loading = true;
-
     this.httpProvider.getAllDetails().subscribe((data: any) => {
 
       if (data != null && data.body != null) {
@@ -199,8 +183,6 @@ saveAsExcelFile(buffer: any, fileName: string): void {
         if (resultData) {
           this.data = resultData;
           this.membersdata = resultData;
-          this.loading=false
-
         }
       }
     },
@@ -263,10 +245,44 @@ saveAsExcelFile(buffer: any, fileName: string): void {
       this.getdetails();
     });
   }
+
   showViewTeamMember(id: any) {
     this.exchangeService.setUser(id);
 
     this.ref = this.dialogService.open(ViewTeamMemberComponent, {
+      width: '80%',
+      height: '70%',
+      contentStyle: { overflow: 'auto', background: 'white' },
+      baseZIndex: 10000,
+      data: { id: id },
+      dismissableMask: true
+    }
+    );
+
+    this.ref.onClose.subscribe(() => {
+      this.getdetails();
+    });
+  }
+
+  showAddSkills(id:any){
+    this.ref = this.dialogService.open(TeamMemberSkillsComponent, {
+      width: '80%',
+      height: '70%',
+      contentStyle: { overflow: 'auto', background: 'white' },
+      baseZIndex: 10000,
+      data: { id: id },
+      dismissableMask: true
+    }
+    );
+
+    this.ref.onClose.subscribe(() => {
+      this.getdetails();
+    });
+  }
+
+  addRemarkTeamMember(id:any){
+    
+    this.ref = this.dialogService.open(TeamMemberRemarksComponent, {
       width: '80%',
       height: '70%',
       contentStyle: { overflow: 'auto', background: 'white' },
@@ -423,18 +439,6 @@ saveAsExcelFile(buffer: any, fileName: string): void {
       });
     }
   }
-
-
-
-
-
-
-
-
-
-
-
-
 
 }
 
