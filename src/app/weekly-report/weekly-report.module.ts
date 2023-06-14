@@ -31,6 +31,7 @@ import { WeeklyReportComponent } from './weekly-report/weekly-report.component';
 import { WeeklyReportsComponent } from './weekly-reports.component';
 import { WeeklyReportsRoutingModule } from './weekly-report-routing.module';
 import { BarChartComponent } from './common/bar-chart/bar-chart.component';
+import { RadioButtonModule } from 'primeng/radiobutton';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,7 @@ import { BarChartComponent } from './common/bar-chart/bar-chart.component';
     WeeklyReportComponent,
     WeeklyReportsComponent,
     ReportComponent,
-    BarChartComponent
+    BarChartComponent    
   ],
   imports: [
     CommonModule,
@@ -68,7 +69,8 @@ import { BarChartComponent } from './common/bar-chart/bar-chart.component';
     ChartModule,
     DatePipe,
     AutoCompleteModule,
-    WeeklyReportsRoutingModule
+    WeeklyReportsRoutingModule,
+    RadioButtonModule
   ]
 })
 export class WeeklyReportModule { }
