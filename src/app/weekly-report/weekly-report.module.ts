@@ -30,6 +30,7 @@ import { TeamComponent } from './team/team.component';
 import { WeeklyReportComponent } from './weekly-report/weekly-report.component';
 import { WeeklyReportsComponent } from './weekly-reports.component';
 import { WeeklyReportsRoutingModule } from './weekly-report-routing.module';
+import { BarChartComponent } from './common/bar-chart/bar-chart.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { WeeklyReportsRoutingModule } from './weekly-report-routing.module';
     TeamComponent,
     WeeklyReportComponent,
     WeeklyReportsComponent,
-    ReportComponent
+    ReportComponent,
+    BarChartComponent
   ],
   imports: [
     CommonModule,
