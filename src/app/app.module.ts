@@ -35,7 +35,7 @@ import { ChartModule } from 'primeng/chart'
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { NavMenuSideBarComponent } from './devops-matrix/navmenu-sidebar/navmenu-sidebar.component';
 import { WorkStatusService } from './devops-matrix/services/work-status.service';
-import { MessageService } from 'primeng/api';
+import { ConfirmationService, MessageService } from 'primeng/api';
 // import { weeklyReportsComponent } from './weekly-reports/weekly-reports.component';
 import { WeeklyReportModule } from './weekly-report/weekly-report.module';
 import { LoaderComponent } from './common/loader/loader.component';
@@ -107,7 +107,7 @@ import { FieldsetModule } from 'primeng/fieldset';
 
 
   ],
-  providers: [MessageService, WorkStatusService],
+  providers: [MessageService, WorkStatusService,ConfirmationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
