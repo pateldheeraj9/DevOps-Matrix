@@ -6,12 +6,12 @@
     </div>
   </div>
 </div>
-<br>
+<br><br>
 <table width="100%">
   <tr>
     <td width="35%">
       <span class="p-float-label mt-10">
-        <p-multiSelect [style]="{'width':'75%'}" class="width300" class="width300" [options]="employees" [(ngModel)]="selectedTeam1" optionLabel="EmpName"
+        <p-multiSelect [style]="{'width':'75%', 'max-width':'550px'}" class="width300" class="width300" [options]="employees" [(ngModel)]="selectedTeam1" optionLabel="EmpName"
                        placeholder="Team1 Members" [filter]="true" filterBy="name" display="chip"
                        selectedItems="selectedTeam1"></p-multiSelect>
         <label for="ms-cities">Team1 Members ({{selectedTeam1.length}} selected)</label>
@@ -20,7 +20,7 @@
     </td>
     <td width="35%">
       <span class="p-float-label mt-10">
-        <p-multiSelect [style]="{'width':'75%'}" class="width300" [options]="employees" [(ngModel)]="selectedTeam2" optionLabel="EmpName"
+        <p-multiSelect [style]="{'width':'75%', 'max-width':'550px'}" class="width300" [options]="employees" [(ngModel)]="selectedTeam2" optionLabel="EmpName"
                        placeholder="Team2 Members" [filter]="true" filterBy="name" display="chip"
                        selectedItems="selectedTeam2"></p-multiSelect>
         <label for="ms-cities">Team2 Members ({{selectedTeam2.length}} selected)</label>
@@ -28,11 +28,12 @@
     </td>
     <td></td>
   </tr>
+  <br>
   <tr height="10px"></tr>
   <tr>
     <td>
       <span class="p-float-label mt-10">
-        <p-multiSelect class="width300" [options]="sprints" [(ngModel)]="selectedSprints" optionLabel="sprintNumber"
+        <p-multiSelect [style]="{'max-width':'300px'}" class="width300" [options]="sprints" [(ngModel)]="selectedSprints" optionLabel="sprintNumber"
                        placeholder="Select Sprints" [filter]="true" filterBy="name" display="chip"
                        selectedItems="selectedSprints"></p-multiSelect>
         <label for="ms-cities">Select Sprints</label>
