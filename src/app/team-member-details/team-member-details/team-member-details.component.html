@@ -76,8 +76,11 @@
   <div class="card">
 
     <div class="flex flex-column">
+
       <div class="m-2"> <input type="text" class="p-inputtext" (keyup)="filterData(searchKey.value)" #searchKey
           placeholder="Search By Name, Email Id or PhoneNo" pInputText /></div>
+          <div style="position: absolute;z-index: 20000;right:30px;">
+
           <button type="button" 
           pButton pRipple 
           icon="pi pi-file-excel" 
@@ -86,6 +89,7 @@
           pTooltip="XLS" 
           tooltipPosition="bottom">
     </button>
+    </div>
       <div class="m-2"> <p-table #myTab [columns]="cols" [value]="tableData" styleClass="p-datatable-gridlines"
           [paginator]="true" [rows]="10" [showCurrentPageReport]="true" [globalFilterFields]="['Name']">
 

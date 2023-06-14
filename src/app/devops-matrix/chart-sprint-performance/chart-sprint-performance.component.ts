@@ -2,7 +2,7 @@ import { Component, Inject, Input } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { PerformanceServiceService } from '../services/performance.service';
 import { CommonService } from '../services/common.service';
-import { ISprint } from '../models/common.model';
+import { DevOpsConstants, ISprint } from '../models/common.model';
 import { ISprintHours } from '../models/ISprintHours';
 import { ISprintTotalPoints } from '../models/ISprintTotalPoints';
 
@@ -143,13 +143,14 @@ export class ChartSprintPerformanceComponent {
   }
 
   calculateIdealArray(): Array<number> {
-    let end = this.sprintTotalPoints.reduce((end, curr) => end + curr.TotalPoints, 0) * 6;
+    let end = this.sprintTotalPoints.reduce((end, curr) => end + curr.TotalPoints, 0) * DevOpsConstants.pointConstant;
     var arr = [end];
-    if (this.selectedSprints.length > 2) {
+    let length = this.selectedSprints.length;
+    if (length > 2) {
       let i = 1;
-      let cnst = end / this.selectedSprints.length;
-      while (i < this.selectedSprints.length - 1) {
-        arr[i] = arr[i - 1] - cnst;
+      let cnst = this.commonService.RoundNumber(end / (length - 1));
+      while (i < length - 1) {
+        arr[i] = this.commonService.RoundNumber(arr[i - 1] - cnst);
         i++;
       }
     }
@@ -160,7 +161,7 @@ export class ChartSprintPerformanceComponent {
   preSelectData() {
     this.sprints = this.sprints.sort((a, b) => Number(b.startDate) - Number(a.startDate));
 
-    if (this.isHome)      
+    if (this.isHome)
       this.selectedSprints = [this.sprints[0]];
     else
       this.selectedSprints = this.sprints.slice(0, 3);
@@ -180,6 +181,7 @@ export class ChartSprintPerformanceComponent {
   getSprintTotalPoints() {
     this.performanceService.getSprintTotalPoints(this.selectedSprints).subscribe((res) => {
       this.sprintTotalPoints = res;
+      console.log(res);
     }, (error) => {
     },
       () => { this.getSprintRemainingEffort(); })
@@ -224,23 +226,9 @@ export class ChartSprintPerformanceComponent {
     })
   }
 
-  calculateInterpretation(expected: number, actual: number): string {
+  calculateInterpretation(expected: number, actual: number): any {
     let status;
-    if (expected < actual) {
-      let deviation = ((actual - expected) / expected) * 100
-      if (deviation <= 20)
-        status = "On Track"
-      else
-        status = "Needs Attention"
-    }
-    else {
-      let deviation = ((expected - actual) / expected) * 100
-      if (deviation <= 20)
-        status = "On Track"
-      else
-        status = "Needs Attention"
-    }
-    this.status = status;
-    return status;
+    let deviation = ((expected - actual) / expected) * 100
+    return deviation.toFixed(2);
   }
 }

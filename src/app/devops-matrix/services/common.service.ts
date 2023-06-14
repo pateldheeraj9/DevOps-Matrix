@@ -39,4 +39,10 @@ export class CommonService {
       .pipe(map((resp: any) => resp),
         catchError(error => error))
   }
+  RoundNumber(value: number) {
+
+    return Number(Math.round((value * 100) / 100).toFixed(2));
+
+  }
 }
+
