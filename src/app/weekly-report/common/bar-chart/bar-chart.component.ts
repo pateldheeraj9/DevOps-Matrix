@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { WeeklyReportService } from 'src/app/services/weeklyreport.service';
+import { WeeklyReportService } from '../../services/weeklyreport.service';
 
 @Component({
   selector: 'app-bar-chart',
