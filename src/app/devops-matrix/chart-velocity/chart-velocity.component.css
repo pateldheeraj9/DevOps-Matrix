@@ -1,0 +1,22 @@
+.card-header{
+    padding-left:30px;
+    padding-top:10px;
+    line-height: 1;
+    border-bottom-style: solid;
+    background-color: #7D3C98;
+    
+  }
+  .card-header h3{
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+  }
+
+  .card {
+    background: var(--surface-card);
+    border: 2px solid black;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: var(--card-shadow);
+    border-radius: 12px;
+}

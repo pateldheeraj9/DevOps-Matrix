@@ -6,140 +6,95 @@
         <div class="form-group">
             <table>
                 <tr>
-                    <td> <label for="sFormInput1">
-                            <h6>Name : </h6>
-                        </label></td>
-                    <td class="w-40"> <input id="sFormInput1" class="form-control" type="text"
+                    <td>
+                        <label style="padding: 14px;">Name :</label>
+                    </td>
+                    <td>
+                        <input id="sFormInput1" class="p-inputtext" type="text"
                             value="VP – Vasudev Pandurang Nayak" placeholder="Your full name" formControlName="Name">
                     </td>
                 </tr>
             </table>
         </div>
-        <table class="table table-striped">
+        <table style="width:100%;">
             <thead>
                 <tr>
-                    <th scope="col"></th>
-                    <th scope="col">
-                        <h6>Current Status</h6>
-                    </th>
-                    <th scope="col">
-                        <h6>Status Report</h6>
-                    </th>
+                    <th></th>
+                    <th>Current Status</th>
+                    <th>Status Report</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td>Overall
+                    <td>Overall</td>
+                    <td>
+                            <p-radioButton  class="radio-style-green" type="radio" value="g"
+                                formControlName="OverallStatus" Name="OverallStatus"></p-radioButton>
+
+                            <p-radioButton class="radio-style-yellow" type="radio"  value="y"
+                                formControlName="OverallStatus" Name="OverallStatus"></p-radioButton>
+                        
+                            <p-radioButton  class="radio-style-red" type="radio"  value="r"
+                                formControlName="OverallStatus"></p-radioButton>
+
                     </td>
                     <td>
-                        <div class="form-check form-check-inline">
-                            <input style="background-color:green;" class="form-check-input" type="radio"
-                                id="inlineRadio1" value="g" formControlName="OverallStatus" Name="OverallStatus">
-
-                        </div>
-                        <div class="form-check form-check-inline">
-                            <input style="background-color:yellow;" class="form-check-input" type="radio"
-                                id="inlineRadio2" value="y" formControlName="OverallStatus" Name="OverallStatus">
-
-                        </div>
-                        <div class="form-check form-check-inline">
-                            <input style="background-color:red;" class="form-check-input" type="radio" id="inlineRadio3"
-                                value="r" formControlName="OverallStatus">
-
-                        </div>
-                    </td>
-                    <td><textarea id="sFormInput4" class="form-control" formControlName="Overall"></textarea>
+                        <textarea id="sFormInput4" class="p-inputtext" formControlName="Overall"></textarea>
                         <!-- <small *ngIf="summary_form.hasError('required', 'Overall')">Field is required!</small> -->
                     </td>
                 </tr>
-
-                <!-- <tr>
-                        <td>Schedule
-                        </td>
-                        <td>
-                            <div class="form-check form-check-inline">
-                                <input style="background-color:green;" class="form-check-input" type="radio"
-                                    name="ScheduleStatus" id="inlineRadio1" value="g" formControlName="ScheduleStatus">
-
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <input style="background-color:yellow;" class="form-check-input" type="radio"
-                                    name="ScheduleStatus" id="inlineRadio2" value="y" formControlName="ScheduleStatus">
-
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <input style="background-color:red;" class="form-check-input" type="radio"
-                                    name="ScheduleStatus" id="inlineRadio3" value="r" formControlName="ScheduleStatus">
-
-                            </div>
-                        </td>
-                        <td><textarea id="sFormInput4" class="form-control" formControlName="Schedule"></textarea></td>
-                    </tr>
-                    <tr>
-                        <td>Resource
-                        </td>
-                        <td>
-                            <div class="form-check form-check-inline">
-                                <input style="background-color:green;" class="form-check-input" type="radio"
-                                    name="ResourceStatus" id="inlineRadio1" value="g" formControlName="ResourceStatus">
-
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <input style="background-color:yellow;" class="form-check-input" type="radio"
-                                    name="ResourceStatus" id="inlineRadio2" value="y" formControlName="ResourceStatus">
-
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <input style="background-color:red;" class="form-check-input" type="radio"
-                                    name="ResourceStatus" id="inlineRadio3" value="r" formControlName="ResourceStatus">
-
-                            </div>
-                        </td>
-                        <td><textarea id="sFormInput4" class="form-control" formControlName="Resource"></textarea></td>
-                    </tr>-->
                 <tr>
-                    <td>Risks
-                    </td>
+                    <td>Risks</td>
                     <td>
-                        <div class="form-check form-check-inline">
-                            <input style="background-color:green;" class="form-check-input" type="radio"
-                                name="RiskStatus" id="inlineRadio1" value="g" formControlName="RiskStatus">
+                            <p-radioButton class="radio-style-green"  name="RiskStatus"  
+                            value="g" formControlName="RiskStatus"></p-radioButton>                       
+                        
+                            <p-radioButton class="radio-style-yellow"  type="radio" name="RiskStatus" 
+                                value="y" formControlName="RiskStatus"></p-radioButton>
 
-                        </div>
-                        <div class="form-check form-check-inline">
-                            <input style="background-color:yellow;" class="form-check-input" type="radio"
-                                name="RiskStatus" id="inlineRadio2" value="y" formControlName="RiskStatus">
+                            <p-radioButton class="radio-style-red"  type="radio" name="RiskStatus" 
+                                value="r" formControlName="RiskStatus"></p-radioButton>
 
-                        </div>
-                        <div class="form-check form-check-inline">
-                            <input style="background-color:red;" class="form-check-input" type="radio" name="RiskStatus"
-                                id="inlineRadio3" value="r" formControlName="RiskStatus">
-
-                        </div>
                     </td>
-                    <td><textarea id="sFormInput4" class="form-control" formControlName="Risk"></textarea></td>
+                    <td><textarea id="sFormInput4" class="p-inputtext" formControlName="Risk"></textarea></td>
 
                 </tr>
                 <tr>
                     <td>Risk Mitigation</td>
                     <td></td>
-                    <td><textarea id="sFormInput4" class="form-control" formControlName="RiskMitigation"></textarea>
+                    <td><textarea id="sFormInput4" class="p-inputtext" formControlName="RiskMitigation"></textarea>
                     </td>
                 </tr>
+                
+        </table>
+        <table>
+            <tr>
+                <td style="width: 40%;">
+                    <app-bar-chart></app-bar-chart>
+                </td>
+<td style="width: 25%;"></td>
+                <td style="width: 35%;">
+                    <h6>Schedule</h6>
+                    <p>Start Date : 02-06-2023 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; End Date :
+                        09-06-2023 </p>
+
+                    <p-chart type="doughnut" [data]="pieChartData" [options]="pieChartOptions"></p-chart>
+                </td>
+            </tr>
         </table>
 
     </div>
-    <!-- <div class="col-lg-6 float-end">
-        <h6>Schedule</h6>
+    <tr>
+        <!-- <div  style="width: 40%; float:left;">
+        <app-bar-chart></app-bar-chart>
     </div> -->
-    <div class="col-lg-6 float-end">
-        <!-- <app-bar-chart></app-bar-chart> -->
-    </div>
-    <div class="col-lg-6 float-end">
+
+        <!-- <div style="width: 40%; float:right ;padding: 5px;">
         <h6>Schedule</h6>
         <p>Start Date : 02-06-2023 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; End Date : 09-06-2023 </p>
         
         <p-chart type="doughnut" [data]="pieChartData" [options]="pieChartOptions"></p-chart>
-    </div>
+    </div> -->
+
 
 </form>

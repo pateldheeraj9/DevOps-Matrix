@@ -16,8 +16,11 @@ interface User {
 })
 export class PerformanceServiceService {
   sprints:any[]=[];
-  baseUrl:string="";
-  constructor(private http: HttpClient, @Inject('BASE_URL') baseUrl: string) {
+  // baseUrl:string="";
+  baseUrl: string = "https://localhost:7042/api/";
+  constructor(private http: HttpClient
+    // , @Inject('BASE_URL') baseUrl: string
+    ) {
     this.http = http;
    }
   getdata(EmpId: number): Observable<any> {

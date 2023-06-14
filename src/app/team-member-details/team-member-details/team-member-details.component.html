@@ -1,7 +1,4 @@
-
 <app-loader [loading]="loading"></app-loader>
-
-
 
 <div class="card-header">
   <div class="flex justify-content-between flex-wrap card-container purple-container">
@@ -164,6 +161,9 @@
              <p-button icon="pi pi-pencil" (click)="showEditTeamMember(data.id)" styleClass="p-button-sm p-button-rounded p-button-danger p-button-outlined"></p-button>
              <p-button icon="pi pi-trash" (click)="deleteProduct(data.id,data.name)"
               styleClass="p-button-sm p-button-rounded p-button-danger p-button-outlined"></p-button>
+              <p-button icon="pi pi-comment" (click)="addRemarkTeamMember(data.id)" styleClass="p-button-sm p-button-rounded p-button-danger p-button-outlined"></p-button>
+              <p-button icon="pi pi-plus" (click)="showAddSkills(data.id)" styleClass="p-button-sm p-button-rounded p-button-danger p-button-outlined"></p-button>
+
               </td>
 
             </tr>

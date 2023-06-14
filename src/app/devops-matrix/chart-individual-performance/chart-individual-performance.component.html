@@ -1,5 +1,13 @@
 <div class="container">
-    <page-header PageTitle="Individual Performance (BurnDown Chart)"></page-header>
+    <!-- <page-header PageTitle="Individual Performance (BurnDown Chart)"></page-header> -->
+    <div class="card-header">
+        <div class="flex justify-content-between flex-wrap card-container purple-container">
+          <div class="flex align-items-center justify-content-center m-2">
+            <h3>Individual Performance (BurnDown Chart)</h3>
+          </div>
+        </div>
+      </div>
+      <br>
     <p-calendar [(ngModel)]="rangeDates" placeholder="Select date range" selectionMode="range" [readonlyInput]="true" (onSelect)="onDateSelect()"
         dateFormat="dd.mm.yy" class="me-2" [showIcon]="true" [maxDate]="todayDate" [disabledDays]="[0,6]"></p-calendar>
     <p-dropdown class="width250" [options]="users" [(ngModel)]="selectedUser" name="selectedUser" optionLabel="EmpName" placeholder="Select User"

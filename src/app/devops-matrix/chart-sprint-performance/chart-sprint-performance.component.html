@@ -1,5 +1,13 @@
 <div class="container">
-  <page-header PageTitle="Sprint Performance (BurnDown Chart)" *ngIf="!isHome"></page-header>
+  <!-- <page-header PageTitle="Sprint Performance (BurnDown Chart)" *ngIf="!isHome"></page-header> -->
+  <div *ngIf="!isHome" class="card-header">
+    <div class="flex justify-content-between flex-wrap card-container purple-container">
+      <div class="flex align-items-center justify-content-center m-2">
+        <h3 >Sprint Performance (BurnDown Chart)</h3>
+      </div>
+    </div>
+  </div>
+  <br>
   <p-multiSelect class="width300" [options]="sprints" [(ngModel)]="selectedSprints" placeholder="Select Sprints"
                  optionLabel="sprintName" (onChange)="onSprintSelected()" display="chip" *ngIf="!isHome"></p-multiSelect>
   <div class="col-md-12 mt-20">

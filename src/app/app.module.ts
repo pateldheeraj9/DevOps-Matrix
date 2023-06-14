@@ -33,14 +33,18 @@ import { NgPrimeComponent } from './ngPrime/ngPrime.component';
 import { ToastModule } from 'primeng/toast';
 import { ChartModule } from 'primeng/chart'
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { DevopsMatrixModule } from './devops-matrix/devops-matrix.module';
 import { NavMenuSideBarComponent } from './devops-matrix/navmenu-sidebar/navmenu-sidebar.component';
 import { WorkStatusService } from './devops-matrix/services/work-status.service';
-import { MessageService } from 'primeng/api';
+import { ConfirmationService, MessageService } from 'primeng/api';
 // import { weeklyReportsComponent } from './weekly-reports/weekly-reports.component';
 import { WeeklyReportModule } from './weekly-report/weekly-report.module';
 import { LoaderComponent } from './common/loader/loader.component';
+import { DevopsMatrixModule } from './devops-matrix/devops-matrix.module';
+import { TeamMemberRemarksComponent } from './team-member-remarks/team-member-remarks.component';
+import { TeamMemberSkillsComponent } from './team-member-skills/team-member-skills.component';
 // import { HomePageComponent } from './home-page/home-page.component';
+import { TabViewModule } from 'primeng/tabview';
+import { FieldsetModule } from 'primeng/fieldset';
 
 
 
@@ -67,6 +71,8 @@ import { LoaderComponent } from './common/loader/loader.component';
     NgPrimeComponent,
     DashboardComponent,
     LoaderComponent,
+    TeamMemberRemarksComponent,
+    TeamMemberSkillsComponent,
     // HomePageComponent
     // weeklyReportsComponent,
     // NavMenuSideBarComponent
@@ -91,7 +97,9 @@ import { LoaderComponent } from './common/loader/loader.component';
     ToastModule,
     ChartModule
     , DevopsMatrixModule,
-    WeeklyReportModule 
+    WeeklyReportModule,
+    FieldsetModule,
+    TabViewModule
 
 
 
@@ -99,7 +107,7 @@ import { LoaderComponent } from './common/loader/loader.component';
 
 
   ],
-  providers: [MessageService, WorkStatusService],
+  providers: [MessageService, WorkStatusService,ConfirmationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

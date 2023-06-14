@@ -1,22 +1,22 @@
-<fieldset class="card flex justify-content-center p-2">
+<div class="card-header">
+    <div class="flex justify-content-between flex-wrap card-container purple-container">
+      <div class="flex align-items-center justify-content-center m-2">
+        <h3>Weekly Summary</h3>
+      </div>
+    </div>
+  </div>
+
 <div>
     <p-toast></p-toast>
-    <p-steps [model]="items" [readonly]="true" [(activeIndex)]="activeIndex"></p-steps>
+    <p-steps [model]="items" [readonly]="false" [(activeIndex)]="activeIndex"></p-steps>
+</div>
+<div class="container">
+<div class="flex align-items-center justify-content-end m-2 border-round ">
+    <label style="padding: 14px;">Week Ending :</label>
+    <input id="sFormInput1" class="p-inputtext" [(ngModel)]="WeekEndingDate" name="WeekEndingDate" type="date"
+                (change)="OnDateSelection($event)" />
 </div>
 
-
-<table  class="table">
-    <tr>
-        <td class="w-25"> </td>
-        <td class="w-25"> </td>
-        <td class="w-25"> 
-            <label class="float-end" for="sFormInput1"><h6>Week Ending :</h6> </label></td>
-        <td class="w-25"> 
-            <input id="sFormInput1" class="form-control" [(ngModel)]="WeekEndingDate" name="WeekEndingDate" type="date"
-                (change)="OnDateSelection($event)" />
-        </td>
-    </tr>
-</table>
 
 <div *ngIf="activeIndex==0"><app-summary [summary_form]="summary_form"></app-summary></div>
 
@@ -30,21 +30,24 @@
 </div>
 
 <div *ngIf="activeIndex==2">
-    <app-team [team_form]="team_form" [teamData]="teamData" (OnTeamSelection)="TeamNameChange()"></app-team>
+    <app-team [team_form]="team_form" [teamData]="teamData" (OnTeamSelection)="TeamNameChange()">        
+    </app-team>
+</div>
+
 </div>
 
 
 
-<div class="mt-2">
-    <button class="btn btn-primary float-end ms-1 p-1" type="next" (click)="OnNextClick()" *ngIf="activeIndex!=2"
-        [disabled]="!isNextEnable(activeIndex)">Next </button>
-    <button class="btn btn-primary float-end ms-1 p-1" type="submit" (click)="OnSubmitWeeklyReportForm($event)" *ngIf="activeIndex==2">
-            Submit </button>
-            <button class="btn btn-primary float-end ms-1 p-1" type="submit" (click)="onpptClick()" *ngIf="activeIndex==2">
-                Export PPT </button>
-    <button class="btn btn-primary float-end ms-1 p-1" type="previous" (click)="OnPreviousClick()" *ngIf="activeIndex!=0">
-            Previous </button>
+<div style="margin-top: 10px;">
+    <p-button class="btn btn-primary float-end ms-1 p-1" type="next"
+    (click)="OnNextClick()" *ngIf="activeIndex!=2"
+        [disabled]="!isNextEnable(activeIndex)">Next </p-button>
+    <p-button class="float-end ms-1 p-1" type="submit" (click)="OnSubmitWeeklyReportForm($event)" *ngIf="activeIndex==2">
+            Submit </p-button>
+    <p-button class="btn btn-primary float-end ms-1 p-1" type="submit" (click)="onpptClick()" *ngIf="activeIndex==2">
+                Export PPT </p-button>
+    <p-button class="btn btn-primary float-end ms-1 p-1" type="previous" (click)="OnPreviousClick()" *ngIf="activeIndex!=0">
+            Previous </p-button>
             
-        </div>
+</div>
 
-</fieldset>
