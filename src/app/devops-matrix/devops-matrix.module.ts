@@ -35,6 +35,8 @@ import { ChartSprintPerformanceComponent } from './chart-sprint-performance/char
 import { ChartTeamPerformanceComponent } from './chart-team-performance/chart-team-performance.component';
 import { ChartVelocityComponent } from './chart-velocity/chart-velocity.component';
 import { ChartWorkScopeAnalysisComponent } from './chart-work-scope-analysis/chart-work-scope-analysis.component';
+import { ChartAnalysisComponent } from './chart-work-scope-analysis/chart-analysis/chart-analysis.component';
+import { DataAnalysisComponent } from './chart-work-scope-analysis/data-analysis/data-analysis.component';
 import { ChartWorkStatusComponent } from './chart-work-status/chart-work-status.component';
 import { HomeComponent } from './home/home.component';
 import { SprintDetailsComponent } from './sprint-details/sprint-details.component';
@@ -70,6 +72,8 @@ const routes: Routes = [
     ChartTeamPerformanceComponent,
     ChartVelocityComponent,
     ChartWorkScopeAnalysisComponent,
+    ChartAnalysisComponent,
+    DataAnalysisComponent,
     ChartWorkStatusComponent,
     HomeComponent,
     SprintDetailsComponent,
