@@ -1,0 +1,29 @@
+<div>
+    <h1 style="color:green;text-align: center;">Bar Chart Of Team Details</h1>
+   
+
+    <div class="col-12 lg:col-6">
+        <div class="card" style="height: 85.5vh;" >
+            <h5>Bar Chart</h5>
+            <p-chart type="bar" 
+                 [data]="basicData" 
+                 [options]="StackedOptions">
+        </p-chart>   
+        </div>
+    </div>
+
+   
+    <h1 style="color:green;text-align: center;">Pie Chart Of Team Details</h1>
+    <div class="col-12 lg:col-6">
+        <div class="card" style="height: 85.5vh;" >
+
+    <p-chart type="pie" 
+    [data]="basicData"
+    [options]="chartOptions" 
+    [style]="{'width': '40%'}">
+</p-chart>
+    </div>
+</div>
+   
+
+</div>

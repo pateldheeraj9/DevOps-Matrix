@@ -81,3 +81,7 @@ export interface ISeverityBugCount {
    low: string; 
    total: number; 
 }
+
+export class DevOpsConstants{
+  public static pointConstant:number = 6.5;
+}

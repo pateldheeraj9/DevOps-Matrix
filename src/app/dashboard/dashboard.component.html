@@ -39,13 +39,13 @@
 </div> -->
 
   <!-- Percentage  -->
-<div class="flex">
+<div class="flex" >
   <div class="col-12 xl:col-6">
-    <div class="card">
+    <div class="card" style="overflow: scroll;">
         <div class="flex justify-content-between align-items-center mb-5">
             <h5 class="text-purple-900">Overview</h5>
         </div>
-        <ul class="list-none p-0 m-0">
+        <ul class="list-none p-0 m-0" >
             <li class="flex flex-column md:flex-row md:align-items-center md:justify-content-between mb-4" *ngFor="let data of teamData">
                 <div class="mb-3">
                     <span class="text-900 font-semibold mr-2 mb-1 md:mb-0 text-lg"><span class="text-purple-800 text-xl">Project:</span> {{data.projectName}}</span>
@@ -66,7 +66,7 @@
 
 <!-- Bar Graph -->
 <div class="col-12 lg:col-6">
-    <div class="card" style="height: 85.5vh;overflow: scroll;" >
+    <div class="card" style="height: 85.5vh;" >
         <h5>Bar Chart</h5>
         <p-chart type="bar" [data]="barData" [options]="barOptions"></p-chart>
     </div>
