@@ -11,7 +11,7 @@
       <h5>Download Report</h5>
     </legend>
     <div class="form-group">
-      <table class="form-control">
+      <table class="p-inputtext">
         <tr>
           <td class="fw-bolder">
             <label for="reportName">Report Name : </label>
@@ -42,7 +42,7 @@
               <label for="sFormInput1">Start Date:</label>
             </td>
             <td class="p-3">
-              <input id="sFormInput2" name="sFormInput2" class="form-control" type="date" [(ngModel)]="a_startDate"
+              <input id="sFormInput2" name="sFormInput2" class="p-inputtext" type="date" [(ngModel)]="a_startDate"
                 formControlName="a_startDate">
             </td>
             <td>
@@ -55,7 +55,7 @@
               <label for="sFormInput1">End Date:</label>
             </td>
             <td class="p-3">
-              <input id="sFormInput3" name="sFormInput3" class="form-control" type="date" [(ngModel)]="a_weekEndDate"
+              <input id="sFormInput3" name="sFormInput3" class="p-inputtext" type="date" [(ngModel)]="a_weekEndDate"
                 formControlName="a_weekEndDate">
             </td>
             <td>
@@ -65,10 +65,10 @@
               </small>
             </td>
             <td class="p-2">
-              <button class="btn btn-primary  p-1" type="submit"
+              <p-button class="btn btn-primary  p-1" type="submit"
                 [disabled]="calendarForm.invalid || calendarForm.pending" (click)="exportactionDateToExcel($event)">
                 Submit
-              </button>
+              </p-button>
             </td>
           </tr>
         </div>
@@ -94,7 +94,7 @@
               <label for="sFormInput1">Week Ending : </label>
             </td>
             <td class="w-40">
-              <input id="sFormInput1" class="form-control" name="WeekEndingDate" type="date" [(ngModel)]="endDate"
+              <input id="sFormInput1" class="p-inputtext" name="WeekEndingDate" type="date" [(ngModel)]="endDate"
                 formControlName="endDate" [max]="getCurrentDate()" />
               <small *ngIf="formName.controls['WeekEndingDate'].errors?.['max']"></small>
             </td>
@@ -121,7 +121,7 @@
                 <label for="sFormInput1"> Start Date : </label>
               </td>
               <td class="p-2">
-                <input id="sFormInput1" name="sFormInput1" class="form-control" type="date" [(ngModel)]="startDate"
+                <input id="sFormInput1" name="sFormInput1" class="p-inputtext" type="date" [(ngModel)]="startDate"
                   formControlName="startDate">
               </td>
               <td>
@@ -134,7 +134,7 @@
                 <label for="sFormInput1"> End Date : </label>
               </td>
               <td class="p-2">
-                <input id="sFormInput2" name="sFormInput2" class="form-control" type="date" [(ngModel)]="weekEndDate"
+                <input id="sFormInput2" name="sFormInput2" class="p-inputtext" type="date" [(ngModel)]="weekEndDate"
                   formControlName="weekEndDate">
               </td>
               <td>
