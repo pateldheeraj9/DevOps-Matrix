@@ -121,7 +121,7 @@
   }
 
   .wrapper .section .container {
-    margin-left: 20px;
+    margin-left: 10px;
   }
 
   body.active .wrapper .sidebar {
@@ -153,7 +153,8 @@
 
     <nav>
       <ul>
-        <li class="dropdown"><a href="#" routerLink="/Dashboard">Teams Data</a>
+        <li class="dropdown"><a href="#" routerLink="/Dashboard"><i
+          class="fas fa-th"></i>&nbsp;&nbsp;Teams Data</a>
           <ul>
             <li>
               <a href="#" routerLink="/Dashboard">
@@ -178,7 +179,8 @@
         </li>
       </ul>
       <ul>
-        <li class="dropdown"><a href="#" [routerLink]="['/weeklyreport/Steps']">Weekly Report</a>
+        <li class="dropdown"><a href="#" [routerLink]="['/weeklyreport/Steps']"><i
+          class="fas fa-file"></i>&nbsp;&nbsp;Weekly Report</a>
           <ul>
             <li>
               <a [routerLink]="['/weeklyreport/Steps']" routerLinkActive="active"
@@ -198,7 +200,8 @@
         </li>
       </ul>
       <ul>
-        <li class="dropdown"><a href="#" [routerLink]="['/devops-matrix/home']">DevOps-Matrix</a>
+        <li class="dropdown"><a href="#" [routerLink]="['/devops-matrix/home']"><i
+              class="fas fa-chart-bar"></i>&nbsp;&nbsp;DevOps-Matrix</a>
           <ul>
             <li>
               <a [routerLink]="['/devops-matrix/home']" routerLinkActive="active"
