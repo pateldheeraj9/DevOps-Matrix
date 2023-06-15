@@ -6,6 +6,10 @@
     background-color: #7D3C98;
     
   }
+  .pt-20 {
+    padding-top: 20px !important;
+  }
+ 
   .card-header h3{
     color: white;
     font-weight: bold;

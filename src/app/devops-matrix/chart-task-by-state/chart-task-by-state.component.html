@@ -15,7 +15,7 @@
         <label for="ms-cities">Select Sprint</label>
       </span>
     </div>
-    <div class="col-lg-3 mt-20">
+    <div class="col-lg-3 mt-40">
       <p-radioButton *ngIf="selectedSprint" name="group1" value="User Story" label="User Story"
                      [(ngModel)]="selectedWorkItemTypeValue" inputId="opt1"
                      (onClick)="OnWorkItemTypeChanged($event)"></p-radioButton>&nbsp;&nbsp;
@@ -23,7 +23,7 @@
                      [(ngModel)]="selectedWorkItemTypeValue" inputId="opt2"
                      (onClick)="OnWorkItemTypeChanged($event)"></p-radioButton>
     </div>
-    <div class="col-lg-6">
+    <div class="col-lg-6 ">
       <span class="p-float-label">
         <p-dropdown display="chip" *ngIf="selectedWorkItemTypeValue != ''" [panelStyle]="{ 'max-width':'400px'}"
                     [style]="{'max-width':'400px'}" class="width300" [options]="workItemList" optionLabel="Title"
