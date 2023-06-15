@@ -22,7 +22,7 @@
 <div *ngIf="tableShow == true">
   <div class="row">
     <div class="col-lg-12">
-      <data-export TableCaption="Count of Work Items" (exportToCSV)="tableWorkItemsCountByStatus.exportCSV()"></data-export>
+      <data-export TableCaption="&nbsp;Count of Work Items" (exportToCSV)="tableWorkItemsCountByStatus.exportCSV()"></data-export>
       <p-table #tableWorkItemsCountByStatus [columns]="columns" [value]="workItemsCountByStatus" exportFilename="Count of Work Items"
                styleClass="p-datatable-gridlines p-datatable-sm" [tableStyle]="{ 'width': '95%' }">
         <ng-template pTemplate="header">

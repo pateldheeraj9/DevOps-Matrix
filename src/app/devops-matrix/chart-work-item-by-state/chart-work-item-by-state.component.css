@@ -32,3 +32,9 @@
 .col-lg-9{
   margin-top: 15px !important;
 }
+.workItemByStatePieChart{
+  margin-top: 40px !important;
+}
+.workItemByStatetable{
+  margin-top: -60px !important;
+}

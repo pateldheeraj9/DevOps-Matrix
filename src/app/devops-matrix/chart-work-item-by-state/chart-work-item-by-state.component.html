@@ -33,7 +33,7 @@
   <table width="100%">
     <tr>
       <td width="30%">
-          <div *ngIf="totalWorkItems != 0">
+          <div *ngIf="totalWorkItems != 0" class="workItemByStatePieChart">
             <p class="text-center"><b>{{workItemTypeDisplayText}} by State</b></p>
             <p class="text-center">Total {{workItemTypeDisplayText}} : {{totalWorkItems}}</p>
             <p-chart type="pie" [data]="pieChartData" [options]="pieChartOptions"></p-chart>
@@ -43,7 +43,7 @@
       
       <td width="70%">
         <p *ngIf="totalWorkItems == 0"><b>No data found.</b></p>
-        <div *ngIf="employeeData.length > 0">
+        <div *ngIf="employeeData.length > 0" class="workItemByStatetable">
           <data-export [TableCaption]="tableCaption" (exportToCSV)="tableWorkItemStatus.exportCSV()"></data-export>
           <p-table #tableWorkItemStatus [paginator]="true" [rows]="5" class="taskTable" [columns]="columns"
                    [value]="employeeData" aria-disabled="true" [exportFilename]="tableCaption"
