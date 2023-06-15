@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ChartTeamPerformanceComponent, ChartTeamPerformanceComponent } from './chart-team-performance.component';
+import { ChartTeamPerformanceComponent } from './chart-team-performance.component';
 
 describe('ChartTeamPerformanceComponent', () => {
   let component: ChartTeamPerformanceComponent;

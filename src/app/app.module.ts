@@ -45,6 +45,7 @@ import { TeamMemberSkillsComponent } from './team-member-skills/team-member-skil
 // import { HomePageComponent } from './home-page/home-page.component';
 import { TabViewModule } from 'primeng/tabview';
 import { FieldsetModule } from 'primeng/fieldset';
+import { GraphImplementationComponent } from './graph-implementation/graph-implementation.component';
 
 
 
@@ -73,6 +74,7 @@ import { FieldsetModule } from 'primeng/fieldset';
     LoaderComponent,
     TeamMemberRemarksComponent,
     TeamMemberSkillsComponent,
+    GraphImplementationComponent
     // HomePageComponent
     // weeklyReportsComponent,
     // NavMenuSideBarComponent
@@ -99,6 +101,7 @@ import { FieldsetModule } from 'primeng/fieldset';
     , DevopsMatrixModule,
     WeeklyReportModule,
     FieldsetModule,
+    
     TabViewModule
 
 

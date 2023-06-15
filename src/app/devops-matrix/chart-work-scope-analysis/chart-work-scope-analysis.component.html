@@ -31,7 +31,7 @@
   <br>
   <tr height="10px"></tr>
   <tr>
-    <td>
+    <td >
       <span class="p-float-label mt-10">
         <p-multiSelect [style]="{'max-width':'300px'}" class="width300" [options]="sprints" [(ngModel)]="selectedSprints" optionLabel="sprintNumber"
                        placeholder="Select Sprints" [filter]="true" filterBy="name" display="chip"
@@ -40,11 +40,12 @@
       </span>
     </td>
     <td>
-      <p-button label="Analyze" (click)="AnalyzeWorkScope()"></p-button>
+      <p-button label="Analyze"  (click)="AnalyzeWorkScope()" ></p-button>
     </td>
     <td></td>
   </tr>
 </table>
+
 <div *ngIf="showAnalysis" width="100%">
   <table width="100%" class="mt-30">
     <tr>

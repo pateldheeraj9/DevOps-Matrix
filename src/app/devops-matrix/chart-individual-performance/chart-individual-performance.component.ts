@@ -5,6 +5,7 @@ import { IUser } from '../models/IUser';
 import { ICompletedTasks } from '../models/ICompletedTasks';
 import { CommonService } from '../services/common.service';
 import { ActivatedRoute } from '@angular/router';
+import { ISprint } from '../models/common.model';
 
 @Component({
   selector: 'app-chart-individual-performance',
@@ -15,7 +16,7 @@ import { ActivatedRoute } from '@angular/router';
 export class ChartIndividualPerformanceComponent implements OnInit {
   constructor(private performanceService: PerformanceServiceService,
     private commonService: CommonService, http: HttpClient, @Inject('BASE_URL') baseUrl: string,
-    private route :ActivatedRoute) {
+    private route: ActivatedRoute) {
   }
   addDays = (date: Date, days: number): Date => {
     let temp = date;
@@ -25,15 +26,22 @@ export class ChartIndividualPerformanceComponent implements OnInit {
   remainingEfforts: any;
   userTotalHours: number = 0;
   date: any;
+  sprints: ISprint[] = [];
   todayDate: Date = new Date();
   rangeDates: Date[] = [this.addDays(new Date(), -14), this.todayDate];
   completedTasks: ICompletedTasks[] = [];
   remainingTasks: ICompletedTasks[] = [];
+  selectedSprints?: ISprint;
   users: IUser[] = [];
   data: any;
   options: any;
-  selectedUser: IUser = { EmpId: 0, EmpName: "",EmpEmail:'' };
+  selectedUser: IUser = { EmpId: 0, EmpName: "", EmpEmail: '' };
   ngOnInit() {
+    this.commonService.getSprints().subscribe((res) => {
+      this.sprints = res;
+    }, (error) => {
+    },
+      () => { this.preSelectData(this.sprints[0]); });
     const documentStyle = getComputedStyle(document.documentElement);
     const textColor = documentStyle.getPropertyValue('--text-color');
     const textColorSecondary = documentStyle.getPropertyValue('--text-color-secondary');
@@ -145,7 +153,6 @@ export class ChartIndividualPerformanceComponent implements OnInit {
         }
       }
     };
-    this.onDateSelect();
     this.getAllEmployees();
   }
   onChangeUser() {
@@ -173,6 +180,12 @@ export class ChartIndividualPerformanceComponent implements OnInit {
   }
   onDateSelect() {
     let temp: any = this.data;
+    if(this.selectedSprints){
+      this.rangeDates = [new Date(this.selectedSprints.startDate),new Date(this.selectedSprints.endDate)];
+    }
+    else{
+      return;
+    }
     temp.labels = this.getDaysArray(this.rangeDates[0], this.rangeDates[1]).map((x: any) => x.toISOString().split('T')[0]);
     this.data = Object.assign({}, temp);
     this.getUserData();
@@ -183,6 +196,7 @@ export class ChartIndividualPerformanceComponent implements OnInit {
     var dt = new Date(start);
     while (dt <= new Date(end)) {
       let day = dt.getDay();
+      console.log(dt,day);
       if (day != 0 && day != 6)
         arr.push(new Date(dt));
       dt.setDate(dt.getDate() + 1);
@@ -220,14 +234,14 @@ export class ChartIndividualPerformanceComponent implements OnInit {
 
     },
       () => {
-        if(this.route.snapshot.paramMap.get('empEmail')!=undefined){
-          let user = this.users.find(x=>x.EmpEmail==
+        if (this.route.snapshot.paramMap.get('empEmail') != undefined) {
+          let user = this.users.find(x => x.EmpEmail ==
             this.route.snapshot.paramMap.get('empEmail'));
-          if(user!=undefined){
+          if (user != undefined) {
             this.selectedUser = user;
           }
         }
-        else{
+        else {
           this.selectedUser = this.users[0];
         }
         this.onChangeUser();
@@ -244,13 +258,19 @@ export class ChartIndividualPerformanceComponent implements OnInit {
         let end = this.userTotalHours;
         arr.push(end);
         let i = 1;
-        let cnst = end / this.data.labels.length;
+        let cnst = this.commonService.RoundNumber((end / (this.data.labels.length - 1)));
         while (i < this.data.labels.length - 1) {
-          arr[i] = arr[i - 1] - cnst;
+          arr[i] = this.commonService.RoundNumber((arr[i - 1] - cnst));
           i++;
         }
         arr.push(0);
       });
     return arr;
+  }
+  preSelectData(sprint:any){
+    this.sprints = this.sprints.sort((a, b) => Number(b.startDate) - Number(a.startDate));
+    this.selectedSprints = this.sprints[0];
+    this.rangeDates = [new Date(sprint.startDate),new Date(sprint.endDate)];
+    this.onDateSelect();
   }
 }
