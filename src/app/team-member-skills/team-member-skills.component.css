@@ -29,13 +29,28 @@
     margin-left: 18px;
   }
   .card-header{
-    padding-left:30px;
-    padding-top:1px;
+    padding-left:37px;
+    padding-top:16px;
     height: 60px;
     border-bottom-style: solid;
     background-color: #7D3C98;
     
   }
+  .addskills{
+    margin-top: 0px !important;
+    margin-left: -12px !important;
+    margin-bottom: 18px !important;
+  }
+
+  .addskillsbox{
+    margin-left: -12px
+  }
+  .fielddata{
+    margin-top: 10px !important;
+    margin-left: 10px !important;
+    margin-bottom: 10px !important;
+  }
+
   .btn{display:inline-block;margin-bottom:0;font-weight:400;text-align:center;white-space:nowrap;vertical-align:middle;-ms-touch-action:manipulation;touch-action:manipulation;cursor:pointer;background-image:none;border:1px solid transparent;padding:6px 12px;font-size:14px;line-height:1.42857143;border-radius:4px;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}
   .addbutton{
     background-color: green;
@@ -72,7 +87,7 @@
   input, select, textarea {
     width: 80%;
     padding: 12px;
-    border: 1px solid;
+    /* border: 1px solid; */
     border-radius: 4px;
     resize: vertical;
   }

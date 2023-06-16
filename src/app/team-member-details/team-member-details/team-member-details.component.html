@@ -76,19 +76,15 @@
 
       <div class="m-2"> <input type="text" class="p-inputtext" (keyup)="filterData(searchKey.value)" #searchKey
           placeholder="Search By Name, Email Id or PhoneNo" pInputText /></div>
-          <div style="position: absolute;z-index: 20000;right:30px;">
+      <div style="position: absolute;z-index: 20000;right:30px;">
 
-          <button type="button" 
-          pButton pRipple 
-          icon="pi pi-file-excel" 
-          (click)="exportExcel()"
-          class="p-button-success ml-2 rightalign" 
-          pTooltip="XLS" 
-          tooltipPosition="bottom">
-    </button>
-    </div>
-      <div class="m-2"> <p-table #myTab [columns]="cols" [value]="tableData" styleClass="p-datatable-gridlines"
-          [paginator]="true" [rows]="10" [showCurrentPageReport]="true" [globalFilterFields]="['Name']">
+        <button type="button" pButton pRipple icon="pi pi-file-excel" (click)="exportExcel()"
+          class="p-button-success ml-2 rightalign" pTooltip="XLS" tooltipPosition="bottom">
+        </button>
+      </div>
+      <div class="m-2">
+        <p-table class="tblteammemberdetails" #myTab [columns]="cols" [value]="tableData" styleClass="p-datatable-gridlines" [paginator]="true"
+          [rows]="10" [showCurrentPageReport]="true" [globalFilterFields]="['Name']">
 
           <ng-template pTemplate="header">
 
@@ -156,18 +152,22 @@
               </td>
 
               <td width="13%">
-                
-             <p-button icon="pi pi-search" (click)="showViewTeamMember(data.id)" styleClass="p-button-sm p-button-rounded p-button-danger p-button-outlined"></p-button>
-             <p-button icon="pi pi-pencil" (click)="showEditTeamMember(data.id)" styleClass="p-button-sm p-button-rounded p-button-danger p-button-outlined"></p-button>
-             <p-button icon="pi pi-trash" (click)="deleteProduct(data.id,data.name)"
-              styleClass="p-button-sm p-button-rounded p-button-danger p-button-outlined"></p-button>
-              <p-button icon="pi pi-comment" (click)="addRemarkTeamMember(data.id)" styleClass="p-button-sm p-button-rounded p-button-danger p-button-outlined"></p-button>
-              <p-button icon="pi pi-plus" (click)="showAddSkills(data.id)" styleClass="p-button-sm p-button-rounded p-button-danger p-button-outlined"></p-button>
+
+                <p-button icon="pi pi-search" (click)="showViewTeamMember(data.id)"
+                  styleClass="p-button-sm p-button-rounded p-button-danger p-button-outlined"></p-button>
+                <p-button icon="pi pi-pencil" (click)="showEditTeamMember(data.id)"
+                  styleClass="p-button-sm p-button-rounded p-button-danger p-button-outlined"></p-button>
+                <p-button icon="pi pi-trash" (click)="deleteProduct(data.id,data.name)"
+                  styleClass="p-button-sm p-button-rounded p-button-danger p-button-outlined"></p-button>
+                <p-button icon="pi pi-comment" (click)="addRemarkTeamMember(data.id)"
+                  styleClass="p-button-sm p-button-rounded p-button-danger p-button-outlined"></p-button>
+                <p-button icon="pi pi-plus" (click)="showAddSkills(data.id)"
+                  styleClass="p-button-sm p-button-rounded p-button-danger p-button-outlined"></p-button>
 
               </td>
 
             </tr>
-          </ng-template> 
+          </ng-template>
         </p-table>
       </div>
     </div>
@@ -177,11 +177,13 @@
 
 <p-dialog [(visible)]="deleteProductDialog" header="Confirm" [modal]="true" [style]="{width:'450px'}">
   <div class="flex align-items-center justify-content-center">
-      <i class="pi pi-exclamation-triangle mr-3" style="font-size: 2rem"></i>
-      <span>Are you sure you want to delete  Member - <b>{{deletedname}}</b>?</span>
+    <i class="pi pi-exclamation-triangle mr-3" style="font-size: 2rem"></i>
+    <span>Are you sure you want to delete Member - <b>{{deletedname}}</b>?</span>
   </div>
   <ng-template pTemplate="footer">
-      <button pButton pRipple icon="pi pi-times" class="p-button-text" label="No" (click)="deleteProductDialog = false"></button>
-      <button pButton pRipple icon="pi pi-check" class="p-button-text" label="Yes" (click)="deleteMemberById(deletedid)"></button>
+    <button pButton pRipple icon="pi pi-times" class="p-button-text" label="No"
+      (click)="deleteProductDialog = false"></button>
+    <button pButton pRipple icon="pi pi-check" class="p-button-text" label="Yes"
+      (click)="deleteMemberById(deletedid)"></button>
   </ng-template>
 </p-dialog>

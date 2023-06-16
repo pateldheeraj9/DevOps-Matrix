@@ -122,6 +122,7 @@
 
   .wrapper .section .container {
     margin-left: 10px;
+    width: 99% !important;
   }
 
   body.active .wrapper .sidebar {
@@ -132,6 +133,10 @@
     margin-left: 0;
     width: 100%;
   }
+  nav ul .dropdown:hover ul {
+    display: initial;
+}
+
 </style>
 
 
@@ -147,14 +152,16 @@
   <div class="sidebar">
     <div class="profile">
       <!-- <img src="https://1.bp.blogspot.com/-vhmWFWO2r8U/YLjr2A57toI/AAAAAAAACO4/0GBonlEZPmAiQW4uvkCTm5LvlJVd_-l_wCNcBGAsYHQ/s16000/team-1-2.jpg" alt="profile_picture"> -->
-      <h3>New Tech</h3>
+      <h3><b>New Tech</b></h3>
 
     </div>
 
     <nav>
       <ul>
-        <li class="dropdown"><a href="#" routerLink="/Dashboard"><i
-          class="fas fa-th"></i>&nbsp;&nbsp;Teams Data</a>
+        <li class="dropdown">
+          <a href="#"><i class="fas fa-th"></i>&nbsp;&nbsp;Teams Data
+            <!-- <i class="fas fa-chevron-right"></i> -->
+          </a>
           <ul>
             <li>
               <a href="#" routerLink="/Dashboard">
@@ -179,8 +186,10 @@
         </li>
       </ul>
       <ul>
-        <li class="dropdown"><a href="#" [routerLink]="['/weeklyreport/Steps']"><i
-          class="fas fa-file"></i>&nbsp;&nbsp;Weekly Report</a>
+        <li class="dropdown">
+          <a href="#" [routerLink]="['/weeklyreport/Steps']"><i class="fas fa-file"></i>&nbsp;&nbsp;Weekly Report
+            <!-- <i class="fas fa-chevron-right"></i> -->
+          </a>
           <ul>
             <li>
               <a [routerLink]="['/weeklyreport/Steps']" routerLinkActive="active"
@@ -200,8 +209,10 @@
         </li>
       </ul>
       <ul>
-        <li class="dropdown"><a href="#" [routerLink]="['/devops-matrix/home']"><i
-              class="fas fa-chart-bar"></i>&nbsp;&nbsp;DevOps-Matrix</a>
+        <li class="dropdown">
+          <a href="#" [routerLink]="['/devops-matrix/home']"><i class="fas fa-chart-bar"></i>&nbsp;&nbsp;DevOps-Matrix
+            <!-- <i class="fas fa-chevron-right"></i> -->
+          </a>
           <ul>
             <li>
               <a [routerLink]="['/devops-matrix/home']" routerLinkActive="active"

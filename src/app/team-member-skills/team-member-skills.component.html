@@ -11,19 +11,19 @@
             <ng-container formArrayName="skills">
                 <ng-container *ngFor="let skillForm of skills.controls; let i = index">
                 <form [formGroup]="skillForm">
-                    <div class="card"> 
+                    <div class="card addskills"> 
                         <div class="formgroup-inline">
-                            <div class="field">
+                            <div class="field fielddata">
                                 <p-dropdown id="skillType" formControlName="skillType" [options]="skilltypes" optionLabel="type" placeholder="Select a Skill type"></p-dropdown>
                                 <div style="color: red;" *ngIf="skillForm?.controls?.skillType?.errors?.forbiddenType.value">
                                     {{skillForm?.controls?.skillType?.errors?.forbiddenType.value}}
                                 </div>
                             </div>
                            
-                            <div class="field">
+                            <div class="field fielddata">
                                 <input type="text" pInputText formControlName="skillName" placeholder="Enter Skill"/>
                             </div>
-                            <div class="field">
+                            <div class="field fielddata">
                                 <p-button icon="pi pi-times" styleClass="p-button-rounded p-button-danger p-button-outlined" (click)="deleteSkill1(i)"></p-button>
 
                             </div>
@@ -34,7 +34,7 @@
                 </ng-container>
             </ng-container>
             <p-toast></p-toast>
-            <button type="submit" icon="pi pi-plus" (click)="addSkill1()" pButton pRipple label="Add" style="margin-right: 20px;"></button>
+            <button type="submit" icon="pi pi-plus" (click)="addSkill1()" pButton pRipple label="Add" style="margin-right: 20px; margin-left: -12px;"></button>
             <button type="submit" icon="pi pi-check" class="p-button-success" pButton pRipple label="Save" (click)="submitSkills()" class="p-button-success" style="margin-right: 20px;"></button>
             <p-button label="Cancel" icon="pi pi-times" styleClass="p-button-danger" routerLink="/TeamMemberDetails" (click)="hideDialog()"></p-button>
            
