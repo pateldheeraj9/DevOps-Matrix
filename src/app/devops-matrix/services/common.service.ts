@@ -4,7 +4,7 @@ import { Observable, of, map, catchError } from 'rxjs';
 import { ISprint } from '../models/common.model';
 import { IUser } from '../models/IUser';
 import { ISprintTotalPoints } from '../models/ISprintTotalPoints';
-import { environment } from '../environments/environment.prod';
+import { environment } from '../../../environments/environment.prod';
 
 @Injectable({
   providedIn: 'root'

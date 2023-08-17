@@ -10,14 +10,13 @@ import { WeeklyReportService } from 'src/app/weekly-report/services/weeklyreport
 })
 export class PptServiceService {
   constructor(private WeeklyReportService:WeeklyReportService) {
-  
    }
 
    transformDate(date: string | number | Date) {
     return""
    // return this.datePipe.transform(date, 'dd-MM-yyyy')?.toString();
   }
-  createPPt(weeklySummaryReport:WeeklySummaryReport) {
+  createPPt(weeklySummaryReport:WeeklySummaryReport): PptxGenJS {
     let ppt = new PptxGenJS();
     ppt.layout = "LAYOUT_WIDE";
 
@@ -124,31 +123,11 @@ let tActiveResource=teamData.map((p: { tdTeamMembers: any; }) =>p.tdTeamMembers)
       y: 1,
       h: 3.20,
       w: 4.15 ,showLegend: true,showTitle: true,title:"Resource",showCatAxisTitle:false,catAxisTitle:'',showValAxisTitle:true,valAxisTitle:'Resource'});
-  
-    // slide.addText("Dokumentasi", {
-    //   shape: ppt.ShapeType.roundRect,
-    //   color: "FFFFFF",
-    //   h: 0.507,
-    //   w: 2.55,
-    //   bold: true,
-    //   align: "center",
-    //   fill: { color: "329F5B" },
-    //   x: 10.37,
-    //   y: 1.02
-    // });
-  
-    // let images = JSON.parse(this.data[0].images);
-    // let imagePlaced = images.length > 6 ? 6 : images.length;
-    // for (let i = 0; i < imagePlaced; i++) {
-    //   if (i === 0) {
-    //     slide.addImage({ path: images[i], x: 7.02, y: 1.6, w: 3, h: 1.687 });
-    //   }
-    // }
    
     let scheduleData=this.WeeklyReportService.getScheduleDetail(); 
-let sPlannedWorkItems=scheduleData.map((p: { PlannedWorkItems: any; }) =>p.PlannedWorkItems);
-let sCompletedWorkItems=scheduleData.map((p: { CompletedWorkItems: any; }) =>p.CompletedWorkItems);
-let sIncompleteWorkItems=scheduleData.map((p: { IncompleteWorkItems: any; }) =>p.IncompleteWorkItems);
+    let sPlannedWorkItems=scheduleData.map((p: { PlannedWorkItems: any; }) =>p.PlannedWorkItems);
+    let sCompletedWorkItems=scheduleData.map((p: { CompletedWorkItems: any; }) =>p.CompletedWorkItems);
+    let sIncompleteWorkItems=scheduleData.map((p: { IncompleteWorkItems: any; }) =>p.IncompleteWorkItems);
 
     let WorkItems = [
       {
@@ -276,44 +255,60 @@ let sIncompleteWorkItems=scheduleData.map((p: { IncompleteWorkItems: any; }) =>p
   
   );
 
-  teamSlide.addTable(teamRow , {
-    w: 8.35,
-    x: 0.35,
-    y: 1.20,
-    border: { type: "solid", pt: 1 },
-    colW: [1.5, 1.5, 5.5],
-    autoPage: true,
-    autoPageRepeatHeader: true,
-    autoPageLineWeight:0.9,
-   // autoPageCharWeight:1,
-   // margin: 0.05
-  });
-
-
-
-
-
-
-
-
-
-
+      teamSlide.addTable(teamRow , {
+        w: 8.35,
+        x: 0.35,
+        y: 1.20,
+        border: { type: "solid", pt: 1 },
+        colW: [1.5, 1.5, 5.5],
+        autoPage: true,
+        autoPageRepeatHeader: true,
+        autoPageLineWeight:0.9,
+      // autoPageCharWeight:1,
+      // margin: 0.05
+      });
     });
 //////////Thank Yoy
     let slideTY = ppt.addSlide();
-slideTY.background= { path: "../../../../assets/persistanceSlide.png" };
-slideTY.addText("Thank You !", {
-     shape: ppt.ShapeType.roundRect,
-    fontSize:30,
-     bold: true,
-     align: "left",
-    x: 0.6, y: 1, w: 12, h: 5.25 
-   });
-    // Save the Presentation
-    ppt.writeFile({ fileName: 'weeklySummaryReport'+new Date(weeklySummaryReport.Summary.WeekEndingDate).toDateString()+'.pptx' });
+    slideTY.background= { path: "../../../../assets/persistanceSlide.png" };
+    slideTY.addText("Thank You !", {
+        shape: ppt.ShapeType.roundRect,
+        fontSize:30,
+        bold: true,
+        align: "left",
+        x: 0.6, y: 1, w: 12, h: 5.25 
+      });
+      return ppt;
+  }
+
+  downloadPpt(weeklySummaryReport:WeeklySummaryReport){
+    let ppt = this.createPPt(weeklySummaryReport);
+    ppt.writeFile({ fileName: 'weeklySummaryReport'+ new Date(weeklySummaryReport.Summary.WeekEndingDate).toDateString()+'.pptx' });
   }
   
- 
+  sendEmailWithPpt(weeklySummaryReport:WeeklySummaryReport): Promise<FormData> {
+    let ppt = this.createPPt(weeklySummaryReport);
+    let weekEndDate = weeklySummaryReport.Summary.WeekEndingDate;
+    let fileName = 'weeklySummaryReport'+new Date(weekEndDate).toDateString()+'.pptx';
+    let objToSend = {
+      toEmail: ['fatema_kapadia@persistent.com','shaunak_mahajan@persistent.com'],
+      Subject: "Weekly Status Report",
+      Body: "PFA the Weekly ppt",
+      Attachments: <any>[]
+    }
+    let formData = new FormData();
+    return ppt.write("Blob" as any)
+    .then((data) => {
+        let pptFile = new File([data],fileName);
+        objToSend.Attachments.push(pptFile);
+        formData.append('toEmail', JSON.stringify(objToSend.toEmail));
+        formData.append('Subject',objToSend.Subject);
+        formData.append('Body',objToSend.Body);
+        formData.append('Attachments',data as Blob,fileName);
+        return formData;
+
+    })
+  }
 
   statusColor(value:string): string {
     switch (value) {

@@ -63,7 +63,7 @@ export class UploadSprintDataComponent {
 
     return this._httpClient.post(this.baseUrl + 'sprintdata', formData, httpOptions).subscribe(
       data => {
-        this.success = true;
+        this.success = true;      
         this.loading = false;
         this.isSubmitDisabled = false;
       },

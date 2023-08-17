@@ -307,12 +307,17 @@ console.log(this.weeklySummaryReport);
           .addWeeklySummaryReport(this.weeklySummaryReport)
           .subscribe((result: any) => {
             if (result) {
-              this.messageService.add({
-                severity: 'success',
-                summary: 'Success',
-                detail: 'Weekly report added successfully',
-                life: 3000,
-              });
+              this.pptServiceService.sendEmailWithPpt(this.weeklySummaryReport).then((data) => {
+                let formData = data;
+                this._weeklyReportService.sendEmailWithPpt(formData).subscribe(()=>{
+                this.messageService.add({
+                  severity: 'success',
+                  summary: 'Success',
+                  detail: 'Weekly report added successfully and Email sent',
+                  life: 3000,
+                });
+              })
+            })
             }
           });
       } else {
@@ -322,12 +327,17 @@ console.log(this.weeklySummaryReport);
           .updateWeeklySummaryReport(this.weeklySummaryReport)
           .subscribe((result: any) => {
             if (result) {
-              this.messageService.add({
-                severity: 'success',
-                summary: 'Success',
-                detail: 'Weekly report updated successfully',
-                life: 3000,
-              });
+              this.pptServiceService.sendEmailWithPpt(this.weeklySummaryReport).then((data) => {
+                let formData = data;
+                this._weeklyReportService.sendEmailWithPpt(formData).subscribe(()=>{
+                  this.messageService.add({
+                    severity: 'success',
+                    summary: 'Success',
+                    detail: 'Weekly report updated successfully and Email sent',
+                    life: 3000,
+                  });
+                });
+              }); 
             }
           });
       }
@@ -350,7 +360,7 @@ console.log(this.weeklySummaryReport);
     }
   }
   onpptClick(){
-    this.pptServiceService.createPPt(this.weeklySummaryReport);
+    this.pptServiceService.downloadPpt(this.weeklySummaryReport);
 
  }
 }

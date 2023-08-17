@@ -1,7 +1,8 @@
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/internal/Observable';
 import { WeeklySummaryReport } from '../model/weekly-summary-report.model';
+import { environment } from '../../../environments/environment';
 
 
 @Injectable({
@@ -10,8 +11,10 @@ import { WeeklySummaryReport } from '../model/weekly-summary-report.model';
 
 export class WeeklyReportService {
 
-  baseUrl: string = "https://localhost:7042/";
-  constructor(private _http: HttpClient) { }
+  baseUrl: string = environment.baseUrl;
+  
+  constructor(private _http: HttpClient) { 
+  }
 
   getWeeklySummaryReport(WeekEndingDate ?: Date): Observable<any> {
     let url= this.baseUrl + "GetWeeklySummaryReport";
@@ -107,6 +110,14 @@ export class WeeklyReportService {
 
     return this._http.get(this.baseUrl + 'GetDateSummaryReport?StartDate=' +StartDate +'&WeekEndingDate=' +WeekEndingDate);
 
+  }
+
+  sendEmailWithPpt(formData: FormData){
+    let headers = new HttpHeaders();
+    headers.append('Content-Type', 'multipart/form-data');
+    headers.append('Accept', 'application/json');
+    const httpOptions = { headers: headers };
+    return this._http.post(this.baseUrl + 'api/Email/Send', formData, httpOptions);
   }
 
 }
