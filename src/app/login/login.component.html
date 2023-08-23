@@ -1,0 +1,24 @@
+<div class="background">
+    
+    <div class="login-section card">
+        <div class="container">
+            <div class="">
+                <img src="/assets/persistent-logo.png"  alt="logo">
+            </div>
+            <div class="m-10">Welcome</div>
+            <span class="p-float-label username">
+                <input pInputText id="username" [(ngModel)]="username"/>
+                <label htmlFor="username">Username</label>
+            </span>
+            <span class="p-float-label  password">
+                <p-password [feedback]="false" id="password" [(ngModel)]="password"></p-password>
+                <label for="password">Password</label>
+            </span>
+            <div class="button-div">
+                <p-button class="" label="Login" (click)="onLogin()"></p-button>
+            </div>
+            
+        </div>
+
+    </div>
+</div>

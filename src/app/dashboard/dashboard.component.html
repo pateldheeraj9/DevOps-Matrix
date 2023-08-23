@@ -9,7 +9,7 @@
 <!-- Prime flex.......... -->
 <br>
 <div class="card bg-purple-50">
-  <div class="card-container purple-container overflow-hidden">
+  <div class="card-container purple-container">
       <div class="flex box-height">
           <div class="flex-1 flex align-items-center justify-content-center bg-purple-800 font-bold text-white text-xl m-2 px-5 py-3 border-round-lg transition-colors transition-duration-500 hover:bg-blue-900 hover:text-white-900
           cursor-pointer" *ngFor="let data of tableData">{{data.name}}: {{data.count}}</div>
@@ -39,9 +39,9 @@
 </div> -->
 
   <!-- Percentage  -->
-<div class="flex" >
+<div class="flex flex-wrap" >
   <div class="col-12 xl:col-6">
-    <div class="card overview" style="overflow: scroll;">
+    <div class="card overview">
         <div class="flex justify-content-between align-items-center mb-5">
             <h5 class="text-purple-900">Overview</h5>
         </div>
@@ -66,7 +66,7 @@
 
 <!-- Bar Graph -->
 <div class="col-12 lg:col-6">
-    <div class="card barchart" style="height: 85.5vh;" >
+    <div class="card barchart" >
         <h5>Bar Chart</h5>
         <p-chart type="bar" [data]="barData" [options]="barOptions"></p-chart>
     </div>

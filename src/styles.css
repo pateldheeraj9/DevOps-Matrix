@@ -4,6 +4,7 @@
 
 body {
   font-family: var(--font-family);
+  overflow-x: hidden;
 }
 .p-datatable-gridlines{
     border: 1px solid #ddd;
@@ -67,7 +68,7 @@ body {
     transition: 0.5s;
     border-style: solid;
     width: 90%;
-    height: 100% !important;
+    /* height: 100% !important; */
     margin-left: 30px;
     margin-top: 50px;
   }

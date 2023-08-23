@@ -82,5 +82,19 @@ tr:nth-child(even){background-color: #f2f2f2;}
   margin-bottom: 5px !important;
 }
 
+:host {
+  .icon-cell .p-button-sm {
+    height: 1.5rem;
+    width: 1.5rem;
+    border: 0;
+    padding: 10px 13px;
+  }
+
+  .team_details_table tr td{
+    padding: 5px ;
+  }
+}
+
+
 
 

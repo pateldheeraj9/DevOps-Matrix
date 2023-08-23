@@ -86,3 +86,16 @@ th{
   height: 10px !important;
 }
 
+:host {
+  .icon-cell .p-button-sm {
+    height: 1.5rem;
+    width: 1.5rem;
+    border: 0;
+    padding: 10px 13px;
+  }
+
+  .tblteammemberdetails tr td{
+    padding: 5px ;
+  }
+}
+

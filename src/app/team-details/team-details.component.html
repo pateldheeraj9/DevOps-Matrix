@@ -67,7 +67,7 @@
 
 
         <p-table #myTab [columns]="cols" [value]="tableData" styleClass="p-datatable-gridlines" [paginator]="true"
-          [rows]="10" [showCurrentPageReport]="true" [globalFilterFields]="['Name']">
+          [rows]="10" [showCurrentPageReport]="true" [globalFilterFields]="['Name']" class="team_details_table">
 
           <ng-template pTemplate="header">
 
@@ -133,17 +133,12 @@
 
               </td>
 
-              <td width="13%">
+              <td width="13%" class="icon-cell">
 
-                <p-button icon="pi pi-search" (click)="showViewTeamDetails(data.id)"
+                <p-button icon="pi pi-eye" (click)="showViewTeamDetails(data.id)"
                   styleClass="p-button-sm p-button-rounded p-button-danger p-button-outlined"></p-button>
                 <p-button icon="pi pi-pencil" (click)="showEditTeamDetails(data.id)"
                   styleClass="p-button-sm p-button-rounded p-button-danger p-button-outlined"></p-button>
-
-                <!-- <p-button icon="pi pi-trash" (click)="deleteTeamDetailsById(data.id)"
-                  styleClass="p-button-sm p-button-rounded p-button-danger p-button-outlined"></p-button> -->
-
-
                 <p-button icon="pi pi-trash" (click)="deleteProduct(data.id,data.name)"
                   styleClass="p-button-sm p-button-rounded p-button-danger p-button-outlined"></p-button>
               </td>

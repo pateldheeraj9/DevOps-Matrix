@@ -17,6 +17,7 @@ import { ChartTaskByStateComponent } from './devops-matrix/chart-task-by-state/c
 import { ChartWorkItemByStateComponent } from './devops-matrix/chart-work-item-by-state/chart-work-item-by-state.component';
 import { DevopsMatrixComponent } from './devops-matrix/devops-matrix.component';
 import { GraphImplementationComponent } from './graph-implementation/graph-implementation.component';
+import { LoginComponent } from './login/login.component';
 // import { HomePageComponent } from './home-page/home-page.component';
 
 
@@ -37,7 +38,7 @@ const routes: Routes = [
   { path: 'ViewTeamDetails/:Id', component: ViewTeamDetailsComponent },
   { path: 'ngprime', component: NgPrimeComponent },
   { path: 'Dashboard', component: DashboardComponent },
-  { path: '', component: DashboardComponent },
+  { path: '', component: LoginComponent },
   {path:'Chartdetails',component:GraphImplementationComponent},
 
 

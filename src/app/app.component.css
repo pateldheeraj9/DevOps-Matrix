@@ -21,6 +21,11 @@ nav ul li a:hover {
     color: #fff;
 }
 
+.username {
+    color: #fff;
+    font-size: 14px; 
+}
+
 nav ul ul {
     position: flex;
     display: none;

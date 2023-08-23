@@ -2,8 +2,13 @@
   padding-left: 30px;
   padding-top: 10px;
   line-height: 1;
-  border-bottom-style: solid;
-  background-color: #7D3C98;
+  /* border-bottom-style: solid; */
+  /* background-color: #7D3C98; */
+  background-color: #054468;
+  position: sticky;
+  top: 0;
+  z-index: 2;
+
 
 }
 
@@ -15,21 +20,25 @@
 
 .card {
   background: var(--surface-card);
-  border: 1px solid black;
+  /* border: 1px solid black; */
   padding: 1rem;
   /* margin-bottom: 2rem; */
-  box-shadow: var(--card-shadow);
-  border-radius: 12px;
+  /* box-shadow: var(--card-shadow); */
+  border-radius: 3px;
   margin-top: 10px;
 }
+
 
 .overview{
 margin-left: 22px !important;
 width: 85%;
+overflow: auto;
+max-height: 600px;
 }
 
 .barchart{
-margin-left: -15px;
+  /* margin-left: -15px; */
+  height: 600px;
 }
 
 .box-height {
@@ -38,4 +47,8 @@ margin-left: -15px;
 
 h5 {
   font-size: 1.50rem;
+}
+
+.purple-container {
+  overflow-x: auto !important;
 }

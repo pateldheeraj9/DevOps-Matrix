@@ -224,6 +224,7 @@ export class WeeklyReportComponent implements OnInit {
   }
 
   OnDateSelection(event: any) {
+    let selectedWeekEndDate = event.target.value;
     this._weeklyReportService
       .getWeeklySummaryReport(event.target.value)
       .subscribe((result: any) => {
@@ -234,7 +235,8 @@ export class WeeklyReportComponent implements OnInit {
           {
             //converting json string to obj
             this.weeklySummaryReport = JSON.parse(result.data);
-
+            console.log(this.weeklySummaryReport);
+            console.log(selectedWeekEndDate);
           this.summary_form.setValue({
             Overall: this.weeklySummaryReport.Summary.Overall,
             OverallStatus: this.weeklySummaryReport.Summary.OverallStatus,
@@ -270,12 +272,15 @@ export class WeeklyReportComponent implements OnInit {
    
     //add summary details
     if (this.weeklySummaryReport.Summary != null) {
-      this.summaryID = this.weeklySummaryReport.Summary.SummaryID;
+      let summaryWeekEndingDate = this.weeklySummaryReport.Summary?.WeekEndingDate?.toString().split('T')[0];
+      let isRecordFetchedFromLastDate = (this.WeekEndingDate.toString() !== summaryWeekEndingDate);
+      if(!isRecordFetchedFromLastDate)
+        this.summaryID = this.weeklySummaryReport.Summary.SummaryID;
     } else {
       this.weeklySummaryReport = new WeeklySummaryReport();
       this.weeklySummaryReport.Summary = new WSR_SummaryDetails();
-      //this.weeklySummaryReport.Teams=[];
-      //this.weeklySummaryReport.ActionItems=[];
+      this.weeklySummaryReport.Teams=[];
+      this.weeklySummaryReport.ActionItems=[];
     }
     this.SummaryDetails = this.summary_form.value;
     this.weeklySummaryReport.Summary = this.SummaryDetails;
@@ -300,7 +305,7 @@ export class WeeklyReportComponent implements OnInit {
       });
     } else {
       this.weeklySummaryReport.Teams = this.teamsDetails;
-console.log(this.weeklySummaryReport);
+      console.log(this.weeklySummaryReport);
       //add
       if (this.summaryID == null) {
         this._weeklyReportService

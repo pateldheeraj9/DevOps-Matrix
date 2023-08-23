@@ -46,6 +46,8 @@ import { TeamMemberSkillsComponent } from './team-member-skills/team-member-skil
 import { TabViewModule } from 'primeng/tabview';
 import { FieldsetModule } from 'primeng/fieldset';
 import { GraphImplementationComponent } from './graph-implementation/graph-implementation.component';
+import { LoginComponent } from './login/login.component';
+import { PasswordModule } from 'primeng/password';
 
 
 
@@ -74,7 +76,8 @@ import { GraphImplementationComponent } from './graph-implementation/graph-imple
     LoaderComponent,
     TeamMemberRemarksComponent,
     TeamMemberSkillsComponent,
-    GraphImplementationComponent
+    GraphImplementationComponent,
+    LoginComponent
     // HomePageComponent
     // weeklyReportsComponent,
     // NavMenuSideBarComponent
@@ -102,7 +105,8 @@ import { GraphImplementationComponent } from './graph-implementation/graph-imple
     WeeklyReportModule,
     FieldsetModule,
     
-    TabViewModule
+    TabViewModule,
+    PasswordModule
 
 
 

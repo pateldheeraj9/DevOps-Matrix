@@ -27,7 +27,7 @@
   .wrapper .sidebar {
     background: rgb(5, 68, 104);
     position: fixed;
-    overflow: scroll;
+    overflow: auto;
     top: 0;
     left: 0;
     width: 250px;
@@ -139,8 +139,8 @@
 
 </style>
 
-
-<div class="wrapper">
+<app-login *ngIf="!loginService.isAuthenticated"></app-login>
+<div class="wrapper" *ngIf="loginService.isAuthenticated">
   <div class="section">
 
     <div class="container">
@@ -151,9 +151,10 @@
   </div>
   <div class="sidebar">
     <div class="profile">
+      
       <!-- <img src="https://1.bp.blogspot.com/-vhmWFWO2r8U/YLjr2A57toI/AAAAAAAACO4/0GBonlEZPmAiQW4uvkCTm5LvlJVd_-l_wCNcBGAsYHQ/s16000/team-1-2.jpg" alt="profile_picture"> -->
       <h3><b>New Tech</b></h3>
-
+      <span class="username">Welcome {{loginService.userRole}}!</span>
     </div>
 
     <nav>

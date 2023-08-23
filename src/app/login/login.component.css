@@ -1,0 +1,37 @@
+.background {
+    height: 100vh;
+    width: 100%;
+    background-color: #183462;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 200px;
+}
+
+.login-section {
+    height: 300px;
+    width: 250px;
+    padding: 10px;
+    background: white;
+    border-radius: 3px;
+    border: 1px solid white;
+    text-align: left;
+}
+
+.container {
+    padding-left: 0;
+}
+.username, .password, .button-div {
+    margin-top: 30px;
+}
+
+:host {
+    .p-inputtext {
+        padding: 5px;
+    }
+
+    .p-button {
+        padding:5px;
+    }
+}
