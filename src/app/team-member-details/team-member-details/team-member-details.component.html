@@ -5,9 +5,9 @@
     <div class="flex align-items-center justify-content-center m-2">
       <h3>Team Member Details</h3>
     </div>
-    <div class="flex align-items-center justify-content-center m-2">
-      <p-button styleClass="p-button-raised  p-button-warning p-button" routerLink="/TeamMember">ADD TEAM
-        MEMBER</p-button>
+    <div class="flex align-items-center justify-content-center mb-2 mr-2">
+      <p-button styleClass="p-button-raised  p-button-warning p-button" class="team-details-button" routerLink="/TeamMember"
+      title="Add Team Details">Add</p-button>
     </div>
   </div>
 </div>
@@ -56,7 +56,7 @@
 
       </div>
       <div class="flex align-items-center justify-content-end m-2 border-round ">
-        <label style="padding: 14px;">Team</label>
+        <!-- <label style="padding: 14px;">Team</label>
         <select [(ngModel)]="SelectedValue" (change)="onDropdownSelected(SelectedValue.value)" [value]="tableData1"
           style="float: right; margin-right: 5px;">
 
@@ -64,7 +64,9 @@
           <option value=0>All</option>
           <option *ngFor="let data of tableData1" value={{data.id}}>{{data.name}}</option>
 
-        </select>
+        </select> -->
+        <p-dropdown class="width200" [options]="tableData1" [(ngModel)]="SelectedValue" name="selectedTeam" placeholder="Select Team"
+        (onChange)="onDropdownSelected(SelectedValue.value)" optionLabel="name" optionValue="id" appendTo="body"></p-dropdown>
 
       </div>
     </div>
@@ -75,12 +77,13 @@
     <div class="flex flex-column">
 
       <div class="m-2"> <input type="text" class="p-inputtext" (keyup)="filterData(searchKey.value)" #searchKey
-          placeholder="Search By Name, Email Id or PhoneNo" pInputText /></div>
-      <div style="position: absolute;z-index: 20000;right:30px;">
+          placeholder="Search By Name, Email Id or PhoneNo" title="Search By Name, Email Id or PhoneNo" pInputText /></div>
+      <div style="position: absolute;right:30px;top: 15px;">
 
-        <button type="button" pButton pRipple icon="pi pi-file-excel" (click)="exportExcel()"
+        <!-- <button type="button" pButton pRipple icon="pi pi-file-excel" (click)="exportExcel()"
           class="p-button-success ml-2 rightalign" pTooltip="XLS" tooltipPosition="bottom">
-        </button>
+        </button> -->
+        <i class="pi pi-file-excel excel-btn" (click)="exportExcel()" title="export to excel"></i>
       </div>
       <div class="m-2">
         <p-table class="tblteammemberdetails" #myTab [columns]="cols" [value]="tableData" styleClass="p-datatable-gridlines" [paginator]="true"
@@ -153,15 +156,15 @@
 
               <td width="13%" class="icon-cell">
 
-                <p-button icon="pi pi-search" (click)="showViewTeamMember(data.id)"
+                <p-button icon="pi pi-search" (click)="showViewTeamMember(data.id)" title="view"
                   styleClass="p-button-sm p-button-rounded p-button-danger p-button-outlined"></p-button>
-                <p-button icon="pi pi-pencil" (click)="showEditTeamMember(data.id)"
+                <p-button icon="pi pi-pencil" (click)="showEditTeamMember(data.id)" title="edit"
                   styleClass="p-button-sm p-button-rounded p-button-danger p-button-outlined"></p-button>
-                <p-button icon="pi pi-trash" (click)="deleteProduct(data.id,data.name)"
+                <p-button icon="pi pi-trash" (click)="deleteProduct(data.id,data.name)" title="delete"
                   styleClass="p-button-sm p-button-rounded p-button-danger p-button-outlined"></p-button>
-                <p-button icon="pi pi-comment" (click)="addRemarkTeamMember(data.id)"
+                <p-button icon="pi pi-comment" (click)="addRemarkTeamMember(data.id)" title="remarks"
                   styleClass="p-button-sm p-button-rounded p-button-danger p-button-outlined"></p-button>
-                <p-button icon="pi pi-plus" (click)="showAddSkills(data.id)"
+                <p-button icon="pi pi-plus" (click)="showAddSkills(data.id)" title="add"
                   styleClass="p-button-sm p-button-rounded p-button-danger p-button-outlined"></p-button>
 
               </td>

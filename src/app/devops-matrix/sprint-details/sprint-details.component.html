@@ -6,7 +6,7 @@
     </div>
   </div>
 </div>
-<table width="100%">
+<table width="100%" class="sprint-details-table">
   <tr>
     <td>
       <div>
@@ -14,7 +14,7 @@
       </div>
       <div class="text-center">
         <p-table #tableSprintDetails [columns]="columns" [value]="sprints" [exportFilename]="Title"
-                 styleClass="p-datatable-gridlines p-datatable-sm" [paginator]="true" [rows]="10">
+                 styleClass="p-datatable-gridlines p-datatable-sm"  [paginator]="true" [rows]="10">
           <ng-template pTemplate="header">
             <tr>
               <th *ngFor="let col of columns" class="table-header">

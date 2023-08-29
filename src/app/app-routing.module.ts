@@ -18,6 +18,8 @@ import { ChartWorkItemByStateComponent } from './devops-matrix/chart-work-item-b
 import { DevopsMatrixComponent } from './devops-matrix/devops-matrix.component';
 import { GraphImplementationComponent } from './graph-implementation/graph-implementation.component';
 import { LoginComponent } from './login/login.component';
+import { AuthGuard } from './guard/auth.guard';
+import { Role } from './models/role.enum';
 // import { HomePageComponent } from './home-page/home-page.component';
 
 
@@ -25,21 +27,36 @@ import { LoginComponent } from './login/login.component';
 
 
 const routes: Routes = [
-  { path: 'TeamDetails', component: TeamDetailsComponent },
-  { path: 'TeamMember', component: TeamMemberComponent },
-  { path: 'Employee', component: EmployeeViewComponent },
-  { path: 'AddEmployee', component: EmployeeAddComponent },
-  { path: 'UpdateEmployee', component: UpdateEmployeeComponent },
-  { path: 'EditTeamMember/:Id', component: EditTeamMemberComponent },
-  { path: 'TeamMemberDetails', component: TeamMemberDetailsComponent },
-  { path: 'ViewTeamMember/:Id', component: ViewTeamMemberComponent },
-  { path: 'AddTeamDetails', component: AddTeamDetailsComponent },
-  { path: 'EditTeamDetails/:Id', component: EditTeamDetailsComponent },
-  { path: 'ViewTeamDetails/:Id', component: ViewTeamDetailsComponent },
+  { path: 'TeamDetails', component: TeamDetailsComponent, canActivate: [AuthGuard],
+    data: { roles: [Role.Admin, Role.User, Role.Superuser]  }},
+  { path: 'TeamMember', component: TeamMemberComponent, canActivate: [AuthGuard],
+  data: { roles: [Role.Admin, Role.User, Role.Superuser]  } },
+  { path: 'Employee', component: EmployeeViewComponent, canActivate: [AuthGuard],
+  data: { roles: [Role.Admin, Role.User, Role.Superuser]  } },
+  { path: 'AddEmployee', component: EmployeeAddComponent, canActivate: [AuthGuard],
+  data: { roles: [Role.Admin, Role.User, Role.Superuser]  } },
+  { path: 'UpdateEmployee', component: UpdateEmployeeComponent, canActivate: [AuthGuard],
+  data: { roles: [Role.Admin, Role.User, Role.Superuser]  } },
+  { path: 'EditTeamMember/:Id', component: EditTeamMemberComponent, canActivate: [AuthGuard],
+  data: { roles: [Role.Admin, Role.User, Role.Superuser]  } },
+  { path: 'TeamMemberDetails', component: TeamMemberDetailsComponent, canActivate: [AuthGuard],
+  data: { roles: [Role.Admin, Role.User, Role.Superuser]  } },
+  { path: 'ViewTeamMember/:Id', component: ViewTeamMemberComponent, canActivate: [AuthGuard],
+  data: { roles: [Role.Admin, Role.User, Role.Superuser]  } },
+  { path: 'AddTeamDetails', component: AddTeamDetailsComponent, canActivate: [AuthGuard],
+  data: { roles: [Role.Admin, Role.User, Role.Superuser]  } },
+  { path: 'EditTeamDetails/:Id', component: EditTeamDetailsComponent, canActivate: [AuthGuard],
+  data: { roles: [Role.Admin, Role.User, Role.Superuser]  } },
+  { path: 'ViewTeamDetails/:Id', component: ViewTeamDetailsComponent, canActivate: [AuthGuard],
+  data: { roles: [Role.Admin, Role.User, Role.Superuser]  } },
   { path: 'ngprime', component: NgPrimeComponent },
-  { path: 'Dashboard', component: DashboardComponent },
-  { path: '', component: LoginComponent },
-  {path:'Chartdetails',component:GraphImplementationComponent},
+  { path: 'Dashboard', component: DashboardComponent, canActivate: [AuthGuard],
+  data: { roles: [Role.Admin, Role.User, Role.Superuser]  } },
+  { path: '', component: DashboardComponent, canActivate: [AuthGuard],
+  data: { roles: [Role.Admin, Role.User, Role.Superuser]  } },
+  { path: 'login', component: LoginComponent },
+  {path:'Chartdetails',component:GraphImplementationComponent, canActivate: [AuthGuard],
+  data: { roles: [Role.Admin, Role.User, Role.Superuser]  }},
 
 
   // {

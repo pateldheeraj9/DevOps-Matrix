@@ -100,11 +100,10 @@ import { PasswordModule } from 'primeng/password';
     DynamicDialogModule,
     BrowserAnimationsModule,
     ToastModule,
-    ChartModule
-    , DevopsMatrixModule,
+    ChartModule,
+    DevopsMatrixModule,
     WeeklyReportModule,
     FieldsetModule,
-    
     TabViewModule,
     PasswordModule
 

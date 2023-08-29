@@ -18,10 +18,15 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Open Sans', sans-serif;
+    font-size: 14px !important;
   }
 
   body {
-    background: #f5f6fa;
+    background: #f5f6fa;  
+  }
+
+  html {
+    font-size: 14px;
   }
 
   .wrapper .sidebar {
@@ -53,7 +58,9 @@
 
   .wrapper .sidebar .profile h3 {
     color: #ffffff;
-    margin: 10px 0 5px;
+    margin: 0px 0 10px;
+    font-weight: bold;
+    font-size: 22px !important;
   }
 
   .wrapper .sidebar .profile p {
@@ -71,11 +78,10 @@
   }
 
   .wrapper .sidebar ul li a .icon {
-    color: #dee4ec;
+    color: rgb(241, 237, 237);
     width: 30px;
     display: inline-block;
   }
-
 
 
   .wrapper .sidebar ul li a:hover,
@@ -153,8 +159,8 @@
     <div class="profile">
       
       <!-- <img src="https://1.bp.blogspot.com/-vhmWFWO2r8U/YLjr2A57toI/AAAAAAAACO4/0GBonlEZPmAiQW4uvkCTm5LvlJVd_-l_wCNcBGAsYHQ/s16000/team-1-2.jpg" alt="profile_picture"> -->
-      <h3><b>New Tech</b></h3>
-      <span class="username">Welcome {{loginService.userRole}}!</span>
+      <h3>New Tech</h3>
+      <span class="username">Welcome {{loginService.userName}}!</span>
     </div>
 
     <nav>
@@ -186,7 +192,7 @@
           </ul>
         </li>
       </ul>
-      <ul>
+      <ul *ngIf="loginService.userRole !== Role.Admin">
         <li class="dropdown">
           <a href="#" [routerLink]="['/weeklyreport/Steps']"><i class="fas fa-file"></i>&nbsp;&nbsp;Weekly Report
             <!-- <i class="fas fa-chevron-right"></i> -->
@@ -296,7 +302,17 @@
           </ul>
         </li>
       </ul>
+      <ul>
+        <li>
+          <a [routerLink]="['/login']" routerLinkActive="active" (click)="loginService.logout()"
+                [routerLinkActiveOptions]="{exact:true}" class="logout-link">
+                <i class="fa fa-power-off"></i>
+                Logout
+              </a>
+        </li>
+      </ul>
     </nav>
   </div>
 
 </div>
+<p-toast></p-toast>

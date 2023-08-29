@@ -174,10 +174,9 @@ export class DashboardComponent implements OnInit, OnDestroy{
                     display:true,
                     text:'Skills',
                     font:{
-                      weight:600,
-                      size:18
+                      size:16,      
                     },
-                    color:'black'
+                    color: textColor
                  },
                   ticks: {
                       color: textColorSecondary,
@@ -197,10 +196,9 @@ export class DashboardComponent implements OnInit, OnDestroy{
                   display:true,
                   text:'Member Count',
                   font:{
-                    weight:600,
-                    size:18
+                    size:16
                   },
-                  color:'black'
+                  color:textColor
                },
                   ticks: {
                       color: textColorSecondary

@@ -12,6 +12,8 @@ import { DevopsMatrixComponent } from './devops-matrix.component';
 import { HomeComponent } from './home/home.component';
 import { SprintDetailsComponent } from './sprint-details/sprint-details.component';
 import { UploadSprintDataComponent } from './upload-sprint-data/upload-sprint-data.component';
+import { AuthGuard } from '../guard/auth.guard';
+import { Role } from '../models/role.enum';
 
 const routes: Routes = [
   {
@@ -28,7 +30,9 @@ const routes: Routes = [
       { path: 'chart-work-analysis', component: ChartWorkScopeAnalysisComponent },
       { path: 'sprint-details', component: SprintDetailsComponent },
       { path: '**', component: HomeComponent }
-    ]
+    ],
+    canActivate: [AuthGuard],
+  data: { roles: [ Role.Admin, Role.User, Role.Superuser]  }
   },
 
 ];

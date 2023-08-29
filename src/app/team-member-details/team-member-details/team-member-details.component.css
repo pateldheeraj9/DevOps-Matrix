@@ -86,6 +86,12 @@ th{
   height: 10px !important;
 }
 
+.excel-btn {
+  font-size: 22px;
+  color: #22C55E;
+  cursor: pointer;
+}
+
 :host {
   .icon-cell .p-button-sm {
     height: 1.5rem;
@@ -96,6 +102,17 @@ th{
 
   .tblteammemberdetails tr td{
     padding: 5px ;
+  }
+
+  .team-details-button .p-button{
+    font-size: 14px !important;
+    padding: 10px;
+  }
+
+  .p-dropdown-label {
+    padding: 5px;
+    padding-left: 10px;
+    font-size: 14px;
   }
 }
 

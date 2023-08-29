@@ -10,7 +10,7 @@
 }
 
 .login-section {
-    height: 300px;
+    height: 370px;
     width: 250px;
     padding: 10px;
     background: white;
@@ -24,6 +24,10 @@
 }
 .username, .password, .button-div {
     margin-top: 30px;
+}
+
+.error {
+    color: red;
 }
 
 :host {

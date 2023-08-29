@@ -13,6 +13,8 @@ export class LoginComponent implements OnInit {
 
   username: string;
   password: string;
+  loginError: boolean;
+  errorMsg: string = "";
 
   ngOnInit(){
     
@@ -21,9 +23,20 @@ export class LoginComponent implements OnInit {
     
     this.loginService.authenticate(this.username, this.password).subscribe((response)=>{
       console.log(response);
-      this.loginService.isAuthenticated = true;
-      this.loginService.userRole = this.username;
-      this.router.navigate(["Dashboard"])
+      if(response && response.value){
+        let responseString = atob(response.value);
+        this.loginService.isAuthenticated = true;
+        this.loginService.userRole = responseString.split(':')[1];
+        this.loginService.userName = responseString.split(':')[0];
+        sessionStorage.setItem('userName',this.loginService.userName);
+        sessionStorage.setItem('userRole',this.loginService.userRole);
+        this.router.navigate(["Dashboard"]);
+      }
+      else {
+        this.errorMsg = "Invalid Credentials";
+        this.loginError = true;
+      }
+      
     });
     
   }

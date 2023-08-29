@@ -7,6 +7,8 @@ import { WeeklyReportComponent } from './weekly-report/weekly-report.component';
 import { TeamComponent } from './team/team.component';
 import { ActionItemComponent } from './action-item/action-item.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { AuthGuard } from '../guard/auth.guard';
+import { Role } from '../models/role.enum';
 
 const routes: Routes = [
     {
@@ -18,7 +20,9 @@ const routes: Routes = [
             { path: 'Action-Item', component: ActionItemComponent },
             { path: '', redirectTo: '/Steps', pathMatch: 'full'},
             { path: '**', component: PageNotFoundComponent}
-        ]
+        ],
+        canActivate: [AuthGuard],
+  data: { roles: [ Role.User, Role.Superuser]  }
     },
 
 ];

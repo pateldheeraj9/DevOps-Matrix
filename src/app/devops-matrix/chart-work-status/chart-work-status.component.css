@@ -46,3 +46,7 @@ th {
 .p-float-label{
   margin-top: 25px !important;
 }
+
+.chart-table {
+  padding-left: 10px;
+}

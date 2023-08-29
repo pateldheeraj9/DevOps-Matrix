@@ -48,3 +48,29 @@ nav ul .dropdown {
     float: right;
 }
 
+ul li a.logout-link {
+    padding-left: 15px !important;
+}
+
+:host {
+    .p-datatable .p-datatable-thead > tr > th {
+        color: #495057;
+        font-size: 14px;
+        padding: 5px;
+        font-weight: 600;
+    }
+
+    .p-datatable tr > td {
+        font-size: 12px;
+    }
+
+    .p-paginator, .p-paginator-page.p-highlight {
+        font-size: 12px;
+    }
+
+    .p-component {
+        font-size: 14px;
+    }
+
+}
+

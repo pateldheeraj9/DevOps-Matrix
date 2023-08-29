@@ -395,6 +395,7 @@ saveAsExcelFile(buffer: any, fileName: string): void {
 
         if (resultData1) {
           this.tableData1 = resultData1;
+          this.tableData1.unshift({id:'9999', name:'All'});
 
           this.filteredTableData1 = this.tableData1
 

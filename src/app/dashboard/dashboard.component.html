@@ -11,8 +11,15 @@
 <div class="card bg-purple-50">
   <div class="card-container purple-container">
       <div class="flex box-height">
-          <div class="flex-1 flex align-items-center justify-content-center bg-purple-800 font-bold text-white text-xl m-2 px-5 py-3 border-round-lg transition-colors transition-duration-500 hover:bg-blue-900 hover:text-white-900
-          cursor-pointer" *ngFor="let data of tableData">{{data.name}}: {{data.count}}</div>
+          <div class="tile card flex-1 flex align-items-center justify-content-center flex-column bg-purple-800 font-bold text-white m-2 border-round-lg transition-colors transition-duration-500 hover:bg-blue-900 hover:text-white-900
+          cursor-pointer" *ngFor="let data of tableData">
+          <div class="tile-title flex-1">
+            {{data.name}}: 
+          </div>
+          <div class="tile-text flex-1">
+            {{data.count}}
+          </div>
+        </div>
           <!-- <div class="flex-1 flex align-items-center justify-content-center bg-purple-700 font-bold text-white m-2 px-5 py-3 border-round">Lorem ipsum dolor sit amet</div>
           <div class="flex-1 flex align-items-center justify-content-center bg-purple-700 font-bold text-white m-2 px-5 py-3 border-round">Lorem ipsum dolor sit amet</div>
           <div class="flex-1 flex align-items-center justify-content-center bg-purple-700 font-bold text-white m-2 px-5 py-3 border-round">Lorem ipsum dolor sit amet</div> -->
@@ -42,23 +49,27 @@
 <div class="flex flex-wrap" >
   <div class="col-12 xl:col-6">
     <div class="card overview">
-        <div class="flex justify-content-between align-items-center mb-5">
-            <h5 class="text-purple-900">Overview</h5>
+        <div class="flex justify-content-between align-items-center mb-3">
+            <h5 class="text-purple-900 chart-heading">Overview</h5>
         </div>
-        <ul class="list-none p-0 m-0" >
-            <li class="flex flex-column md:flex-row md:align-items-center md:justify-content-between mb-4" *ngFor="let data of teamData">
-                <div class="mb-3">
-                    <span class="text-900 font-semibold mr-2 mb-1 md:mb-0 text-lg"><span class="text-purple-800 text-xl">Project:</span> {{data.projectName}}</span>
-                    <div class="mt-2 text-700 text-lg font-semibold"><span class="text-purple-800 text-xl">Team:</span> {{data.name}}</div>
-                </div>
-                <div class="mt-2 md:mt-0 flex align-items-center">
-                    <!-- {{(data.tdTeamMemberCount/tableData[1].count)*100}}% -->
-                    <span class="text-purple-700 ml-3 font-bold mr-3">{{((data.tdTeamMemberCount/tableData[1].count)*100)| number: '1.2-2'}}%</span>
-                    <div class="surface-300 border-round overflow-hidden w-10rem lg:w-6rem" [ngStyle]="{height: '12px'}">
-                        <div class="h-full" [ngStyle]="{'width': ((data.tdTeamMemberCount/tableData[1].count)*100)+'%','background-color':getRandomColor()}"></div>
+        <ul class="list-none p-0 m-0 overview-list" >
+            <li class="flex flex-column mb-4" *ngFor="let data of teamData">
+                <span class="mr-2 mb-1 md:mb-0 ">
+                    <span class="text-purple-800 overview-title">Project:</span>
+                    <span class="overview-text">{{data.projectName}}</span>
+                </span>
+                <div class="mb-2 flex flex-row justify-content-between">
+                    <div class="mt-2 flex flex-row align-items-baseline"><span class="text-purple-800" class="overview-title">Team:</span> <span class="overview-text project-name" [title]="data.name">{{data.name}}</span></div>
+                    <div class="mt-2 ml-2 flex align-items-center">
+                        <!-- {{(data.tdTeamMemberCount/tableData[1].count)*100}}% -->
+                        <span class="text-purple-700 font-bold mr-3">{{((data.tdTeamMemberCount/tableData[1].count)*100)| number: '1.2-2'}}%</span>
+                        <div class="surface-300 border-round overflow-hidden w-10rem lg:w-6rem" [ngStyle]="{height: '12px'}">
+                            <div class="h-full" [ngStyle]="{'width': ((data.tdTeamMemberCount/tableData[1].count)*100)+'%','background-color':getRandomColor()}"></div>
+                        </div>
+                        <span class="text-purple-700 ml-3 font-bold">{{data.tdTeamMemberCount}}</span>
                     </div>
-                    <span class="text-purple-700 ml-3 font-bold">{{data.tdTeamMemberCount}}</span>
-                </div>      
+                </div>
+                      
             </li>
         </ul>
     </div>
@@ -67,7 +78,7 @@
 <!-- Bar Graph -->
 <div class="col-12 lg:col-6">
     <div class="card barchart" >
-        <h5>Bar Chart</h5>
+        <h5 class="chart-heading">Bar Chart</h5>
         <p-chart type="bar" [data]="barData" [options]="barOptions"></p-chart>
     </div>
 </div>
