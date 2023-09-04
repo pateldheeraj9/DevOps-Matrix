@@ -186,7 +186,7 @@ export class SummaryComponent implements OnInit {
             display: true,
             text: "Count of Work Items",
             font: {
-              size: 18
+              size: 14
             }
           },
           ticks: {
@@ -205,7 +205,7 @@ export class SummaryComponent implements OnInit {
             display: true,
             text: "Tasks",
             font: {
-              size: 18
+              size: 14
             }
           },
           ticks: {

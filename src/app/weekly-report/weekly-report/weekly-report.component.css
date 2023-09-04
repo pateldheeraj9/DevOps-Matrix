@@ -21,3 +21,27 @@
     border-radius: 12px;
     margin-top: 10px;
 }
+
+.steps-container {
+  margin-top: 20px;
+}
+
+#sFormInput1 {
+  font-size: 14px;
+  padding: 10px;
+}
+
+:host {
+  .p-steps .p-steps-item .p-menuitem-link .p-steps-number {
+    font-size: 14px;
+  }
+
+  .p-steps .p-steps-item.p-highlight .p-steps-number {
+    background: #5c2f88;
+    color: #EFF6FF;
+  }
+
+  .p-button {
+    padding: 5px 10px;
+  }
+}

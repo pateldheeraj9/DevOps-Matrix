@@ -1,0 +1,33 @@
+:host {
+    .button-new {
+        justify-content: flex-end;
+        margin-bottom: 10px;
+        .p-button-success {
+            border-radius: 5px;
+        }
+        .p-button {
+            border-radius: 5px;
+            background: #F59E0B;
+            border-color: #F59E0B;
+        }
+    }
+
+    .p-icon.p-sortable-column-icon {
+        height: 10px;
+    }
+
+    .icon-cell .p-button-sm {
+        height: 1.5rem;
+        width: 1.5rem;
+        border: 0;
+        padding: 10px 13px;
+      }
+
+      .action-table tr td, .action-table tr th {
+        padding: 5px;
+      }
+
+      .icon-cell {
+        padding: 0;
+      }
+}

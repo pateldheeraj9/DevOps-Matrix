@@ -293,7 +293,7 @@ let tActiveResource=teamData.map((p: { tdTeamMembers: any; }) =>p.tdTeamMembers)
     let objToSend = {
       toEmail: ['fatema_kapadia@persistent.com','shaunak_mahajan@persistent.com'],
       Subject: "Weekly Status Report",
-      Body: "PFA the Weekly ppt",
+      Body: "PFA the Weekly ppt <br> <br> Thanks",
       Attachments: <any>[]
     }
     let formData = new FormData();

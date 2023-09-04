@@ -81,7 +81,7 @@ let tActiveResource=this.teamData.map((p: { tdTeamMembers: any; }) =>p.tdTeamMem
         Headers:{
           Text:"Resourcessss",
           font: {
-            size: 18
+            size: 14
           }
         }
       },
@@ -91,7 +91,7 @@ let tActiveResource=this.teamData.map((p: { tdTeamMembers: any; }) =>p.tdTeamMem
             display: true,
             text: "Project",
             font: {
-              size: 18
+              size: 14
             }},
           ticks: {
             color: textColorSecondary,
@@ -109,7 +109,7 @@ let tActiveResource=this.teamData.map((p: { tdTeamMembers: any; }) =>p.tdTeamMem
             display: true,
             text: "Resource",
             font: {
-              size: 18
+              size: 14
             }},
           ticks: {
             color: textColorSecondary

@@ -6,7 +6,7 @@
     </div>
   </div>
 
-<div>
+<div class="steps-container">
     <p-toast></p-toast>
     <p-steps [model]="items" [readonly]="false" [(activeIndex)]="activeIndex"></p-steps>
 </div>
@@ -42,7 +42,7 @@
     <p-button class="btn btn-primary float-end ms-1 p-1" type="next"
     (click)="OnNextClick()" *ngIf="activeIndex!=2"
         [disabled]="!isNextEnable(activeIndex)">Next </p-button>
-    <p-button class="float-end ms-1 p-1" type="submit" (click)="OnSubmitWeeklyReportForm($event)" *ngIf="activeIndex==2">
+    <p-button class="btn btn-primary float-end ms-1 p-1" type="submit" (click)="OnSubmitWeeklyReportForm($event)" *ngIf="activeIndex==2">
             Submit </p-button>
     <p-button class="btn btn-primary float-end ms-1 p-1" type="submit" (click)="onpptClick()" *ngIf="activeIndex==2">
                 Export PPT </p-button>

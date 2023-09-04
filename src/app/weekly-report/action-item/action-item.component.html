@@ -1,19 +1,20 @@
-<div class="card">
-    <p-toolbar styleClass="mb-1 float-end">
+<div class="flex button-new">
+    <!-- <p-toolbar styleClass="mb-1">
         <ng-template pTemplate="right">
-            <!-- <p-button pButton pRipple label="New" icon="pi pi-plus" class="p-button-success mr-2 float-end"
+            <p-button pButton pRipple label="New" icon="pi pi-plus" class="p-button-success mr-2 float-end"
                 (click)="openNew()"></p-button> -->
-                <p-button  pRipple label="New" icon="pi pi-plus" class="p-button-success mr-2 float-left"
+                
+        <!-- </ng-template>
+    </p-toolbar> --> 
+    <p-button  pRipple label="New" icon="pi pi-plus" class="p-button-success mr-2 flex"
                 (click)="openNew()"></p-button>
-        </ng-template>
-    </p-toolbar>
 </div>
 
     <p-table [columns]="cols" [value]="filteredActionItems" styleClass="p-datatable-gridlines"
     [tableStyle]="{ 'min-width': '50rem' }" sortMode="multiple"
         editMode="row" dataKey="id" [rows]="10" [rowsPerPageOptions]="[10, 25, 50]" [reorderableColumns]="true"
         [columns]="cols" sortMode="multiple" [paginator]="true" styleClass="p-datatable-striped"
-        columnResizeMode="expand">
+        columnResizeMode="expand" class="action-table">
         <ng-template pTemplate="header" let-columns>
             <tr>
                 <th *ngFor="let col of columns">
@@ -42,9 +43,12 @@
                     </span>
 
                 </td>
-                <button pButton pRipple icon="pi pi-pencil" class="" style="margin-top: 8px; margin-right: 3px;"
-                    (click)="editActionItem(rowData)"></button>
-                <button pButton pRipple icon="pi pi-trash" class="" (click)="deleteActionItem(rowData)"></button>
+                <td class="icon-cell" width="8%">
+                    <p-button icon="pi pi-pencil" styleClass="p-button-sm p-button-rounded p-button-danger p-button-outlined"
+                    (click)="editActionItem(rowData)"></p-button>
+                    <p-button icon="pi pi-trash" styleClass="p-button-sm p-button-rounded p-button-danger p-button-outlined" (click)="deleteActionItem(rowData)"></p-button>
+                </td>
+                
             </tr>
         </ng-template>
     </p-table>
